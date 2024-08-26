@@ -19,6 +19,7 @@ func _input(event):
 		emit_signal("direction_changed", get_joystick_direction())
 
 func get_joystick_direction() -> Vector2:
+	print('entra')
 	var joystick_vector = touch_position - joystick_base_position
 	var joystick_direction = joystick_vector.normalized()
 	
