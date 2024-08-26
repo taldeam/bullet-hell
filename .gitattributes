@@ -1,0 +1,27 @@
+# Normalize EOL for all files that Git considers text files
+* text=auto eol=lf
+
+# Handle line endings for specific text files
+*.gd        text=auto
+*.shader    text=auto
+*.tscn      text eol=lf
+*.tres      text eol=lf
+*.json      text=auto
+
+# Mark binary files
+*.png       binary
+*.jpg       binary
+*.wav       binary
+*.ogg       binary
+*.import    binary
+
+# Ignore diffing for binary files
+*.png       -diff
+*.jpg       -diff
+*.wav       -diff
+*.ogg       -diff
+*.import    -diff
+
+# Custom merge settings for Godot scene files
+*.tscn merge=union
+*.tres merge=union

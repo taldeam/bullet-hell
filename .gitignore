@@ -1,0 +1,11 @@
+# Godot-specific folders and files
+.import/
+.godot/
+
+# Godot exported binaries or game directories
+bin/
+export/
+
+# System and editor-specific files
+*.tmp
+*.log
