@@ -10,10 +10,21 @@ config_version=5
 
 [application]
 
-config/name="Bullet hell"
-run/main_scene="res://mundo.tscn"
+config/name="juego 1 de verdad"
+run/main_scene="res://escenas/mundo.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=960
+window/size/viewport_height=540
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/virtual_joystick/plugin.cfg")
 
 [input]
 
@@ -43,8 +54,12 @@ shoot={
 ]
 }
 
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
+renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true
