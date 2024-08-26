@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b2mtty1g25yvs"]
+[gd_scene load_steps=13 format=3 uid="uid://b2mtty1g25yvs"]
 
 [ext_resource type="Script" path="res://Scripts/ParallaxBackground.gd" id="1_rm0b7"]
 [ext_resource type="Texture2D" uid="uid://b67hbbdsnswv" path="res://fondo/fondo nuevo/layers/parallax-space-backgound.png" id="2_0tacc"]
@@ -7,8 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://dsv88u10e2ciu" path="res://fondo/fondo nuevo/Planet_02.png" id="5_oju7j"]
 [ext_resource type="Texture2D" uid="uid://cw6i8jtu8tvlr" path="res://fondo/fondo nuevo/Planet_04.png" id="6_ci4t1"]
 [ext_resource type="Texture2D" uid="uid://d2n5imvcdpe6g" path="res://fondo/fondo nuevo/Planet_03.png" id="7_ub62a"]
-[ext_resource type="Texture2D" uid="uid://dl4e0su7rr6ug" path="res://fondo/planetas/parallax-space-stars.png" id="8_fi6ex"]
-[ext_resource type="Texture2D" uid="uid://bpwp8j8hf22a6" path="res://fondo/fondo nuevo/parallax-space-stars.png" id="9_tnbca"]
 [ext_resource type="AudioStream" uid="uid://ccy5suqbsmbxh" path="res://Musica/DavidKBD - Cosmic Pack 05 - Stellar Confrontation-full.ogg" id="10_mfcqf"]
 [ext_resource type="Script" path="res://Scripts/Player/nave_principal.gd" id="11_kkutr"]
 [ext_resource type="Texture2D" uid="uid://tijmp7il875o" path="res://fondo/nave y enemigos/ShipsPNG/ship1.png" id="12_ia5lm"]
@@ -39,75 +37,51 @@ skew = 0.000432134
 texture = ExtResource("3_73xss")
 
 [node name="Planetas" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
-motion_scale = Vector2(0.265, 0.03)
-motion_mirroring = Vector2(970, 0)
+motion_scale = Vector2(0.265, 0.2)
+motion_mirroring = Vector2(1200, 0)
 
 [node name="Planet01" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/Planetas"]
-position = Vector2(601, 388)
+position = Vector2(573, 366)
 scale = Vector2(0.25, 0.23727)
 texture = ExtResource("4_ocxb1")
 
 [node name="planetas lejanos" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
 position = Vector2(11, -2)
-motion_scale = Vector2(0.5, 0.5)
-motion_mirroring = Vector2(1100, 0)
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(1300, 0)
 
 [node name="Planet02" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/planetas lejanos"]
-position = Vector2(-133, 591)
+position = Vector2(-105, 455)
 scale = Vector2(0.445495, 0.434686)
 texture = ExtResource("5_oju7j")
 
 [node name="planeta circulo" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
-motion_scale = Vector2(0.9, 0.9)
-motion_mirroring = Vector2(1400, 0)
+motion_scale = Vector2(0.265, 0.2)
+motion_mirroring = Vector2(1100, 0)
 
 [node name="Planet04" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/planeta circulo"]
-position = Vector2(732, 107)
+position = Vector2(44, 155)
 scale = Vector2(0.115, 0.115)
 texture = ExtResource("6_ci4t1")
 
 [node name="estrellas" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
-motion_scale = Vector2(0.3, 0.3)
-motion_mirroring = Vector2(1300, 0)
+motion_scale = Vector2(0.264, 0.3)
+motion_mirroring = Vector2(1500, 0)
 
 [node name="Planet03" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/estrellas"]
 position = Vector2(442.076, -38.1825)
-scale = Vector2(0.684339, 0.657276)
+scale = Vector2(0.6, 0.576)
 texture = ExtResource("7_ub62a")
-
-[node name="estrellas3" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/estrellas"]
-modulate = Color(0.701961, 0.435294, 0.262745, 0.847059)
-position = Vector2(801, 536)
-scale = Vector2(2.11029, 2.2125)
-texture = ExtResource("8_fi6ex")
-
-[node name="estrellas2" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/estrellas"]
-modulate = Color(0.627451, 0.466667, 0.133333, 0.564706)
-position = Vector2(197, 280)
-scale = Vector2(1.933, 1.826)
-texture = ExtResource("9_tnbca")
-
-[node name="estrellas4" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/estrellas"]
-modulate = Color(0.238468, 0.418122, 0.285832, 1)
-position = Vector2(353, 193)
-texture = ExtResource("8_fi6ex")
-
-[node name="estrellas" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/estrellas"]
-modulate = Color(0.596754, 0.671431, 0.477434, 1)
-texture_filter = 1
-position = Vector2(797.25, 287)
-scale = Vector2(1.44301, 1.4)
-texture = ExtResource("9_tnbca")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-visible = false
 position = Vector2(5.5, 0)
 scale = Vector2(0.5, 0.5)
 stream = ExtResource("10_mfcqf")
 volume_db = -30.705
 autoplay = true
+max_distance = 10000.0
 
 [node name="Nave" type="CharacterBody2D" parent="."]
 position = Vector2(135.5, 117)
