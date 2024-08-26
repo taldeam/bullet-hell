@@ -1,13 +1,17 @@
-[gd_scene load_steps=13 format=3 uid="uid://b2mtty1g25yvs"]
+[gd_scene load_steps=17 format=3 uid="uid://b2mtty1g25yvs"]
 
 [ext_resource type="Script" path="res://Scripts/ParallaxBackground.gd" id="1_rm0b7"]
 [ext_resource type="Texture2D" uid="uid://b67hbbdsnswv" path="res://assets/fondo/fondo nuevo/layers/parallax-space-backgound.png" id="2_0tacc"]
 [ext_resource type="Texture2D" uid="uid://p5dv5mgfh2r8" path="res://assets/fondo/fondo nuevo/2.jpg" id="3_73xss"]
 [ext_resource type="Texture2D" uid="uid://ckuj5nq3brwm2" path="res://assets/planetas/Planet_01.png" id="4_ocxb1"]
+[ext_resource type="Texture2D" uid="uid://e8dw71mb8jjd" path="res://assets/efectos nave/Laser Sprites/33.png" id="5_l2hk4"]
 [ext_resource type="Texture2D" uid="uid://dsv88u10e2ciu" path="res://assets/planetas/Planet_02.png" id="5_oju7j"]
 [ext_resource type="Texture2D" uid="uid://cw6i8jtu8tvlr" path="res://assets/planetas/Planet_04.png" id="6_ci4t1"]
 [ext_resource type="Texture2D" uid="uid://d2n5imvcdpe6g" path="res://assets/planetas/Planet_03.png" id="7_ub62a"]
+[ext_resource type="Texture2D" uid="uid://k2klhr0ljcqo" path="res://assets/planetas/PlanetsPNG/Planet_04.png" id="7_ws1o1"]
+[ext_resource type="Texture2D" uid="uid://bcuo7me4yk12e" path="res://assets/efectos nave/Laser Sprites/37.png" id="8_3l8vs"]
 [ext_resource type="AudioStream" uid="uid://ccy5suqbsmbxh" path="res://assets/Musica/DavidKBD - Cosmic Pack 05 - Stellar Confrontation-full.ogg" id="10_mfcqf"]
+[ext_resource type="Texture2D" uid="uid://4ofbd2jufi6v" path="res://assets/efectos nave/Laser Sprites/32.png" id="11_31l53"]
 [ext_resource type="Script" path="res://Scripts/Player/nave_principal.gd" id="11_kkutr"]
 [ext_resource type="Texture2D" uid="uid://tijmp7il875o" path="res://assets/nave y enemigos/ShipsPNG/ship1.png" id="12_ia5lm"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="13_tdgpp"]
@@ -38,44 +42,73 @@ texture = ExtResource("3_73xss")
 
 [node name="Planetas" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
 motion_scale = Vector2(0.265, 0.3)
-motion_mirroring = Vector2(1150, 1150)
 
 [node name="Planet01" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/Planetas"]
-position = Vector2(492, 354)
+position = Vector2(705, 545)
 scale = Vector2(0.25, 0.23727)
 texture = ExtResource("4_ocxb1")
 
-[node name="planetas lejanos" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
+[node name="planetas" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
 position = Vector2(11, -2)
 motion_scale = Vector2(0.265, 0.3)
-motion_mirroring = Vector2(1150, 1150)
 
-[node name="Planet01" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/planetas lejanos"]
-modulate = Color(0.32549, 0.623529, 0.890196, 1)
-position = Vector2(-59, 83)
-scale = Vector2(0.219741, 0.211103)
+[node name="Planet04" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/planetas"]
+self_modulate = Color(33.513, 2.703, 1.081, 1)
+position = Vector2(-1093, 495)
+scale = Vector2(0.426342, 0.432074)
+texture = ExtResource("7_ws1o1")
+
+[node name="Planet01" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/planetas"]
+modulate = Color(0.905882, 0.25098, 0.345098, 1)
+position = Vector2(1599, -204)
+scale = Vector2(0.137248, 0.136669)
 texture = ExtResource("4_ocxb1")
 
-[node name="Planet02" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/planetas lejanos"]
-position = Vector2(-105, 455)
+[node name="Planet02" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/planetas"]
+position = Vector2(-191, 624)
 scale = Vector2(0.445495, 0.434686)
 texture = ExtResource("5_oju7j")
 
-[node name="planeta circulo" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
+[node name="planetas2" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
 motion_scale = Vector2(0.265, 0.3)
-motion_mirroring = Vector2(1150, 1150)
 
-[node name="Planet04" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/planeta circulo"]
-position = Vector2(136, 214)
+[node name="fondo" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/planetas2"]
+position = Vector2(-220, -315)
+scale = Vector2(2.28819, 2)
+texture = ExtResource("8_3l8vs")
+
+[node name="fondo2" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/planetas2"]
+position = Vector2(-187, -295)
+scale = Vector2(3.02769, 2.9916)
+texture = ExtResource("5_l2hk4")
+
+[node name="Planet04" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/planetas2"]
+position = Vector2(-69, 79)
 scale = Vector2(0.115, 0.115)
 texture = ExtResource("6_ci4t1")
 
-[node name="estrellas" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
-motion_scale = Vector2(0.265, 0.3)
-motion_mirroring = Vector2(1150, 1150)
+[node name="Planet05" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/planetas2"]
+modulate = Color(0.988235, 0.972549, 0.270588, 1)
+position = Vector2(1319, 731)
+scale = Vector2(0.246988, 0.230552)
+texture = ExtResource("7_ws1o1")
 
-[node name="Planet03" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/estrellas"]
-position = Vector2(442.076, -38.1825)
+[node name="planetas3" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
+motion_scale = Vector2(0.265, 0.3)
+
+[node name="Planet04" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/planetas3"]
+modulate = Color(0.894118, 0.54902, 0, 1)
+position = Vector2(-272, -294)
+scale = Vector2(0.36, 0.331776)
+texture = ExtResource("7_ub62a")
+
+[node name="32" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/planetas3"]
+position = Vector2(676, -44)
+scale = Vector2(2.4524, 6.63017)
+texture = ExtResource("11_31l53")
+
+[node name="Planet03" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/planetas3"]
+position = Vector2(656, -44)
 scale = Vector2(0.6, 0.576)
 texture = ExtResource("7_ub62a")
 
