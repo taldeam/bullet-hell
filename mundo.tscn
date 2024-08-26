@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b2mtty1g25yvs"]
+[gd_scene load_steps=12 format=3 uid="uid://b2mtty1g25yvs"]
 
 [ext_resource type="Script" path="res://ParallaxBackground.gd" id="1_i1h3g"]
 [ext_resource type="Texture2D" uid="uid://b67hbbdsnswv" path="res://fondo/fondo nuevo/layers/parallax-space-backgound.png" id="1_jpffx"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://d2n5imvcdpe6g" path="res://fondo/fondo nuevo/Planet_03.png" id="6_g3war"]
 [ext_resource type="Texture2D" uid="uid://dl4e0su7rr6ug" path="res://fondo/planetas/parallax-space-stars.png" id="6_s3d2l"]
 [ext_resource type="AudioStream" uid="uid://ccy5suqbsmbxh" path="res://Musica/DavidKBD - Cosmic Pack 05 - Stellar Confrontation-full.ogg" id="10_62cyt"]
+[ext_resource type="Texture2D" uid="uid://bc78q0nsfab0d" path="res://efectos nave/Laser Sprites/01.png" id="11_ablh4"]
 
 [node name="mundo" type="Node2D"]
 scale = Vector2(2, 2)
@@ -101,3 +102,7 @@ scale = Vector2(0.5, 0.5)
 stream = ExtResource("10_62cyt")
 volume_db = -30.705
 autoplay = true
+
+[node name="01" type="Sprite2D" parent="."]
+position = Vector2(109, 55)
+texture = ExtResource("11_ablh4")
