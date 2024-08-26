@@ -86,7 +86,6 @@ max_distance = 10000.0
 [node name="Nave" type="CharacterBody2D" parent="."]
 position = Vector2(135.5, 117)
 script = ExtResource("11_kkutr")
-SPEED = 600.0
 
 [node name="Camera2D" type="Camera2D" parent="Nave"]
 
@@ -96,6 +95,10 @@ shape = SubResource("CircleShape2D_b811t")
 [node name="Sprite2D" type="Sprite2D" parent="Nave"]
 scale = Vector2(0.035, 0.035)
 texture = ExtResource("12_ia5lm")
+
+[node name="Timer" type="Timer" parent="Nave"]
+wait_time = 0.447
+autostart = true
 
 [node name="UI2" type="CanvasLayer" parent="."]
 
@@ -115,3 +118,5 @@ offset_bottom = -6.0
 grow_horizontal = 0
 visibility_mode = 2
 use_input_actions = false
+
+[connection signal="timeout" from="Nave/Timer" to="Nave" method="_on_timer_timeout"]

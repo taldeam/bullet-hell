@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Bullet
 
-const SPEED: float = 300.0
+const SPEED: float = 600.0
 const DAMAGE: int = 1
 var direction: Vector2 = Vector2.ZERO
 
@@ -17,7 +17,7 @@ func _physics_process(delta: float) -> void:
 	
 func remove_bullet():
 	var tween = get_tree().create_tween()
-	tween.tween_property(self, "scale", Vector2(), 3)
+	tween.tween_property(self, "scale", Vector2(), 2)
 	tween.tween_callback(self.queue_free)
 	
 func set_direction(dir: Vector2) -> void:
