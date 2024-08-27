@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://c3rr3pssaxxc8"]
+
+[ext_resource type="Texture2D" uid="uid://dvmww85rb2qg7" path="res://assets/efectos nave/efectos explosion/cuidado que explota.jpg" id="1_cthfj"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_p16lv"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_conti"]
+_data = [Vector2(0, 0.406593), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_rtxry"]
+_data = [Vector2(0, 0.791209), 0.0, 0.0, 0, 0, Vector2(1e-05, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_l7h10"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_qkifw"]
+curve_x = SubResource("Curve_conti")
+curve_y = SubResource("Curve_rtxry")
+curve_z = SubResource("Curve_l7h10")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hachg"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 50.0
+emission_ring_radius = 50.0
+emission_ring_inner_radius = 0.0
+direction = Vector3(0, 1, 0)
+initial_velocity_min = -500.0
+initial_velocity_max = -400.0
+radial_velocity_min = 500.0
+radial_velocity_max = 700.0
+gravity = Vector3(0, 98, 0)
+scale_min = 0.03
+scale_max = 0.03
+scale_curve = SubResource("CurveXYZTexture_qkifw")
+color = Color(0.764717, 0.68644, 0, 1)
+
+[node name="particles" type="Node2D"]
+position = Vector2(80, -3)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_p16lv")
+scale = Vector2(0.02, 0.02)
+emitting = false
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_hachg")
+texture = ExtResource("1_cthfj")
+lifetime = 0.15
+fixed_fps = 60

@@ -2,7 +2,7 @@ extends Area2D
 class_name Enemie_health_component
 
 @export var health: int = 20
-@onready var particles: CPUParticles2D = $"../CPUParticles2D"
+@onready var particles: GPUParticles2D = $"../particles/GPUParticles2D"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

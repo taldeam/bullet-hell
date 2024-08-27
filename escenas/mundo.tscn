@@ -1,25 +1,64 @@
-[gd_scene load_steps=22 format=3 uid="uid://b2mtty1g25yvs"]
+[gd_scene load_steps=28 format=3 uid="uid://b2mtty1g25yvs"]
 
 [ext_resource type="Script" path="res://Scripts/ParallaxBackground.gd" id="1_rm0b7"]
-[ext_resource type="Texture2D" uid="uid://b67hbbdsnswv" path="res://Assets/fondo/fondo nuevo/layers/parallax-space-backgound.png" id="2_0tacc"]
-[ext_resource type="Texture2D" uid="uid://p5dv5mgfh2r8" path="res://Assets/fondo/fondo nuevo/2.jpg" id="3_73xss"]
-[ext_resource type="Texture2D" uid="uid://ckuj5nq3brwm2" path="res://Assets/planetas/Planet_01.png" id="4_ocxb1"]
-[ext_resource type="Texture2D" uid="uid://e8dw71mb8jjd" path="res://Assets/efectos nave/Laser Sprites/33.png" id="5_l2hk4"]
-[ext_resource type="Texture2D" uid="uid://dsv88u10e2ciu" path="res://Assets/planetas/Planet_02.png" id="5_oju7j"]
-[ext_resource type="Texture2D" uid="uid://cw6i8jtu8tvlr" path="res://Assets/planetas/Planet_04.png" id="6_ci4t1"]
-[ext_resource type="Texture2D" uid="uid://d2n5imvcdpe6g" path="res://Assets/planetas/Planet_03.png" id="7_ub62a"]
-[ext_resource type="Texture2D" uid="uid://k2klhr0ljcqo" path="res://Assets/planetas/PlanetsPNG/Planet_04.png" id="7_ws1o1"]
-[ext_resource type="Texture2D" uid="uid://bcuo7me4yk12e" path="res://Assets/efectos nave/Laser Sprites/37.png" id="8_3l8vs"]
-[ext_resource type="AudioStream" uid="uid://ccy5suqbsmbxh" path="res://Assets/Musica/DavidKBD - Cosmic Pack 05 - Stellar Confrontation-full.ogg" id="10_mfcqf"]
-[ext_resource type="Texture2D" uid="uid://4ofbd2jufi6v" path="res://Assets/efectos nave/Laser Sprites/32.png" id="11_31l53"]
+[ext_resource type="Texture2D" uid="uid://b67hbbdsnswv" path="res://assets/fondo/fondo nuevo/layers/parallax-space-backgound.png" id="2_0tacc"]
+[ext_resource type="Texture2D" uid="uid://p5dv5mgfh2r8" path="res://assets/fondo/fondo nuevo/2.jpg" id="3_73xss"]
+[ext_resource type="Texture2D" uid="uid://ckuj5nq3brwm2" path="res://assets/planetas/Planet_01.png" id="4_ocxb1"]
+[ext_resource type="Texture2D" uid="uid://e8dw71mb8jjd" path="res://assets/efectos nave/Laser Sprites/33.png" id="5_l2hk4"]
+[ext_resource type="Texture2D" uid="uid://dsv88u10e2ciu" path="res://assets/planetas/Planet_02.png" id="5_oju7j"]
+[ext_resource type="Texture2D" uid="uid://cw6i8jtu8tvlr" path="res://assets/planetas/Planet_04.png" id="6_ci4t1"]
+[ext_resource type="Texture2D" uid="uid://d2n5imvcdpe6g" path="res://assets/planetas/Planet_03.png" id="7_ub62a"]
+[ext_resource type="Texture2D" uid="uid://k2klhr0ljcqo" path="res://assets/planetas/PlanetsPNG/Planet_04.png" id="7_ws1o1"]
+[ext_resource type="Texture2D" uid="uid://bcuo7me4yk12e" path="res://assets/efectos nave/Laser Sprites/37.png" id="8_3l8vs"]
+[ext_resource type="AudioStream" uid="uid://ccy5suqbsmbxh" path="res://assets/Musica/DavidKBD - Cosmic Pack 05 - Stellar Confrontation-full.ogg" id="10_mfcqf"]
+[ext_resource type="Texture2D" uid="uid://4ofbd2jufi6v" path="res://assets/efectos nave/Laser Sprites/32.png" id="11_31l53"]
 [ext_resource type="Script" path="res://Scripts/Player/nave_principal.gd" id="11_kkutr"]
-[ext_resource type="Texture2D" uid="uid://tijmp7il875o" path="res://Assets/nave y enemigos/ShipsPNG/ship1.png" id="12_ia5lm"]
+[ext_resource type="Texture2D" uid="uid://tijmp7il875o" path="res://assets/nave y enemigos/ShipsPNG/ship1.png" id="12_ia5lm"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="13_tdgpp"]
-[ext_resource type="Texture2D" uid="uid://dfvriy8sexnly" path="res://Assets/nave y enemigos/ShipsPNG/ship2.png" id="16_7alw0"]
+[ext_resource type="Texture2D" uid="uid://dfvriy8sexnly" path="res://assets/nave y enemigos/ShipsPNG/ship2.png" id="16_7alw0"]
+[ext_resource type="Texture2D" uid="uid://dvmww85rb2qg7" path="res://assets/efectos nave/efectos explosion/cuidado que explota.jpg" id="16_j77ro"]
 [ext_resource type="Script" path="res://Scripts/Enemie/enemie_health_component.gd" id="17_7js7y"]
-[ext_resource type="PackedScene" uid="uid://cjjggwjeqw5si" path="res://escenas/cpu_particles_2d.tscn" id="18_0b5uj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b811t"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_p16lv"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_conti"]
+_data = [Vector2(0, 0.406593), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_rtxry"]
+_data = [Vector2(0, 0.791209), 0.0, 0.0, 0, 0, Vector2(1e-05, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_l7h10"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_qkifw"]
+curve_x = SubResource("Curve_conti")
+curve_y = SubResource("Curve_rtxry")
+curve_z = SubResource("Curve_l7h10")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hachg"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 50.0
+emission_ring_radius = 50.0
+emission_ring_inner_radius = 0.0
+direction = Vector3(0, 1, 0)
+initial_velocity_min = -500.0
+initial_velocity_max = -400.0
+radial_velocity_min = 500.0
+radial_velocity_max = 700.0
+gravity = Vector3(0, 98, 0)
+scale_min = 0.03
+scale_max = 0.03
+scale_curve = SubResource("CurveXYZTexture_qkifw")
+color = Color(0.764717, 0.68644, 0, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qs0an"]
 
@@ -167,6 +206,18 @@ use_input_actions = false
 [node name="Enemie_1" type="CharacterBody2D" parent="."]
 position = Vector2(251.5, 81)
 
+[node name="particles" type="Node2D" parent="Enemie_1"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Enemie_1/particles"]
+material = SubResource("CanvasItemMaterial_p16lv")
+scale = Vector2(0.02, 0.02)
+emitting = false
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_hachg")
+texture = ExtResource("16_j77ro")
+lifetime = 0.15
+fixed_fps = 60
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemie_1"]
 shape = SubResource("CircleShape2D_qs0an")
 
@@ -176,14 +227,8 @@ texture = ExtResource("16_7alw0")
 
 [node name="HealthComponent" type="Area2D" parent="Enemie_1"]
 script = ExtResource("17_7js7y")
-health = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemie_1/HealthComponent"]
 shape = SubResource("CircleShape2D_c5g04")
-
-[node name="CPUParticles2D" parent="Enemie_1" instance=ExtResource("18_0b5uj")]
-z_index = -1
-position = Vector2(0, 0)
-emitting = false
 
 [connection signal="timeout" from="Nave/Timer" to="Nave" method="_on_timer_timeout"]
