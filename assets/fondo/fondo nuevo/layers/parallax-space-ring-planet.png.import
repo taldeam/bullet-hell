@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bosl58wpearf1"
-path="res://.godot/imported/parallax-space-ring-planet.png-318ed457313cd0331fba833813d0548f.ctex"
+path="res://.godot/imported/parallax-space-ring-planet.png-920655ff72dffc786c0bf40eb1ca9d06.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/fondo/fondo nuevo/layers/parallax-space-ring-planet.png"
-dest_files=["res://.godot/imported/parallax-space-ring-planet.png-318ed457313cd0331fba833813d0548f.ctex"]
+source_file="res://Assets/fondo/fondo nuevo/layers/parallax-space-ring-planet.png"
+dest_files=["res://.godot/imported/parallax-space-ring-planet.png-920655ff72dffc786c0bf40eb1ca9d06.ctex"]
 
 [params]
 

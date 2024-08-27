@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b2mtty1g25yvs"]
+[gd_scene load_steps=22 format=3 uid="uid://b2mtty1g25yvs"]
 
 [ext_resource type="Script" path="res://Scripts/ParallaxBackground.gd" id="1_rm0b7"]
 [ext_resource type="Texture2D" uid="uid://b67hbbdsnswv" path="res://Assets/fondo/fondo nuevo/layers/parallax-space-backgound.png" id="2_0tacc"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="13_tdgpp"]
 [ext_resource type="Texture2D" uid="uid://dfvriy8sexnly" path="res://Assets/nave y enemigos/ShipsPNG/ship2.png" id="16_7alw0"]
 [ext_resource type="Script" path="res://Scripts/Enemie/enemie_health_component.gd" id="17_7js7y"]
+[ext_resource type="PackedScene" uid="uid://cjjggwjeqw5si" path="res://escenas/cpu_particles_2d.tscn" id="18_0b5uj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b811t"]
 
@@ -175,8 +176,14 @@ texture = ExtResource("16_7alw0")
 
 [node name="HealthComponent" type="Area2D" parent="Enemie_1"]
 script = ExtResource("17_7js7y")
+health = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemie_1/HealthComponent"]
 shape = SubResource("CircleShape2D_c5g04")
+
+[node name="CPUParticles2D" parent="Enemie_1" instance=ExtResource("18_0b5uj")]
+z_index = -1
+position = Vector2(0, 0)
+emitting = false
 
 [connection signal="timeout" from="Nave/Timer" to="Nave" method="_on_timer_timeout"]
