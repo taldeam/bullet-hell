@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://cev7hheultk7l"]
+
+[node name="CPUParticles2D" type="CPUParticles2D"]
+position = Vector2(21, 9.5)
