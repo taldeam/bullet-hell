@@ -1,6 +1,7 @@
 extends Area2D
 class_name Enemie_health_component
 
+signal isDamaged
 @export var health: int = 20
 @onready var particles: GPUParticles2D = $"../particles/GPUParticles2D"
 
@@ -18,6 +19,7 @@ func hit(area):
 		area.bullet_hit(true)
 		check_heal()
 		show_damage_particles()
+		isDamaged.emit(area.global_position)
 
 func check_heal():
 	if health <= 0:

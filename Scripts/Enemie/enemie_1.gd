@@ -22,3 +22,15 @@ func move_to_player():
 		sprite.rotation = angle_to_player
 	else:
 		velocity = Vector2.ZERO
+
+
+func _on_health_component_is_damaged(damage_origin: Vector2) -> void:
+	# Calcula la dirección del knockback
+	var knockback_direction = (position - damage_origin).normalized()
+	# Calcula la nueva posición
+	var knockback_strength =  1000.0
+	
+	var new_position = position + (knockback_direction * knockback_strength * get_process_delta_time())
+	var tween := create_tween()
+	# Anima el nodo hacia la nueva posición usando Tween
+	tween.tween_property(self, "position", new_position, 0.2)
