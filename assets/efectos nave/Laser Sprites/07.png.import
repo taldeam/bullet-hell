@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dorqs35wud4xg"
-path="res://.godot/imported/07.png-1b520c9a1eb5e2a5ed61e8ac6a692aa9.ctex"
+path="res://.godot/imported/07.png-697446f2352d2e678efbe762a14bf464.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/efectos nave/Laser Sprites/07.png"
-dest_files=["res://.godot/imported/07.png-1b520c9a1eb5e2a5ed61e8ac6a692aa9.ctex"]
+source_file="res://assets/efectos nave/Laser Sprites/07.png"
+dest_files=["res://.godot/imported/07.png-697446f2352d2e678efbe762a14bf464.ctex"]
 
 [params]
 
