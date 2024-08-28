@@ -1,3 +1,4 @@
+[gd_scene load_steps=23 format=3 uid="uid://b2mtty1g25yvs"]
 [gd_scene load_steps=28 format=3 uid="uid://b2mtty1g25yvs"]
 
 [ext_resource type="Script" path="res://Scripts/ParallaxBackground.gd" id="1_rm0b7"]
@@ -15,6 +16,8 @@
 [ext_resource type="Script" path="res://Scripts/Player/nave_principal.gd" id="11_kkutr"]
 [ext_resource type="Texture2D" uid="uid://tijmp7il875o" path="res://assets/nave y enemigos/ShipsPNG/ship1.png" id="12_ia5lm"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="13_tdgpp"]
+[ext_resource type="Texture2D" uid="uid://dfvriy8sexnly" path="res://Assets/nave y enemigos/ShipsPNG/ship2.png" id="16_7alw0"]
+[ext_resource type="Script" path="res://Scripts/Enemie/enemie_1.gd" id="16_58ao3"]
 [ext_resource type="Texture2D" uid="uid://dfvriy8sexnly" path="res://assets/nave y enemigos/ShipsPNG/ship2.png" id="16_7alw0"]
 [ext_resource type="Texture2D" uid="uid://dvmww85rb2qg7" path="res://assets/efectos nave/efectos/cuidado que explota.jpg" id="16_j77ro"]
 [ext_resource type="Script" path="res://Scripts/Enemie/enemie_health_component.gd" id="17_7js7y"]
@@ -168,7 +171,7 @@ volume_db = -30.705
 max_distance = 10000.0
 
 [node name="Nave" type="CharacterBody2D" parent="."]
-position = Vector2(135.5, 117)
+position = Vector2(91, 81)
 script = ExtResource("11_kkutr")
 
 [node name="Camera2D" type="Camera2D" parent="Nave"]
@@ -205,6 +208,7 @@ use_input_actions = false
 
 [node name="Enemie_1" type="CharacterBody2D" parent="."]
 position = Vector2(251.5, 81)
+script = ExtResource("16_58ao3")
 
 [node name="particles" type="Node2D" parent="Enemie_1"]
 
@@ -230,5 +234,11 @@ script = ExtResource("17_7js7y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemie_1/HealthComponent"]
 shape = SubResource("CircleShape2D_c5g04")
+
+[node name="CPUParticles2D" parent="Enemie_1" instance=ExtResource("18_0b5uj")]
+z_index = -1
+position = Vector2(0, 0)
+emitting = false
+speed_scale = 3.3
 
 [connection signal="timeout" from="Nave/Timer" to="Nave" method="_on_timer_timeout"]
