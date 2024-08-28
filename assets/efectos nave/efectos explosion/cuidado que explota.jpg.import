@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dvmww85rb2qg7"
-path="res://.godot/imported/cuidado que explota.jpg-e6c5bbb689a39a774ecff8593f133fa2.ctex"
+path="res://.godot/imported/cuidado que explota.jpg-13617559cafbb31da303294b310e5625.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/efectos nave/efectos explosion/cuidado que explota.jpg"
-dest_files=["res://.godot/imported/cuidado que explota.jpg-e6c5bbb689a39a774ecff8593f133fa2.ctex"]
+source_file="res://assets/efectos nave/efectos explosion/cuidado que explota.jpg"
+dest_files=["res://.godot/imported/cuidado que explota.jpg-13617559cafbb31da303294b310e5625.ctex"]
 
 [params]
 

@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://ofxvc0yavtqc"]
+
+[ext_resource type="Texture2D" uid="uid://dvmww85rb2qg7" path="res://assets/efectos nave/efectos explosion/cuidado que explota.jpg" id="1_o806g"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_oxrb2"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_dldxo"]
+_data = [Vector2(0, 0.527472), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_otfdq"]
+_data = [Vector2(0, 0.450549), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_igjur"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_yyc8l"]
+curve_x = SubResource("Curve_dldxo")
+curve_y = SubResource("Curve_otfdq")
+curve_z = SubResource("Curve_igjur")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u2e77"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+scale_min = 0.03
+scale_max = 0.03
+scale_curve = SubResource("CurveXYZTexture_yyc8l")
+color = Color(1, 0.219608, 0.0431373, 1)
+
+[node name="fuego nave" type="Node"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_oxrb2")
+position = Vector2(504, 149)
+scale = Vector2(0.16, 0.16)
+skew = -0.0628319
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_u2e77")
+texture = ExtResource("1_o806g")
+lifetime = 0.3
