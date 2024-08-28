@@ -1,24 +1,25 @@
-[gd_scene load_steps=29 format=3 uid="uid://b2mtty1g25yvs"]
+[gd_scene load_steps=30 format=3 uid="uid://b2mtty1g25yvs"]
 
 [ext_resource type="Script" path="res://Scripts/ParallaxBackground.gd" id="1_rm0b7"]
-[ext_resource type="Texture2D" uid="uid://b67hbbdsnswv" path="res://Assets/fondo/fondo nuevo/layers/parallax-space-backgound.png" id="2_0tacc"]
-[ext_resource type="Texture2D" uid="uid://p5dv5mgfh2r8" path="res://Assets/fondo/fondo nuevo/2.jpg" id="3_73xss"]
-[ext_resource type="Texture2D" uid="uid://ckuj5nq3brwm2" path="res://Assets/planetas/Planet_01.png" id="4_ocxb1"]
-[ext_resource type="Texture2D" uid="uid://e8dw71mb8jjd" path="res://Assets/efectos nave/Laser Sprites/33.png" id="5_l2hk4"]
-[ext_resource type="Texture2D" uid="uid://dsv88u10e2ciu" path="res://Assets/planetas/Planet_02.png" id="5_oju7j"]
-[ext_resource type="Texture2D" uid="uid://cw6i8jtu8tvlr" path="res://Assets/planetas/Planet_04.png" id="6_ci4t1"]
-[ext_resource type="Texture2D" uid="uid://d2n5imvcdpe6g" path="res://Assets/planetas/Planet_03.png" id="7_ub62a"]
-[ext_resource type="Texture2D" uid="uid://k2klhr0ljcqo" path="res://Assets/planetas/PlanetsPNG/Planet_04.png" id="7_ws1o1"]
-[ext_resource type="Texture2D" uid="uid://bcuo7me4yk12e" path="res://Assets/efectos nave/Laser Sprites/37.png" id="8_3l8vs"]
-[ext_resource type="AudioStream" uid="uid://ccy5suqbsmbxh" path="res://Assets/Musica/DavidKBD - Cosmic Pack 05 - Stellar Confrontation-full.ogg" id="10_mfcqf"]
-[ext_resource type="Texture2D" uid="uid://4ofbd2jufi6v" path="res://Assets/efectos nave/Laser Sprites/32.png" id="11_31l53"]
+[ext_resource type="Texture2D" uid="uid://b67hbbdsnswv" path="res://assets/fondo/fondo nuevo/layers/parallax-space-backgound.png" id="2_0tacc"]
+[ext_resource type="Texture2D" uid="uid://p5dv5mgfh2r8" path="res://assets/fondo/fondo nuevo/2.jpg" id="3_73xss"]
+[ext_resource type="Texture2D" uid="uid://ckuj5nq3brwm2" path="res://assets/planetas/Planet_01.png" id="4_ocxb1"]
+[ext_resource type="Texture2D" uid="uid://e8dw71mb8jjd" path="res://assets/efectos nave/Laser Sprites/33.png" id="5_l2hk4"]
+[ext_resource type="Texture2D" uid="uid://dsv88u10e2ciu" path="res://assets/planetas/Planet_02.png" id="5_oju7j"]
+[ext_resource type="Texture2D" uid="uid://cw6i8jtu8tvlr" path="res://assets/planetas/Planet_04.png" id="6_ci4t1"]
+[ext_resource type="Texture2D" uid="uid://d2n5imvcdpe6g" path="res://assets/planetas/Planet_03.png" id="7_ub62a"]
+[ext_resource type="Texture2D" uid="uid://k2klhr0ljcqo" path="res://assets/planetas/PlanetsPNG/Planet_04.png" id="7_ws1o1"]
+[ext_resource type="Texture2D" uid="uid://bcuo7me4yk12e" path="res://assets/efectos nave/Laser Sprites/37.png" id="8_3l8vs"]
+[ext_resource type="AudioStream" uid="uid://ccy5suqbsmbxh" path="res://assets/Musica/DavidKBD - Cosmic Pack 05 - Stellar Confrontation-full.ogg" id="10_mfcqf"]
+[ext_resource type="Texture2D" uid="uid://4ofbd2jufi6v" path="res://assets/efectos nave/Laser Sprites/32.png" id="11_31l53"]
 [ext_resource type="Script" path="res://Scripts/Player/nave_principal.gd" id="11_kkutr"]
-[ext_resource type="Texture2D" uid="uid://tijmp7il875o" path="res://Assets/nave y enemigos/ShipsPNG/ship1.png" id="12_ia5lm"]
+[ext_resource type="Texture2D" uid="uid://tijmp7il875o" path="res://assets/nave y enemigos/ShipsPNG/ship1.png" id="12_ia5lm"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="13_tdgpp"]
 [ext_resource type="PackedScene" uid="uid://dvgcnltwsjna0" path="res://escenas/enemie_1.tscn" id="16_x17yg"]
 [ext_resource type="PackedScene" uid="uid://cd31bpoomx5mo" path="res://escenas/enemie_2.tscn" id="17_s0fxt"]
+[ext_resource type="Texture2D" uid="uid://dl0g0dwoiwvmp" path="res://GUI/PNG/Loading_Bar/barra_de_vida.png" id="17_vlkes"]
 [ext_resource type="Script" path="res://Scripts/Enemie/enemie_respawn_area.gd" id="17_voiut"]
-[ext_resource type="Texture2D" uid="uid://dvmww85rb2qg7" path="res://Assets/efectos nave/efectos explosion/cuidado que explota.jpg" id="19_s5fow"]
+[ext_resource type="Texture2D" uid="uid://dvmww85rb2qg7" path="res://assets/efectos nave/efectos explosion/cuidado que explota.jpg" id="19_s5fow"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b811t"]
 
@@ -141,7 +142,7 @@ scale = Vector2(0.36, 0.331776)
 texture = ExtResource("7_ub62a")
 
 [node name="32" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/planetas3"]
-position = Vector2(676, -44)
+position = Vector2(688.063, -38.7495)
 scale = Vector2(2.4524, 6.63017)
 texture = ExtResource("11_31l53")
 
@@ -160,7 +161,7 @@ volume_db = -21.438
 max_distance = 10000.0
 
 [node name="Nave" type="CharacterBody2D" parent="."]
-position = Vector2(91, 81)
+position = Vector2(240.5, 135.5)
 script = ExtResource("11_kkutr")
 
 [node name="Camera2D" type="Camera2D" parent="Nave"]
@@ -212,6 +213,18 @@ offset_bottom = -6.0
 grow_horizontal = 0
 visibility_mode = 2
 use_input_actions = false
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="UI2"]
+texture_filter = 1
+offset_left = 787.0
+offset_top = 22.0
+offset_right = 937.0
+offset_bottom = 62.0
+max_value = 5.0
+value = 5.0
+texture_under = ExtResource("17_vlkes")
+texture_progress = ExtResource("17_vlkes")
+tint_under = Color(0.712692, 1.2514e-06, 4.81307e-07, 1)
 
 [node name="Enemie_1" parent="." instance=ExtResource("16_x17yg")]
 
