@@ -7,8 +7,11 @@ extends CharacterBody2D
 @onready var joystick_right : VirtualJoystick = $"../UI2/Virtual joystick right"
 @onready var sprite : Sprite2D = $Sprite2D
 @onready var collisionShape : CollisionShape2D = $CollisionShape2D
+@onready var closer_enemie : RayCast2D = $RayCast2D
+
 var move_vector := Vector2.ZERO
 var last_angle = 0
+var sprite_angle_correction = 1.6
 
 func _ready() -> void:
 	pass
@@ -27,12 +30,21 @@ func _physics_process(delta: float) -> void:
 	# Rotación basada en el joystick derecho
 	# Actualiza la rotación del sprite basado en el joystick derecho
 	if joystick_right and joystick_right.is_pressed:
-		var joystick_angle = joystick_right.output.angle() + 1.6 # esto ajusta el sprite
+		var joystick_angle = joystick_right.output.angle() + sprite_angle_correction # esto ajusta el sprite
 		sprite.rotation = joystick_angle
 		last_angle = joystick_angle
-
+		
+	check_closer_enemie()
 	move_and_slide()
-	
+
+func check_closer_enemie() -> void:
+	var area : Area2D = null
+	if closer_enemie.is_colliding():
+		area = closer_enemie.get_collider()
+	if area is Enemie_health_component:
+		# aqui disparará automaticamente
+		pass
+
 func _state_shoot1():
 	# Cargar la escena de la bala (Bullet)
 	var bullet_scene = preload("res://escenas/bullet.tscn")
@@ -52,8 +64,3 @@ func _state_shoot1():
 func _on_timer_timeout() -> void:
 	if joystick_right and joystick_right.is_pressed:
 		_state_shoot1()
-
-
-func _on_area_2d_area_entered(area: Area2D) -> void:
-	print(area)
-	pass # Replace with function body.

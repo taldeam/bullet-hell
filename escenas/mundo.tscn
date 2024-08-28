@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b2mtty1g25yvs"]
+[gd_scene load_steps=28 format=3 uid="uid://b2mtty1g25yvs"]
 
 [ext_resource type="Script" path="res://Scripts/ParallaxBackground.gd" id="1_rm0b7"]
 [ext_resource type="Texture2D" uid="uid://b67hbbdsnswv" path="res://Assets/fondo/fondo nuevo/layers/parallax-space-backgound.png" id="2_0tacc"]
@@ -15,8 +15,7 @@
 [ext_resource type="Script" path="res://Scripts/Player/nave_principal.gd" id="11_kkutr"]
 [ext_resource type="Texture2D" uid="uid://tijmp7il875o" path="res://Assets/nave y enemigos/ShipsPNG/ship1.png" id="12_ia5lm"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="13_tdgpp"]
-[ext_resource type="PackedScene" uid="uid://dvgcnltwsjna0" path="res://escenas/enemie_1.tscn" id="16_x17yg"]
-[ext_resource type="PackedScene" uid="uid://cd31bpoomx5mo" path="res://escenas/enemie_2.tscn" id="17_s0fxt"]
+[ext_resource type="Script" path="res://Scripts/Player/area_enemie_on_range.gd" id="16_damah"]
 [ext_resource type="Script" path="res://Scripts/Enemie/enemie_respawn_area.gd" id="17_voiut"]
 [ext_resource type="Texture2D" uid="uid://dvmww85rb2qg7" path="res://Assets/efectos nave/efectos explosion/cuidado que explota.jpg" id="19_s5fow"]
 
@@ -50,8 +49,8 @@ scale_max = 0.03
 scale_curve = SubResource("CurveXYZTexture_yyc8l")
 color = Color(1, 0.219608, 0.0431373, 1)
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_wx6if"]
-b = Vector2(-0.5, -220)
+[sub_resource type="CircleShape2D" id="CircleShape2D_4xofj"]
+radius = 257.381
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rpbj7"]
 size = Vector2(20, 210.781)
@@ -188,11 +187,17 @@ lifetime = 0.3
 wait_time = 0.447
 autostart = true
 
-[node name="Area2D" type="Area2D" parent="Nave"]
+[node name="AreaCloserEnemie" type="Area2D" parent="Nave"]
+script = ExtResource("16_damah")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Nave/Area2D"]
-shape = SubResource("SegmentShape2D_wx6if")
-disabled = true
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Nave/AreaCloserEnemie"]
+shape = SubResource("CircleShape2D_4xofj")
+debug_color = Color(0.880998, 0.269944, 0.521596, 0.42)
+
+[node name="RayCast2D" type="RayCast2D" parent="Nave"]
+target_position = Vector2(0, -90.5)
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="UI2" type="CanvasLayer" parent="."]
 
@@ -213,10 +218,6 @@ grow_horizontal = 0
 visibility_mode = 2
 use_input_actions = false
 
-[node name="Enemie_1" parent="." instance=ExtResource("16_x17yg")]
-
-[node name="Enemie_2" parent="." instance=ExtResource("17_s0fxt")]
-
 [node name="RespawnArea" type="Area2D" parent="."]
 script = ExtResource("17_voiut")
 
@@ -224,5 +225,13 @@ script = ExtResource("17_voiut")
 position = Vector2(22.5, 125.5)
 shape = SubResource("RectangleShape2D_rpbj7")
 
+[node name="RespawnArea2" type="Area2D" parent="."]
+position = Vector2(251.5, -1)
+script = ExtResource("17_voiut")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RespawnArea2"]
+position = Vector2(22.5, 125.5)
+shape = SubResource("RectangleShape2D_rpbj7")
+
 [connection signal="timeout" from="Nave/Timer" to="Nave" method="_on_timer_timeout"]
-[connection signal="area_entered" from="Nave/Area2D" to="Nave" method="_on_area_2d_area_entered"]
+[connection signal="enemieOnRange" from="Nave/AreaCloserEnemie" to="Nave" method="_on_area_closer_enemie_enemie_on_range"]

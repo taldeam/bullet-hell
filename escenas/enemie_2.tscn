@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Scripts/Enemie/enemie_health_component.gd" id="3_46sjt"]
 [ext_resource type="Texture2D" uid="uid://dvmww85rb2qg7" path="res://Assets/efectos nave/efectos explosion/cuidado que explota.jpg" id="4_r1xhy"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_qs0an"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0orms"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c5g04"]
 
@@ -58,12 +58,11 @@ scale = Vector2(0.035, 0.035)
 texture = ExtResource("2_opsbh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_qs0an")
-disabled = true
+shape = SubResource("RectangleShape2D_0orms")
 
 [node name="HealthComponent" type="Area2D" parent="."]
 script = ExtResource("3_46sjt")
-health = 15
+health = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HealthComponent"]
 shape = SubResource("CircleShape2D_c5g04")

@@ -9,10 +9,6 @@ signal isDamaged
 func _ready() -> void:
 	area_entered.connect(hit)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func hit(area):
 	if area is Area_bullet:
 		health -= area.damage
