@@ -173,10 +173,6 @@ texture = ExtResource("12_ia5lm")
 shape = SubResource("CircleShape2D_b811t")
 disabled = true
 
-[node name="Timer" type="Timer" parent="Nave"]
-wait_time = 0.447
-autostart = true
-
 [node name="EstelaGpu" type="GPUParticles2D" parent="Nave"]
 z_index = -1
 material = SubResource("CanvasItemMaterial_oxrb2")
@@ -187,6 +183,10 @@ amount = 100
 process_material = SubResource("ParticleProcessMaterial_u2e77")
 texture = ExtResource("19_s5fow")
 lifetime = 0.3
+
+[node name="Timer" type="Timer" parent="Nave"]
+wait_time = 0.447
+autostart = true
 
 [node name="Area2D" type="Area2D" parent="Nave"]
 
