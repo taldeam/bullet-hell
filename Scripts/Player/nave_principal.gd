@@ -37,7 +37,6 @@ func _state_shoot1():
 	# Cargar la escena de la bala (Bullet)
 	var bullet_scene = preload("res://escenas/bullet.tscn")
 	# Instanciar la bala
-	
 	var bullet_instance = bullet_scene.instantiate()
 	# Configurar la posición de la bala en la posición del HitBoxComponent
 	bullet_instance.position = self.position
