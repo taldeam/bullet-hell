@@ -52,3 +52,8 @@ func _state_shoot1():
 func _on_timer_timeout() -> void:
 	if joystick_right and joystick_right.is_pressed:
 		_state_shoot1()
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	print(area)
+	pass # Replace with function body.

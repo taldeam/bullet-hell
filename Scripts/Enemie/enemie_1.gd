@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
-
-@export var SPEED : float = 50.0
+@export var SPEED: float = 20.0
 
 @onready var player : CharacterBody2D = $"../Nave"
 @onready var sprite : Sprite2D = $Sprite2D
@@ -17,7 +16,9 @@ func move_to_player():
 		var direction = (player.position - position).normalized()
 		velocity = direction * SPEED
 		position += velocity * get_process_delta_time()
-
+		
+		# Ajustar el ángulo del sprite para que apunte hacia el jugador
+		var angle_to_player = (player.position - position).angle() + 1.6 # ajuste del sprite
+		sprite.rotation = angle_to_player
 	else:
-		# Detiene el movimiento cuando está muy cerca del jugador
 		velocity = Vector2.ZERO
