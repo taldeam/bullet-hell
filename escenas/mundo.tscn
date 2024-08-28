@@ -1,4 +1,3 @@
-[gd_scene load_steps=22 format=3 uid="uid://b2mtty1g25yvs"]
 [gd_scene load_steps=36 format=3 uid="uid://b2mtty1g25yvs"]
 
 [ext_resource type="Script" path="res://Scripts/ParallaxBackground.gd" id="1_rm0b7"]
@@ -16,9 +15,6 @@
 [ext_resource type="Script" path="res://Scripts/Player/nave_principal.gd" id="11_kkutr"]
 [ext_resource type="Texture2D" uid="uid://tijmp7il875o" path="res://assets/nave y enemigos/ShipsPNG/ship1.png" id="12_ia5lm"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="13_tdgpp"]
-[ext_resource type="PackedScene" uid="uid://dvgcnltwsjna0" path="res://escenas/enemie_1.tscn" id="16_x17yg"]
-[ext_resource type="PackedScene" uid="uid://cd31bpoomx5mo" path="res://escenas/enemie_2.tscn" id="17_s0fxt"]
-[ext_resource type="Script" path="res://Scripts/Enemie/enemie_respawn_area.gd" id="17_voiut"]
 [ext_resource type="Texture2D" uid="uid://dfvriy8sexnly" path="res://assets/nave y enemigos/ShipsPNG/ship2.png" id="16_7alw0"]
 [ext_resource type="Script" path="res://Scripts/Enemie/enemie_1.gd" id="16_58ao3"]
 [ext_resource type="Script" path="res://Scripts/Enemie/enemie_health_component.gd" id="17_7js7y"]
@@ -57,8 +53,48 @@ color = Color(1, 0.219608, 0.0431373, 1)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_wx6if"]
 b = Vector2(-0.5, -220)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rpbj7"]
-size = Vector2(20, 210.781)
+[sub_resource type="CircleShape2D" id="CircleShape2D_qs0an"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c5g04"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_p16lv"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_conti"]
+_data = [Vector2(0, 0.406593), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_rtxry"]
+_data = [Vector2(0, 0.791209), 0.0, 0.0, 0, 0, Vector2(1e-05, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_l7h10"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_qkifw"]
+curve_x = SubResource("Curve_conti")
+curve_y = SubResource("Curve_rtxry")
+curve_z = SubResource("Curve_l7h10")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hachg"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 50.0
+emission_ring_radius = 50.0
+emission_ring_inner_radius = 0.0
+direction = Vector3(0, 1, 0)
+initial_velocity_min = -500.0
+initial_velocity_max = -400.0
+radial_velocity_min = 500.0
+radial_velocity_max = 700.0
+gravity = Vector3(0, 98, 0)
+scale_min = 0.03
+scale_max = 0.03
+scale_curve = SubResource("CurveXYZTexture_qkifw")
+color = Color(0.764717, 0.68644, 0, 1)
 
 [node name="mundo" type="Node2D"]
 scale = Vector2(2, 2)
@@ -164,7 +200,7 @@ volume_db = -21.438
 max_distance = 10000.0
 
 [node name="Nave" type="CharacterBody2D" parent="."]
-position = Vector2(239, 132)
+position = Vector2(141.5, 86)
 script = ExtResource("11_kkutr")
 SPEED = 280.0
 
@@ -187,7 +223,6 @@ texture = ExtResource("12_ia5lm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Nave"]
 shape = SubResource("CircleShape2D_b811t")
-disabled = true
 
 [node name="Timer" type="Timer" parent="Nave"]
 wait_time = 0.447
@@ -197,7 +232,6 @@ autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Nave/Area2D"]
 shape = SubResource("SegmentShape2D_wx6if")
-disabled = true
 
 [node name="UI2" type="CanvasLayer" parent="."]
 
@@ -218,16 +252,137 @@ grow_horizontal = 0
 visibility_mode = 2
 use_input_actions = false
 
-[node name="Enemie_1" parent="." instance=ExtResource("16_x17yg")]
+[node name="Enemie_1" type="CharacterBody2D" parent="."]
+position = Vector2(251.5, 81)
+script = ExtResource("16_58ao3")
+SPEED = 25.0
 
-[node name="Enemie_2" parent="." instance=ExtResource("17_s0fxt")]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemie_1"]
+shape = SubResource("CircleShape2D_qs0an")
+disabled = true
 
-[node name="RespawnArea" type="Area2D" parent="."]
-script = ExtResource("17_voiut")
+[node name="Sprite2D" type="Sprite2D" parent="Enemie_1"]
+scale = Vector2(0.035, 0.035)
+texture = ExtResource("16_7alw0")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RespawnArea"]
-position = Vector2(22.5, 125.5)
-shape = SubResource("RectangleShape2D_rpbj7")
+[node name="HealthComponent" type="Area2D" parent="Enemie_1"]
+script = ExtResource("17_7js7y")
+health = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemie_1/HealthComponent"]
+shape = SubResource("CircleShape2D_c5g04")
+
+[node name="particles" type="Node2D" parent="Enemie_1"]
+z_index = -1
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Enemie_1/particles"]
+material = SubResource("CanvasItemMaterial_p16lv")
+scale = Vector2(0.02, 0.02)
+emitting = false
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_hachg")
+texture = ExtResource("19_s5fow")
+lifetime = 0.15
+fixed_fps = 60
+
+[node name="Enemie_2" type="CharacterBody2D" parent="."]
+position = Vector2(-75.5, 165.5)
+script = ExtResource("16_58ao3")
+SPEED = 15.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemie_2"]
+shape = SubResource("CircleShape2D_qs0an")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemie_2"]
+scale = Vector2(0.035, 0.035)
+texture = ExtResource("16_7alw0")
+
+[node name="HealthComponent" type="Area2D" parent="Enemie_2"]
+script = ExtResource("17_7js7y")
+health = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemie_2/HealthComponent"]
+shape = SubResource("CircleShape2D_c5g04")
+
+[node name="particles" type="Node2D" parent="Enemie_2"]
+z_index = -1
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Enemie_2/particles"]
+material = SubResource("CanvasItemMaterial_p16lv")
+scale = Vector2(0.02, 0.02)
+emitting = false
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_hachg")
+texture = ExtResource("19_s5fow")
+lifetime = 0.15
+fixed_fps = 60
+
+[node name="Enemie_3" type="CharacterBody2D" parent="."]
+position = Vector2(162, 177)
+script = ExtResource("16_58ao3")
+SPEED = 30.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemie_3"]
+shape = SubResource("CircleShape2D_qs0an")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemie_3"]
+scale = Vector2(0.035, 0.035)
+texture = ExtResource("16_7alw0")
+
+[node name="HealthComponent" type="Area2D" parent="Enemie_3"]
+script = ExtResource("17_7js7y")
+health = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemie_3/HealthComponent"]
+shape = SubResource("CircleShape2D_c5g04")
+disabled = true
+
+[node name="particles" type="Node2D" parent="Enemie_3"]
+z_index = -1
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Enemie_3/particles"]
+material = SubResource("CanvasItemMaterial_p16lv")
+scale = Vector2(0.02, 0.02)
+emitting = false
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_hachg")
+texture = ExtResource("19_s5fow")
+lifetime = 0.15
+fixed_fps = 60
+
+[node name="Enemie_4" type="CharacterBody2D" parent="."]
+position = Vector2(22.5, 22.5)
+script = ExtResource("16_58ao3")
+SPEED = 40.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemie_4"]
+shape = SubResource("CircleShape2D_qs0an")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemie_4"]
+scale = Vector2(0.035, 0.035)
+texture = ExtResource("16_7alw0")
+
+[node name="HealthComponent" type="Area2D" parent="Enemie_4"]
+script = ExtResource("17_7js7y")
+health = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemie_4/HealthComponent"]
+shape = SubResource("CircleShape2D_c5g04")
+
+[node name="particles" type="Node2D" parent="Enemie_4"]
+z_index = -1
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Enemie_4/particles"]
+material = SubResource("CanvasItemMaterial_p16lv")
+scale = Vector2(0.02, 0.02)
+emitting = false
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_hachg")
+texture = ExtResource("19_s5fow")
+lifetime = 0.15
+fixed_fps = 60
 
 [connection signal="timeout" from="Nave/Timer" to="Nave" method="_on_timer_timeout"]
 [connection signal="area_entered" from="Nave/Area2D" to="Nave" method="_on_area_2d_area_entered"]
