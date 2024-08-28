@@ -22,9 +22,6 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b811t"]
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_wx6if"]
-b = Vector2(-0.5, -220)
-
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_oxrb2"]
 blend_mode = 1
 
@@ -52,6 +49,9 @@ scale_min = 0.03
 scale_max = 0.03
 scale_curve = SubResource("CurveXYZTexture_yyc8l")
 color = Color(1, 0.219608, 0.0431373, 1)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_wx6if"]
+b = Vector2(-0.5, -220)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rpbj7"]
 size = Vector2(20, 210.781)
@@ -177,12 +177,6 @@ disabled = true
 wait_time = 0.447
 autostart = true
 
-[node name="Area2D" type="Area2D" parent="Nave"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Nave/Area2D"]
-shape = SubResource("SegmentShape2D_wx6if")
-disabled = true
-
 [node name="EstelaGpu" type="GPUParticles2D" parent="Nave"]
 z_index = -1
 material = SubResource("CanvasItemMaterial_oxrb2")
@@ -193,6 +187,12 @@ amount = 100
 process_material = SubResource("ParticleProcessMaterial_u2e77")
 texture = ExtResource("19_s5fow")
 lifetime = 0.3
+
+[node name="Area2D" type="Area2D" parent="Nave"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Nave/Area2D"]
+shape = SubResource("SegmentShape2D_wx6if")
+disabled = true
 
 [node name="UI2" type="CanvasLayer" parent="."]
 
