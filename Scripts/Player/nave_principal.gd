@@ -34,16 +34,7 @@ func _physics_process(delta: float) -> void:
 		sprite.rotation = joystick_angle
 		last_angle = joystick_angle
 		
-	check_closer_enemie()
 	move_and_slide()
-
-func check_closer_enemie() -> void:
-	var area : Area2D = null
-	if closer_enemie.is_colliding():
-		area = closer_enemie.get_collider()
-	if area is Enemie_health_component:
-		# aqui disparará automaticamente
-		pass
 
 func _state_shoot1():
 	# Cargar la escena de la bala (Bullet)
