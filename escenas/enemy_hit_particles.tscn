@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://c3rr3pssaxxc8"]
 
-[ext_resource type="Texture2D" uid="uid://dvmww85rb2qg7" path="res://assets/efectos nave/efectos/cuidado que explota.jpg" id="1_cthfj"]
+[ext_resource type="Texture2D" uid="uid://dvmww85rb2qg7" path="res://assets/efectos nave/efectos explosion/cuidado que explota.jpg" id="1_cthfj"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_p16lv"]
 blend_mode = 1

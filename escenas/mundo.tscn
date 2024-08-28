@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://dfvriy8sexnly" path="res://Assets/nave y enemigos/ShipsPNG/ship2.png" id="16_7alw0"]
 [ext_resource type="Script" path="res://Scripts/Enemie/enemie_1.gd" id="16_58ao3"]
 [ext_resource type="Texture2D" uid="uid://dfvriy8sexnly" path="res://assets/nave y enemigos/ShipsPNG/ship2.png" id="16_7alw0"]
-[ext_resource type="Texture2D" uid="uid://dvmww85rb2qg7" path="res://assets/efectos nave/efectos/cuidado que explota.jpg" id="16_j77ro"]
+[ext_resource type="Texture2D" uid="uid://dvmww85rb2qg7" path="res://assets/efectos nave/efectos explosion/cuidado que explota.jpg" id="16_j77ro"]
 [ext_resource type="Script" path="res://Scripts/Enemie/enemie_health_component.gd" id="17_7js7y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b811t"]
