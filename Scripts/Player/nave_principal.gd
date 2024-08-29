@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
 @export var SPEED = 450.0
-@export var FIRE_RATE = 1.0  # Intervalo de disparo en segundos
 
 @onready var joystick_left : VirtualJoystick = $"../UI2/Virtual joystick left"
 @onready var joystick_right : VirtualJoystick = $"../UI2/Virtual joystick right"

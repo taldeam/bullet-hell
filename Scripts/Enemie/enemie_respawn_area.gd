@@ -1,7 +1,7 @@
 extends Area2D
 
-@export var enemy_scene_1 : PackedScene = preload("res://escenas/enemie_1.tscn")
-@export var enemy_scene_2 : PackedScene = preload("res://escenas/enemie_2.tscn")
+@export var enemy_scene_1 : PackedScene = preload("res://escenas/enemie.tscn")
+#@export var enemy_scene_2 : PackedScene = preload("res://escenas/enemie_2.tscn")
 @export var spawn_interval : float = 2.0
 @export var max_enemies : int = 5
 var enemy_scenes : Array = []
@@ -18,7 +18,7 @@ func _ready() -> void:
 	_spawn_timer.start()
 	
 	enemy_scenes.append(enemy_scene_1)
-	enemy_scenes.append(enemy_scene_2)
+	#enemy_scenes.append(enemy_scene_2)
 
 func _process(delta: float) -> void:
 	# Opcional: Puedes agregar lógica adicional si es necesario en cada frame
@@ -32,19 +32,17 @@ func _spawn_enemy() -> void:
 	# Instanciar la escena de la nave enemiga	
 	var random_index = randi() % enemy_scenes.size()
 	var selected_scene = enemy_scenes[random_index]
-	var enemy_instance = selected_scene.instantiate()
+	# var enemy_instance = selected_scene.instantiate()
+	var enemy_instance = enemy_scene_1.instantiate()
 
-	# Obtener la forma de colisión del Area2D para determinar el área de spawn
-	var collision_shape = $CollisionShape2D.shape as RectangleShape2D
-	var area_size = collision_shape.extents * 2  # El tamaño total del área de colisión
+	var rand_point = NavigationServer2D.map_get_random_point($"../NavigationRegion2D".get_navigation_map(), 1, false)
+	var global_position = $"../NavigationRegion2D".global_position
+	var transformed_point = rand_point + global_position
 
-	# Calcular una posición aleatoria dentro del área
-	var random_position = Vector2(
-		randf_range(-area_size.x / 2, area_size.x / 2),
-		randf_range(-area_size.y / 2, area_size.y / 2)
-	)
-	# Posicionar la nave enemiga en la posición aleatoria calculada
-	enemy_instance.position = global_position + random_position
+	print(rand_point)
+
+	# Convierte la posición local a global
+	enemy_instance.position = rand_point
 	# Agregarla al árbol de nodos
 	get_parent().add_child(enemy_instance)
 	# Incrementar el conteo de enemigos
@@ -53,5 +51,4 @@ func _spawn_enemy() -> void:
 	enemy_instance.connect("tree_exited", Callable(self, "_on_enemy_exited"))
 
 func _on_enemy_exited() -> void:
-	print('muerte')
 	_current_enemies -= 1
