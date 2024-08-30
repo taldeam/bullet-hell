@@ -1,9 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://dyfgwd5c0xx13"]
+[gd_scene load_steps=20 format=3 uid="uid://dyfgwd5c0xx13"]
 
 [ext_resource type="Script" path="res://Scripts/Enemie/enemie_1.gd" id="1_c85vm"]
-[ext_resource type="Texture2D" uid="uid://da045ttg027qi" path="res://assets/nave y enemigos/ShipsPNG/ship5.png" id="2_k4k82"]
+[ext_resource type="Texture2D" uid="uid://di0vgsftc8vsb" path="res://Assets/nave y enemigos/ShipsPNG/ship8.png" id="2_whfn3"]
+[ext_resource type="Texture2D" uid="uid://cltp4b018ia0u" path="res://Assets/nave y enemigos/ShipsPNG/ship4.png" id="3_7wlk1"]
 [ext_resource type="Script" path="res://Scripts/Enemie/enemie_health_component.gd" id="3_w2xo1"]
-[ext_resource type="Texture2D" uid="uid://dvmww85rb2qg7" path="res://assets/efectos nave/efectos explosion/cuidado que explota.jpg" id="4_mvhch"]
+[ext_resource type="Texture2D" uid="uid://dvmww85rb2qg7" path="res://Assets/efectos nave/efectos explosion/cuidado que explota.jpg" id="4_mvhch"]
+[ext_resource type="Texture2D" uid="uid://dfvriy8sexnly" path="res://Assets/nave y enemigos/ShipsPNG/ship2.png" id="4_wqk1r"]
+[ext_resource type="Texture2D" uid="uid://cul051evbfq3g" path="res://Assets/nave y enemigos/ShipsPNG/ship7.png" id="5_1j33y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_huw21"]
 
@@ -68,15 +71,30 @@ wall_min_slide_angle = 0.0
 script = ExtResource("1_c85vm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(0.035, 0.035)
-texture = ExtResource("2_k4k82")
+texture = ExtResource("2_whfn3")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.035, 0.035)
+texture = ExtResource("3_7wlk1")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.035, 0.035)
+texture = ExtResource("4_wqk1r")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.035, 0.035)
+texture = ExtResource("5_1j33y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_huw21")
 
 [node name="HealthComponent" type="Area2D" parent="."]
 script = ExtResource("3_w2xo1")
-health = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HealthComponent"]
 shape = SubResource("CircleShape2D_c5g04")

@@ -4,7 +4,7 @@ class_name Enemie_health_component
 signal isDamaged
 signal isDead
 
-@export var health: int = 20
+@export var health: int = 5
 @onready var particles: Node = $"../particles"
 @onready var collision: CollisionShape2D = $"../CollisionShape2D"
 @onready var health_collision: CollisionShape2D = $CollisionShape2D

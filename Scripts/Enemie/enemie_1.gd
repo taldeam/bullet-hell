@@ -1,11 +1,27 @@
 extends CharacterBody2D
 
-@export var SPEED: float = 35.0
+@export var SPEED: float = 45.0
 
 @onready var player : CharacterBody2D = $"../Nave"
 @onready var sprite : Sprite2D = $Sprite2D
+@onready var sprite2 : Sprite2D = $Sprite2D2
+@onready var sprite3 : Sprite2D = $Sprite2D3
+@onready var sprite4 : Sprite2D = $Sprite2D4
+var sprites : Array
+var selectedSprite : Sprite2D
 @export var knockback_strength = 1000
 var isDead = false
+
+func _ready() -> void:
+	sprites.append(sprite)
+	sprites.append(sprite2)
+	sprites.append(sprite3)
+	sprites.append(sprite4)
+
+	var random_index = randi_range(0, sprites.size() - 1)
+	var selected_sprite = sprites[random_index]
+	selected_sprite.visible = true
+	selectedSprite = selected_sprite
 
 func _physics_process(delta: float) -> void:
 	move_and_slide()
@@ -21,7 +37,7 @@ func move_to_player():
 		
 		# Ajustar el ángulo del sprite para que apunte hacia el jugador
 		var angle_to_player = (player.position - position).angle() + 1.6 # ajuste del sprite
-		sprite.rotation = angle_to_player
+		selectedSprite.rotation = angle_to_player
 	else:
 		velocity = Vector2.ZERO
 
