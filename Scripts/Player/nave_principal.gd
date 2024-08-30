@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 @export var SPEED = 450.0
+@export var acceleration = 1000.0
+@export var friction = 200.0
 
 @onready var joystick_left : VirtualJoystick = $"../UI2/Virtual joystick left"
 @onready var joystick_right : VirtualJoystick = $"../UI2/Virtual joystick right"
@@ -21,19 +23,22 @@ func _physics_process(delta: float) -> void:
 	
 	if direction != Vector2.ZERO:
 		direction = direction.normalized()
+		# Aumentar gradualmente el vector de movimiento en la dirección de la entrada
+		move_vector = move_vector.move_toward(direction * SPEED, acceleration * delta)
+	else:
+		# Desacelerar gradualmente cuando no hay entrada
+		move_vector = move_vector.move_toward(Vector2.ZERO, friction * delta)
 	
-	velocity = direction * SPEED
-	
-	position += move_vector * SPEED * delta
-	
+	# Mover al personaje
+	velocity = move_vector
+	move_and_slide()
+
 	# Rotación basada en el joystick derecho
 	# Actualiza la rotación del sprite basado en el joystick derecho
 	if joystick_right and joystick_right.is_pressed:
 		var joystick_angle = joystick_right.output.angle() + sprite_angle_correction # esto ajusta el sprite
 		sprite.rotation = joystick_angle
 		last_angle = joystick_angle
-		
-	move_and_slide()
 
 func _state_shoot1():
 	# Cargar la escena de la bala (Bullet)

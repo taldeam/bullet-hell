@@ -1,9 +1,9 @@
 [gd_scene load_steps=17 format=3 uid="uid://dyfgwd5c0xx13"]
 
 [ext_resource type="Script" path="res://Scripts/Enemie/enemie_1.gd" id="1_c85vm"]
-[ext_resource type="Texture2D" uid="uid://da045ttg027qi" path="res://Assets/nave y enemigos/ShipsPNG/ship5.png" id="2_k4k82"]
+[ext_resource type="Texture2D" uid="uid://da045ttg027qi" path="res://assets/nave y enemigos/ShipsPNG/ship5.png" id="2_k4k82"]
 [ext_resource type="Script" path="res://Scripts/Enemie/enemie_health_component.gd" id="3_w2xo1"]
-[ext_resource type="Texture2D" uid="uid://dvmww85rb2qg7" path="res://Assets/efectos nave/efectos explosion/cuidado que explota.jpg" id="4_mvhch"]
+[ext_resource type="Texture2D" uid="uid://dvmww85rb2qg7" path="res://assets/efectos nave/efectos explosion/cuidado que explota.jpg" id="4_mvhch"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_huw21"]
 
@@ -66,8 +66,6 @@ position = Vector2(251.5, 81)
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_c85vm")
-SPEED = 25.0
-knockback_strength = 500
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.035, 0.035)
