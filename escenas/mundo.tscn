@@ -1,27 +1,31 @@
-[gd_scene load_steps=36 format=4 uid="uid://b2mtty1g25yvs"]
+[gd_scene load_steps=40 format=4 uid="uid://b2mtty1g25yvs"]
 
 [ext_resource type="Script" path="res://Scripts/ParallaxBackground.gd" id="1_rm0b7"]
-[ext_resource type="Texture2D" uid="uid://b67hbbdsnswv" path="res://Assets/fondo/fondo nuevo/layers/parallax-space-backgound.png" id="2_0tacc"]
-[ext_resource type="Texture2D" uid="uid://p5dv5mgfh2r8" path="res://Assets/fondo/fondo nuevo/2.jpg" id="3_73xss"]
-[ext_resource type="Texture2D" uid="uid://ckuj5nq3brwm2" path="res://Assets/planetas/Planet_01.png" id="4_ocxb1"]
-[ext_resource type="Texture2D" uid="uid://e8dw71mb8jjd" path="res://Assets/efectos nave/Laser Sprites/33.png" id="5_l2hk4"]
-[ext_resource type="Texture2D" uid="uid://dsv88u10e2ciu" path="res://Assets/planetas/Planet_02.png" id="5_oju7j"]
-[ext_resource type="Texture2D" uid="uid://cw6i8jtu8tvlr" path="res://Assets/planetas/Planet_04.png" id="6_ci4t1"]
-[ext_resource type="Texture2D" uid="uid://d2n5imvcdpe6g" path="res://Assets/planetas/Planet_03.png" id="7_ub62a"]
-[ext_resource type="Texture2D" uid="uid://k2klhr0ljcqo" path="res://Assets/planetas/PlanetsPNG/Planet_04.png" id="7_ws1o1"]
-[ext_resource type="Texture2D" uid="uid://bcuo7me4yk12e" path="res://Assets/efectos nave/Laser Sprites/37.png" id="8_3l8vs"]
-[ext_resource type="AudioStream" uid="uid://ccy5suqbsmbxh" path="res://Assets/Musica/DavidKBD - Cosmic Pack 05 - Stellar Confrontation-full.ogg" id="10_mfcqf"]
-[ext_resource type="Texture2D" uid="uid://4ofbd2jufi6v" path="res://Assets/efectos nave/Laser Sprites/32.png" id="11_31l53"]
+[ext_resource type="Texture2D" uid="uid://b67hbbdsnswv" path="res://assets/fondo/fondo nuevo/layers/parallax-space-backgound.png" id="2_0tacc"]
+[ext_resource type="Texture2D" uid="uid://p5dv5mgfh2r8" path="res://assets/fondo/fondo nuevo/2.jpg" id="3_73xss"]
+[ext_resource type="Texture2D" uid="uid://ckuj5nq3brwm2" path="res://assets/planetas/Planet_01.png" id="4_ocxb1"]
+[ext_resource type="Texture2D" uid="uid://e8dw71mb8jjd" path="res://assets/efectos nave/Laser Sprites/33.png" id="5_l2hk4"]
+[ext_resource type="Texture2D" uid="uid://dsv88u10e2ciu" path="res://assets/planetas/Planet_02.png" id="5_oju7j"]
+[ext_resource type="Texture2D" uid="uid://cw6i8jtu8tvlr" path="res://assets/planetas/Planet_04.png" id="6_ci4t1"]
+[ext_resource type="Texture2D" uid="uid://d2n5imvcdpe6g" path="res://assets/planetas/Planet_03.png" id="7_ub62a"]
+[ext_resource type="Texture2D" uid="uid://k2klhr0ljcqo" path="res://assets/planetas/PlanetsPNG/Planet_04.png" id="7_ws1o1"]
+[ext_resource type="Texture2D" uid="uid://bcuo7me4yk12e" path="res://assets/efectos nave/Laser Sprites/37.png" id="8_3l8vs"]
+[ext_resource type="AudioStream" uid="uid://ccy5suqbsmbxh" path="res://assets/Musica/DavidKBD - Cosmic Pack 05 - Stellar Confrontation-full.ogg" id="10_mfcqf"]
+[ext_resource type="Texture2D" uid="uid://4ofbd2jufi6v" path="res://assets/efectos nave/Laser Sprites/32.png" id="11_31l53"]
 [ext_resource type="Script" path="res://Scripts/Player/nave_principal.gd" id="11_kkutr"]
-[ext_resource type="Texture2D" uid="uid://tijmp7il875o" path="res://Assets/nave y enemigos/ShipsPNG/ship1.png" id="12_ia5lm"]
+[ext_resource type="Texture2D" uid="uid://tijmp7il875o" path="res://assets/nave y enemigos/ShipsPNG/ship1.png" id="12_ia5lm"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="13_tdgpp"]
 [ext_resource type="Script" path="res://Scripts/game_ui.gd" id="16_c6oqm"]
-[ext_resource type="Texture2D" uid="uid://dl0g0dwoiwvmp" path="res://GUI/PNG/Loading_Bar/barra_de_vida.png" id="17_vlkes"]
 [ext_resource type="Script" path="res://Scripts/Enemie/enemie_respawn_area.gd" id="17_voiut"]
-[ext_resource type="Texture2D" uid="uid://dvmww85rb2qg7" path="res://Assets/efectos nave/efectos explosion/cuidado que explota.jpg" id="19_s5fow"]
+[ext_resource type="PackedScene" uid="uid://dadijju34h08e" path="res://escenas/texture_progress_bar.tscn" id="19_2wi65"]
+[ext_resource type="Texture2D" uid="uid://yvxyuspk2wn3" path="res://GUI/PNG/Loading_Bar/Table.png" id="19_ahx41"]
+[ext_resource type="Texture2D" uid="uid://dvmww85rb2qg7" path="res://assets/efectos nave/efectos explosion/cuidado que explota.jpg" id="19_s5fow"]
 [ext_resource type="Shader" uid="uid://huu1jw5iqxyf" path="res://shader/laser_shader.tres" id="20_klonj"]
-[ext_resource type="Texture2D" uid="uid://ftdvv5a3jtbu" path="res://Assets/efectos nave/upgrades/laser_upgrade.png" id="21_psctb"]
-[ext_resource type="Texture2D" uid="uid://citu1t1dev8k0" path="res://Assets/tileset/TileSet v1.0.png" id="22_5tffe"]
+[ext_resource type="Texture2D" uid="uid://ftdvv5a3jtbu" path="res://assets/efectos nave/upgrades/laser_upgrade.png" id="21_psctb"]
+[ext_resource type="Texture2D" uid="uid://citu1t1dev8k0" path="res://assets/tileset/TileSet v1.0.png" id="22_5tffe"]
+[ext_resource type="Texture2D" uid="uid://bmj68bnwkgquu" path="res://GUI/PNG/You_Lose/Record.png" id="22_co3hl"]
+[ext_resource type="Texture2D" uid="uid://85ytpa3vuvum" path="res://GUI/PNG/Hangar/Table_02.png" id="22_q8i0g"]
+[ext_resource type="Texture2D" uid="uid://b0tn4mnbk3ix6" path="res://GUI/PNG/Hangar/HP_Icon.png" id="23_poks7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b811t"]
 
@@ -512,6 +516,27 @@ texture_mode = 2
 [node name="UI2" type="CanvasLayer" parent="."]
 script = ExtResource("16_c6oqm")
 
+[node name="TextureProgressBar" parent="UI2" instance=ExtResource("19_2wi65")]
+value = 5.0
+
+[node name="Table02" type="Sprite2D" parent="UI2"]
+z_index = -1
+position = Vector2(852, 45)
+scale = Vector2(0.52648, 0.5)
+texture = ExtResource("22_q8i0g")
+
+[node name="HpIcon2" type="Sprite2D" parent="UI2/Table02"]
+position = Vector2(-95.9201, -2)
+texture = ExtResource("23_poks7")
+
+[node name="HpIcon3" type="Sprite2D" parent="UI2/Table02"]
+position = Vector2(0.94973, -4)
+texture = ExtResource("23_poks7")
+
+[node name="HpIcon" type="Sprite2D" parent="UI2/Table02"]
+position = Vector2(95.9201, -4)
+texture = ExtResource("23_poks7")
+
 [node name="Virtual joystick left" parent="UI2" instance=ExtResource("13_tdgpp")]
 offset_top = -306.0
 offset_bottom = -6.0
@@ -529,27 +554,26 @@ grow_horizontal = 0
 visibility_mode = 2
 use_input_actions = false
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="UI2"]
-texture_filter = 1
-offset_left = 787.0
-offset_top = 22.0
-offset_right = 937.0
-offset_bottom = 62.0
-max_value = 5.0
-value = 5.0
-texture_under = ExtResource("17_vlkes")
-texture_progress = ExtResource("17_vlkes")
-tint_under = Color(0.712692, 1.2514e-06, 4.81307e-07, 1)
-
 [node name="Label" type="Label" parent="UI2"]
-offset_left = 27.0
+offset_left = 147.0
 offset_top = 22.0
-offset_right = 67.0
+offset_right = 187.0
 offset_bottom = 45.0
 text = "1"
 label_settings = SubResource("LabelSettings_f5f2v")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Record" type="Sprite2D" parent="UI2/Label"]
+position = Vector2(-64, 12)
+scale = Vector2(0.446429, 0.522222)
+texture = ExtResource("22_co3hl")
+
+[node name="Table2" type="Sprite2D" parent="UI2/Label"]
+z_index = -1
+position = Vector2(-47, 10.5)
+scale = Vector2(0.183816, 0.803922)
+texture = ExtResource("19_ahx41")
 
 [node name="RespawnArea" type="Area2D" parent="."]
 position = Vector2(-684, 453)

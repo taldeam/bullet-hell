@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://dadijju34h08e"]
+
+[ext_resource type="Texture2D" uid="uid://dl0g0dwoiwvmp" path="res://GUI/PNG/Loading_Bar/barra_de_vida.png" id="1_3x53f"]
+[ext_resource type="Texture2D" uid="uid://48mr3harq74o" path="res://GUI/PNG/Hangar/Dot_01.png" id="2_t641p"]
+[ext_resource type="Texture2D" uid="uid://85ytpa3vuvum" path="res://GUI/PNG/Hangar/Table_02.png" id="3_0jjja"]
+[ext_resource type="Texture2D" uid="uid://b0tn4mnbk3ix6" path="res://GUI/PNG/Hangar/HP_Icon.png" id="3_i0t80"]
+
+[node name="TextureProgressBar" type="TextureProgressBar"]
+texture_filter = 1
+offset_left = 776.0
+offset_top = 85.0
+offset_right = 926.0
+offset_bottom = 125.0
+max_value = 5.0
+value = 3.0
+texture_under = ExtResource("1_3x53f")
+texture_progress = ExtResource("1_3x53f")
+tint_under = Color(0, 0, 4.324, 1)
+tint_progress = Color(0.541, 4.865, 20.541, 0.773)
+
+[node name="Dot02" type="Sprite2D" parent="."]
+position = Vector2(-30, 20)
+scale = Vector2(1.09172, 1.07343)
+texture = ExtResource("2_t641p")
+
+[node name="HpIcon" type="Sprite2D" parent="."]
+position = Vector2(-30, 22)
+scale = Vector2(0.721395, 0.722159)
+texture = ExtResource("3_i0t80")
+
+[node name="Table02" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(52, 23)
+scale = Vector2(0.747663, 0.63)
+texture = ExtResource("3_0jjja")
