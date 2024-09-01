@@ -54,7 +54,7 @@ func _state_shoot1():
 	# Configurar la dirección de la bala
 	bullet_instance.set_direction(shoot_direction)
 	# Agregar la bala a la escena
-	get_parent().add_child(bullet_instance)
+	get_tree().current_scene.add_child(bullet_instance)
 
 func _on_timer_timeout() -> void:
 	if joystick_right and joystick_right.is_pressed:

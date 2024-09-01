@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bhty6j8ohtawk"
-path="res://.godot/imported/rayo laser electrico patriarcal.png-01172e73941de6bf374c575513e3f7f1.ctex"
+path="res://.godot/imported/rayo laser electrico patriarcal.png-ded0581fcbb69dbe450307447d3f9100.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/efectos nave/upgrades/rayo laser electrico patriarcal.png"
-dest_files=["res://.godot/imported/rayo laser electrico patriarcal.png-01172e73941de6bf374c575513e3f7f1.ctex"]
+source_file="res://assets/efectos nave/upgrades/rayo laser electrico patriarcal.png"
+dest_files=["res://.godot/imported/rayo laser electrico patriarcal.png-ded0581fcbb69dbe450307447d3f9100.ctex"]
 
 [params]
 

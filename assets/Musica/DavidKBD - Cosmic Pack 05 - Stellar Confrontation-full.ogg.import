@@ -3,12 +3,12 @@
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
 uid="uid://ccy5suqbsmbxh"
-path="res://.godot/imported/DavidKBD - Cosmic Pack 05 - Stellar Confrontation-full.ogg-8db351bd7487bfe55c7cfaf786e95dba.oggvorbisstr"
+path="res://.godot/imported/DavidKBD - Cosmic Pack 05 - Stellar Confrontation-full.ogg-9b128ae08bc8c8fc0ae5eb503af170d7.oggvorbisstr"
 
 [deps]
 
-source_file="res://Assets/Musica/DavidKBD - Cosmic Pack 05 - Stellar Confrontation-full.ogg"
-dest_files=["res://.godot/imported/DavidKBD - Cosmic Pack 05 - Stellar Confrontation-full.ogg-8db351bd7487bfe55c7cfaf786e95dba.oggvorbisstr"]
+source_file="res://assets/Musica/DavidKBD - Cosmic Pack 05 - Stellar Confrontation-full.ogg"
+dest_files=["res://.godot/imported/DavidKBD - Cosmic Pack 05 - Stellar Confrontation-full.ogg-9b128ae08bc8c8fc0ae5eb503af170d7.oggvorbisstr"]
 
 [params]
 

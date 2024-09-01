@@ -60,8 +60,7 @@ func _spawn_enemy() -> void:
 	enemy_instance.global_position = selected_position
 
 	# Agregar la nave enemiga al árbol de nodos
-	get_parent().add_child(enemy_instance)
-
+	get_tree().current_scene.add_child(enemy_instance)
 
 	# Incrementar el conteo de enemigos
 	_current_enemies += 1

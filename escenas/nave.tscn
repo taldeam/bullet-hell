@@ -1,0 +1,109 @@
+[gd_scene load_steps=18 format=3 uid="uid://2ri5bn5gsd1p"]
+
+[ext_resource type="Script" path="res://Scripts/Player/nave_principal.gd" id="1_k1e62"]
+[ext_resource type="Shader" path="res://shaders/nave.gdshader" id="2_k5esr"]
+[ext_resource type="Texture2D" uid="uid://tijmp7il875o" path="res://assets/nave y enemigos/ShipsPNG/ship1.png" id="2_otbid"]
+[ext_resource type="Texture2D" uid="uid://dvmww85rb2qg7" path="res://assets/efectos nave/efectos explosion/cuidado que explota.jpg" id="3_chis1"]
+[ext_resource type="Script" path="res://Scripts/Player/Health_component.gd" id="4_7iufe"]
+[ext_resource type="Shader" uid="uid://huu1jw5iqxyf" path="res://shader/laser_shader.tres" id="5_w7iuo"]
+[ext_resource type="Texture2D" uid="uid://ftdvv5a3jtbu" path="res://assets/efectos nave/upgrades/laser_upgrade.png" id="6_4lau1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cqb37"]
+resource_local_to_scene = true
+shader = ExtResource("2_k5esr")
+shader_parameter/flash_color = Vector4(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_oxrb2"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_dldxo"]
+_data = [Vector2(0, 0.527472), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_otfdq"]
+_data = [Vector2(0, 0.450549), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_igjur"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_yyc8l"]
+curve_x = SubResource("Curve_dldxo")
+curve_y = SubResource("Curve_otfdq")
+curve_z = SubResource("Curve_igjur")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u2e77"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+scale_min = 0.03
+scale_max = 0.03
+scale_curve = SubResource("CurveXYZTexture_yyc8l")
+color = Color(1, 0.219608, 0.0431373, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b811t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dahu2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mihee"]
+shader = ExtResource("5_w7iuo")
+shader_parameter/vanishing_value = 0.0
+shader_parameter/speed = Vector2(2, 0)
+shader_parameter/basic_texture = ExtResource("6_4lau1")
+
+[node name="Nave" type="CharacterBody2D"]
+position = Vector2(99, 81)
+script = ExtResource("1_k1e62")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.865, 0.865)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_cqb37")
+scale = Vector2(0.035, 0.035)
+texture = ExtResource("2_otbid")
+
+[node name="EstelaGpu" type="GPUParticles2D" parent="Sprite2D"]
+z_index = -1
+material = SubResource("CanvasItemMaterial_oxrb2")
+position = Vector2(0, 339.286)
+scale = Vector2(2.28571, 2.28571)
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_u2e77")
+texture = ExtResource("3_chis1")
+lifetime = 0.3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_b811t")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[node name="HealthComponent" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 256
+script = ExtResource("4_7iufe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealthComponent"]
+shape = SubResource("CircleShape2D_dahu2")
+debug_color = Color(0.914081, 0.254716, 0.369102, 0.42)
+
+[node name="Line2D" type="Line2D" parent="."]
+visible = false
+z_index = -1
+material = SubResource("ShaderMaterial_mihee")
+position = Vector2(-7.62939e-06, -136.114)
+scale = Vector2(0.117707, 0.159607)
+points = PackedVector2Array(-5.8501, 63, -6.74158, 450.756, -7.52158, 790.07)
+width = 150.0
+default_color = Color(19.46, 0.679, 0.056, 1)
+texture_mode = 2
+
+[node name="SafeMode" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="SafeMode" to="HealthComponent" method="_on_safe_mode_timeout"]
