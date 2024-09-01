@@ -30,7 +30,7 @@ func _physics_process(delta: float) -> void:
 func move_to_player():
 	var distance_to_player = position.distance_to(player.position)
 	
-	if distance_to_player > 30.0 && !isDead:
+	if distance_to_player > 10.0 && !isDead:
 		var direction = (player.position - position).normalized()
 		velocity = direction * SPEED
 		position += velocity * get_process_delta_time()

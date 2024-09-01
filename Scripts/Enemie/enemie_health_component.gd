@@ -11,6 +11,9 @@ signal isDead
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	var enemie_hit_component = $"../HitComponent"
+	enemie_hit_component.playerHited.connect(on_player_hit)
+
 	area_entered.connect(hit)
 
 func hit(area):
@@ -20,6 +23,9 @@ func hit(area):
 		check_heal()
 		show_damage_particles()
 		isDamaged.emit(area.global_position)
+
+func on_player_hit():
+	enemie_dead()
 
 func check_heal():
 	if health <= 0:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://b2mtty1g25yvs"]
+[gd_scene load_steps=43 format=4 uid="uid://b2mtty1g25yvs"]
 
 [ext_resource type="Script" path="res://Scripts/ParallaxBackground.gd" id="1_rm0b7"]
 [ext_resource type="Texture2D" uid="uid://b67hbbdsnswv" path="res://assets/fondo/fondo nuevo/layers/parallax-space-backgound.png" id="2_0tacc"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://tijmp7il875o" path="res://assets/nave y enemigos/ShipsPNG/ship1.png" id="12_ia5lm"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="13_tdgpp"]
 [ext_resource type="Script" path="res://Scripts/game_ui.gd" id="16_c6oqm"]
+[ext_resource type="Script" path="res://Scripts/Player/Health_component.gd" id="16_xqjmv"]
 [ext_resource type="Script" path="res://Scripts/Enemie/enemie_respawn_area.gd" id="17_voiut"]
 [ext_resource type="PackedScene" uid="uid://dadijju34h08e" path="res://escenas/texture_progress_bar.tscn" id="19_2wi65"]
 [ext_resource type="Texture2D" uid="uid://yvxyuspk2wn3" path="res://GUI/PNG/Loading_Bar/Table.png" id="19_ahx41"]
@@ -26,6 +27,8 @@
 [ext_resource type="Texture2D" uid="uid://bmj68bnwkgquu" path="res://GUI/PNG/You_Lose/Record.png" id="22_co3hl"]
 [ext_resource type="Texture2D" uid="uid://85ytpa3vuvum" path="res://GUI/PNG/Hangar/Table_02.png" id="22_q8i0g"]
 [ext_resource type="Texture2D" uid="uid://b0tn4mnbk3ix6" path="res://GUI/PNG/Hangar/HP_Icon.png" id="23_poks7"]
+[ext_resource type="Texture2D" uid="uid://dlt24kjl8vvgq" path="res://Buttons/Sprites/flat-dark/flatDark15.png" id="26_uaduu"]
+[ext_resource type="Script" path="res://escenas/reestartButton.gd" id="27_pp0k1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b811t"]
 
@@ -57,8 +60,7 @@ scale_max = 0.03
 scale_curve = SubResource("CurveXYZTexture_yyc8l")
 color = Color(1, 0.219608, 0.0431373, 1)
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_wx6if"]
-b = Vector2(-0.5, -220)
+[sub_resource type="CircleShape2D" id="CircleShape2D_dahu2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mihee"]
 shader = ExtResource("20_klonj")
@@ -495,12 +497,12 @@ lifetime = 0.3
 wait_time = 0.2
 autostart = true
 
-[node name="Area2D" type="Area2D" parent="Nave"]
+[node name="HealthComponent" type="Area2D" parent="Nave"]
+script = ExtResource("16_xqjmv")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Nave/Area2D"]
-position = Vector2(-1.5, -3.5)
-shape = SubResource("SegmentShape2D_wx6if")
-disabled = true
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Nave/HealthComponent"]
+shape = SubResource("CircleShape2D_dahu2")
+debug_color = Color(0.914081, 0.254716, 0.369102, 0.42)
 
 [node name="Line2D" type="Line2D" parent="Nave"]
 visible = false
@@ -514,6 +516,7 @@ default_color = Color(19.46, 0.679, 0.056, 1)
 texture_mode = 2
 
 [node name="UI2" type="CanvasLayer" parent="."]
+process_mode = 3
 script = ExtResource("16_c6oqm")
 
 [node name="TextureProgressBar" parent="UI2" instance=ExtResource("19_2wi65")]
@@ -575,6 +578,26 @@ position = Vector2(-47, 10.5)
 scale = Vector2(0.183816, 0.803922)
 texture = ExtResource("19_ahx41")
 
+[node name="Panel" type="Panel" parent="UI2"]
+visible = false
+offset_left = 386.0
+offset_top = 136.0
+offset_right = 555.0
+offset_bottom = 315.0
+
+[node name="Label" type="Label" parent="UI2/Panel"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 39.0
+offset_right = 122.0
+offset_bottom = 62.0
+text = "You died!"
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="UI2/Panel"]
+position = Vector2(60, 82)
+texture_normal = ExtResource("26_uaduu")
+script = ExtResource("27_pp0k1")
+
 [node name="RespawnArea" type="Area2D" parent="."]
 position = Vector2(-684, 453)
 script = ExtResource("17_voiut")
@@ -591,4 +614,4 @@ tile_map_data = PackedByteArray("AADU//T/AQAKAAMAAADU//X/AQAKAAQAAADU//b/AQAKAAE
 tile_set = SubResource("TileSet_shubs")
 
 [connection signal="timeout" from="Nave/Timer" to="Nave" method="_on_timer_timeout"]
-[connection signal="area_entered" from="Nave/Area2D" to="Nave" method="_on_area_2d_area_entered"]
+[connection signal="pressed" from="UI2/Panel/TouchScreenButton" to="UI2" method="_on_touch_screen_button_pressed"]

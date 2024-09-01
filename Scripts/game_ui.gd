@@ -12,3 +12,8 @@ func enemieDead() -> void:
 	total_enemies_dead += 1
 	enemies_dead_label.text = str(total_enemies_dead)
 	pass # Replace with function body.
+
+
+func _on_touch_screen_button_pressed() -> void:
+	var current_scene = get_tree().current_scene
+	get_tree().reload_current_scene()
