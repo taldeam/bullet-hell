@@ -8,6 +8,7 @@ signal isDead
 @onready var particles: Node = $"../particles"
 @onready var collision: CollisionShape2D = $"../CollisionShape2D"
 @onready var health_collision: CollisionShape2D = $CollisionShape2D
+@onready var dead_clip: AudioStreamPlayer2D = $"../Sounds/EnemieDeadClip"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -32,6 +33,7 @@ func check_heal():
 		enemie_dead()
 		
 func enemie_dead() ->void:
+	dead_clip.play()
 	isDead.emit()
 	Signals.emit_signal("EnemieDead") # Señal global
 	show_dead_particles()
@@ -48,7 +50,6 @@ func show_damage_particles() -> void:
 	particles.find_child("damaged_GPUParticles2D").emitting = false  # Reinicia la emisión si ya estaba activa
 	particles.find_child("damaged_GPUParticles2D").one_shot = true   # Asegúrate de que solo se emita una vez
 	particles.find_child("damaged_GPUParticles2D").emitting = true   # Inicia la emisión de partículas
-
 
 func _on_dead_gpu_particles_2d_finished() -> void:
 	get_parent().queue_free()

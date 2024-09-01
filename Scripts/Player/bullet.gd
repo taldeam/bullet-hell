@@ -5,8 +5,10 @@ const SPEED: float = 600.0
 const DAMAGE: int = 1
 var direction: Vector2 = Vector2.ZERO
 
+@onready var shootClip : AudioStreamPlayer = $"../Sounds/ShootClip"
+
 func _ready() -> void:
-	# Configurar la rotación inicial de la bala
+	shootClip.play()
 	rotation = direction.angle()
 	remove_bullet()
 	
