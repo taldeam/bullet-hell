@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://b2mtty1g25yvs"]
+[gd_scene load_steps=45 format=4 uid="uid://b2mtty1g25yvs"]
 
 [ext_resource type="Script" path="res://Scripts/ParallaxBackground.gd" id="1_rm0b7"]
 [ext_resource type="Texture2D" uid="uid://b67hbbdsnswv" path="res://Assets/fondo/fondo nuevo/layers/parallax-space-backgound.png" id="2_0tacc"]
@@ -30,8 +30,6 @@
 [ext_resource type="Texture2D" uid="uid://tijmp7il875o" path="res://Assets/nave y enemigos/ShipsPNG/ship1.png" id="29_4gf21"]
 [ext_resource type="Texture2D" uid="uid://dvmww85rb2qg7" path="res://Assets/efectos nave/efectos explosion/cuidado que explota.jpg" id="30_lkehu"]
 [ext_resource type="Script" path="res://Scripts/Player/Health_component.gd" id="31_c3s4m"]
-[ext_resource type="Shader" uid="uid://huu1jw5iqxyf" path="res://shader/laser_shader.tres" id="32_o0xg7"]
-[ext_resource type="Texture2D" uid="uid://ftdvv5a3jtbu" path="res://Assets/efectos nave/upgrades/laser_upgrade.png" id="33_hnej7"]
 [ext_resource type="AudioStream" uid="uid://cvs0jl6ikv1gq" path="res://Assets/Efectos de sonido/Shoots/laser-gun-shot-sound-future-sci-fi-lazer-wobble-chakongaudio-174883.mp3" id="33_mkte1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_f5f2v"]
@@ -433,12 +431,6 @@ color = Color(1, 0.219608, 0.0431373, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dahu2"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mihee"]
-shader = ExtResource("32_o0xg7")
-shader_parameter/vanishing_value = 0.0
-shader_parameter/speed = Vector2(2, 0)
-shader_parameter/basic_texture = ExtResource("33_hnej7")
-
 [node name="mundo" type="Node2D"]
 scale = Vector2(2, 2)
 
@@ -712,17 +704,6 @@ script = ExtResource("31_c3s4m")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Nave/HealthComponent"]
 shape = SubResource("CircleShape2D_dahu2")
 debug_color = Color(0.914081, 0.254716, 0.369102, 0.42)
-
-[node name="Line2D" type="Line2D" parent="Nave"]
-visible = false
-z_index = -1
-material = SubResource("ShaderMaterial_mihee")
-position = Vector2(-7.62939e-06, -136.114)
-scale = Vector2(0.117707, 0.159607)
-points = PackedVector2Array(-5.8501, 63, -6.74158, 450.756, -7.52158, 790.07)
-width = 150.0
-default_color = Color(19.46, 0.679, 0.056, 1)
-texture_mode = 2
 
 [node name="SafeMode" type="Timer" parent="Nave"]
 wait_time = 2.0

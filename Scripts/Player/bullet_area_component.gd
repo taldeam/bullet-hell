@@ -12,5 +12,6 @@ func _process(delta: float) -> void:
 	pass
 
 func bullet_hit(state) -> void:
+	return
 	if state:
 		get_parent().queue_free()
