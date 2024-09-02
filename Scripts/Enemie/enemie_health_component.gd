@@ -29,7 +29,7 @@ func on_player_hit():
 	enemie_dead()
 
 func check_heal():
-	if health <= 0:
+	if health == 0:
 		enemie_dead()
 		
 func enemie_dead() ->void:
