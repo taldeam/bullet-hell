@@ -3,10 +3,13 @@ extends Area2D
 @export var enemy_scene_1 : PackedScene = preload("res://escenas/enemie.tscn")
 @export var spawn_interval : float = 2.0
 @export var max_enemies : int = 5
+@export var difficulty_increment : float = 0.05  # Incremento de la dificultad
+@export var min_spawn_interval : float = 0.5  # Tiempo mínimo entre spawns
 var enemy_scenes : Array = []
 
 var _spawn_timer : Timer
 var _current_enemies : int = 0
+var _enemies_killed : int = 0
 
 var random = RandomNumberGenerator.new()
 
@@ -33,7 +36,7 @@ func _spawn_enemy() -> void:
 	# Instanciar la escena de la nave enemiga	
 	var random_index = randi() % enemy_scenes.size()
 	var selected_scene = enemy_scenes[random_index]
-	var enemy_instance = enemy_scene_1.instantiate()
+	var enemy_instance = selected_scene.instantiate()
 
 	# Obtener la forma de colisión del Area2D para determinar el área de spawn
 	var collision_shape = $CollisionShape2D.shape as RectangleShape2D
@@ -68,5 +71,13 @@ func _spawn_enemy() -> void:
 	enemy_instance.connect("tree_exited", Callable(self, "_on_enemy_exited"))
 
 func _on_enemy_exited() -> void:
-	print('muerte')
 	_current_enemies -= 1
+	_enemies_killed += 1
+	
+	# Aumentar la dificultad
+	if spawn_interval > min_spawn_interval:
+		spawn_interval = max(spawn_interval - difficulty_increment, min_spawn_interval)
+		_spawn_timer.wait_time = spawn_interval
+	
+	if _enemies_killed % 10 == 0:  # Cada 10 enemigos muertos
+		max_enemies += 1

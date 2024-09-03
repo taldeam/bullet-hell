@@ -29,7 +29,8 @@ func on_player_hit():
 	enemie_dead()
 
 func check_heal():
-	if health <= 0:
+	#! revisar esta logica, si es menos de 0 no muere
+	if health == 0:
 		enemie_dead()
 		
 func enemie_dead() ->void:

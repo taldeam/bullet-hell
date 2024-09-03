@@ -71,6 +71,11 @@ pointing/emulate_touch_from_mouse=true
 2d_physics/layer_10="Player global collision"
 2d_physics/layer_11="Enemie global collision"
 
+[physics]
+
+2d/default_gravity=15.0
+2d/default_gravity_vector=Vector2(1, 3)
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
