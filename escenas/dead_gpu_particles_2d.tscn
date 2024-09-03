@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://b3rgmrw6cuxf3"]
+
+[ext_resource type="Texture2D" uid="uid://dvmww85rb2qg7" path="res://Assets/efectos nave/efectos explosion/cuidado que explota.jpg" id="1_qx3xf"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7opnw"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_5iwil"]
+_data = [Vector2(0, 0.131868), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_0ey7k"]
+colors = PackedColorArray(1, 0.0156863, 0, 1, 1, 1, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_dwkr4"]
+colors = PackedColorArray(1, 0, 0, 1, 0.941176, 0.494118, 0, 1)
+
+[node name="dead_GPUParticles2D" type="CPUParticles2D"]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_7opnw")
+scale = Vector2(0.04, 0.04)
+emitting = false
+amount = 40
+lifetime = 1.5
+speed_scale = 3.0
+explosiveness = 1.0
+texture = ExtResource("1_qx3xf")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 161.62
+scale_amount_min = 0.09
+scale_amount_max = 0.09
+scale_amount_curve = SubResource("Curve_5iwil")
+color = Color(1, 1, 1, 0.211)
+color_ramp = SubResource("Gradient_0ey7k")
+color_initial_ramp = SubResource("Gradient_dwkr4")
