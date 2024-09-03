@@ -3,7 +3,7 @@ extends Area2D
 @export var enemy_scene_1 : PackedScene = preload("res://escenas/enemie.tscn")
 @export var spawn_interval : float = 2.0
 @export var max_enemies : int = 5
-@export var difficulty_increment : float = 0.05  # Incremento de la dificultad
+@export var difficulty_increment : float = 1  # Incremento de la dificultad
 @export var min_spawn_interval : float = 0.5  # Tiempo mínimo entre spawns
 var enemy_scenes : Array = []
 
@@ -24,15 +24,17 @@ func _ready() -> void:
 	
 	enemy_scenes.append(enemy_scene_1)
 
-func _process(delta: float) -> void:
-	# Opcional: Puedes agregar lógica adicional si es necesario en cada frame
-	pass
-
 func _on_spawn_timeout() -> void:
 	if _current_enemies < max_enemies:
 		_spawn_enemy()
 
 func _spawn_enemy() -> void:
+	#Temporal !!
+	$"../UI2/Label3".text = str(_current_enemies)
+	
+	print("time_left ->", _spawn_timer.time_left)
+	print("current_enemies ->", _current_enemies)
+	print("max_enemies ->", max_enemies)
 	# Instanciar la escena de la nave enemiga	
 	var random_index = randi() % enemy_scenes.size()
 	var selected_scene = enemy_scenes[random_index]
@@ -79,5 +81,5 @@ func _on_enemy_exited() -> void:
 		spawn_interval = max(spawn_interval - difficulty_increment, min_spawn_interval)
 		_spawn_timer.wait_time = spawn_interval
 	
-	if _enemies_killed % 10 == 0:  # Cada 10 enemigos muertos
+	if _enemies_killed % 5 == 0:  # Cada 5 enemigos muertos
 		max_enemies += 1

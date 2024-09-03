@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://b2mtty1g25yvs"]
+[gd_scene load_steps=51 format=4 uid="uid://b2mtty1g25yvs"]
 
 [ext_resource type="Script" path="res://Scripts/ParallaxBackground.gd" id="1_rm0b7"]
 [ext_resource type="Texture2D" uid="uid://b67hbbdsnswv" path="res://Assets/fondo/fondo nuevo/layers/parallax-space-backgound.png" id="2_0tacc"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bcuo7me4yk12e" path="res://Assets/efectos nave/Laser Sprites/37.png" id="8_3l8vs"]
 [ext_resource type="AudioStream" uid="uid://ccy5suqbsmbxh" path="res://Assets/Musica/DavidKBD - Cosmic Pack 05 - Stellar Confrontation-full.ogg" id="10_mfcqf"]
 [ext_resource type="Texture2D" uid="uid://4ofbd2jufi6v" path="res://Assets/efectos nave/Laser Sprites/32.png" id="11_31l53"]
+[ext_resource type="Texture2D" uid="uid://bdr27ugctkeb0" path="res://GUI/PNG/Hangar/Armor_Icon.png" id="11_phbsb"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="13_tdgpp"]
 [ext_resource type="Script" path="res://Scripts/game_ui.gd" id="16_c6oqm"]
 [ext_resource type="Script" path="res://Scripts/Enemie/enemie_respawn_area.gd" id="17_voiut"]
@@ -26,6 +27,7 @@
 [ext_resource type="Script" path="res://escenas/reestartButton.gd" id="27_pp0k1"]
 [ext_resource type="Script" path="res://Scripts/Player/nave_principal.gd" id="27_yewa7"]
 [ext_resource type="Texture2D" uid="uid://cc0ll4l0hcigd" path="res://Assets/efectos nave/upgrades/escudo.png" id="28_blhyg"]
+[ext_resource type="PackedScene" uid="uid://b1s6x4anpaqyj" path="res://escenas/shield_area.tscn" id="28_gyjxo"]
 [ext_resource type="AudioStream" uid="uid://dn18506mojbai" path="res://Assets/Efectos de sonido/UI/mixkit-sci-fi-click-900.mp3" id="28_k4tke"]
 [ext_resource type="Shader" path="res://shaders/nave.gdshader" id="28_xoixe"]
 [ext_resource type="Texture2D" uid="uid://tijmp7il875o" path="res://Assets/nave y enemigos/ShipsPNG/ship1.png" id="29_4gf21"]
@@ -34,6 +36,9 @@
 [ext_resource type="AudioStream" uid="uid://cvs0jl6ikv1gq" path="res://Assets/Efectos de sonido/Shoots/laser-gun-shot-sound-future-sci-fi-lazer-wobble-chakongaudio-174883.mp3" id="33_mkte1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_f5f2v"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_l85d0"]
+font_size = 10
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gmr7y"]
 texture = ExtResource("22_5tffe")
@@ -521,7 +526,7 @@ position = Vector2(-47, 10.5)
 scale = Vector2(0.183816, 0.803922)
 texture = ExtResource("19_ahx41")
 
-[node name="Panel" type="Panel" parent="UI2"]
+[node name="PanelDied" type="Panel" parent="UI2"]
 visible = false
 anchors_preset = 8
 anchor_left = 0.5
@@ -535,7 +540,7 @@ offset_bottom = 89.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="UI2/Panel"]
+[node name="Label" type="Label" parent="UI2/PanelDied"]
 layout_mode = 0
 offset_left = 50.0
 offset_top = 39.0
@@ -543,7 +548,7 @@ offset_right = 122.0
 offset_bottom = 62.0
 text = "You died!"
 
-[node name="TouchScreenButton" type="TouchScreenButton" parent="UI2/Panel"]
+[node name="TouchScreenButton" type="TouchScreenButton" parent="UI2/PanelDied"]
 position = Vector2(60, 82)
 texture_normal = ExtResource("26_uaduu")
 script = ExtResource("27_pp0k1")
@@ -553,6 +558,84 @@ script = ExtResource("27_pp0k1")
 [node name="Click" type="AudioStreamPlayer" parent="UI2/Sounds"]
 stream = ExtResource("28_k4tke")
 volume_db = -18.059
+
+[node name="PowerUpsPanel" type="Panel" parent="UI2"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -221.0
+offset_top = -154.5
+offset_right = 221.0
+offset_bottom = 154.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI2/PowerUpsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Shield" type="BoxContainer" parent="UI2/PowerUpsPanel/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+vertical = true
+
+[node name="Label" type="Label" parent="UI2/PowerUpsPanel/HBoxContainer/Shield"]
+layout_mode = 2
+text = "Añade un escudo a tu nave que soporta hasta 5 colisiones"
+label_settings = SubResource("LabelSettings_l85d0")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="UI2/PowerUpsPanel/HBoxContainer/Shield"]
+layout_mode = 2
+texture_normal = ExtResource("11_phbsb")
+stretch_mode = 3
+
+[node name="Shield2" type="BoxContainer" parent="UI2/PowerUpsPanel/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+vertical = true
+
+[node name="Label" type="Label" parent="UI2/PowerUpsPanel/HBoxContainer/Shield2"]
+layout_mode = 2
+text = "Añade un escudo a tu nave que soporta hasta 5 colisiones"
+label_settings = SubResource("LabelSettings_l85d0")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="TextureButton" type="TextureButton" parent="UI2/PowerUpsPanel/HBoxContainer/Shield2"]
+layout_mode = 2
+texture_normal = ExtResource("11_phbsb")
+stretch_mode = 3
+
+[node name="Label2" type="Label" parent="UI2"]
+offset_left = 334.0
+offset_top = 20.0
+offset_right = 452.0
+offset_bottom = 43.0
+text = "Enemigos vivos"
+
+[node name="Label3" type="Label" parent="UI2"]
+offset_left = 478.0
+offset_top = 22.0
+offset_right = 596.0
+offset_bottom = 45.0
+text = "0"
+autowrap_mode = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -684,13 +767,18 @@ position = Vector2(86.5, 105)
 position = Vector2(108.5, 106.5)
 script = ExtResource("27_yewa7")
 
+[node name="ShieldArea" parent="Nave" instance=ExtResource("28_gyjxo")]
+
 [node name="Escudo" type="GPUParticles2D" parent="Nave"]
+visible = false
 modulate = Color(0.103726, 0.522111, 0.910238, 0.146)
+z_index = 1
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_63fgc")
 position = Vector2(0, -1)
-scale = Vector2(0.0472055, 0.0436005)
+emitting = false
 amount = 15
+amount_ratio = 0.0
 process_material = SubResource("ParticleProcessMaterial_eruys")
 texture = ExtResource("28_blhyg")
 speed_scale = 50.0
@@ -734,7 +822,7 @@ debug_color = Color(0.914081, 0.254716, 0.369102, 0.42)
 wait_time = 2.0
 one_shot = true
 
-[connection signal="pressed" from="UI2/Panel/TouchScreenButton" to="UI2" method="_on_touch_screen_button_pressed"]
+[connection signal="pressed" from="UI2/PanelDied/TouchScreenButton" to="UI2" method="_on_touch_screen_button_pressed"]
 [connection signal="finished" from="UI2/Sounds/Click" to="UI2" method="_on_click_finished"]
 [connection signal="timeout" from="Nave/Timer" to="Nave" method="_on_timer_timeout"]
 [connection signal="timeout" from="Nave/SafeMode" to="Nave/HealthComponent" method="_on_safe_mode_timeout"]

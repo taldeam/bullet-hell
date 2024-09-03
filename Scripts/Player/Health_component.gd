@@ -7,6 +7,7 @@ class_name Player_health_component
 @onready var collision : CollisionShape2D = $CollisionShape2D
 @onready var safeModeTimer : Timer = $"../SafeMode"
 @onready var camera: Camera2D = $"../Camera2D"
+@onready var playerShield : GPUParticles2D = $"../Escudo"
 
 var cameraShakeNoise : FastNoiseLite
 
@@ -15,20 +16,19 @@ func _ready() -> void:
 	cameraShakeNoise = FastNoiseLite.new()
 
 func hit(area):
-	if area is Enemie_hit_component:
+	if area is Enemie_hit_component && !playerShield.visible:
 		playerHealth -= area.damage
 		playerHealthVar.set_value_no_signal(playerHealth)
 		checkPlayerHealth(playerHealth)
 		flash()
-		
 		var camera_tween: Tween = get_tree().create_tween()
 		camera_tween.tween_method(startCameraShake, 15.0, 1.0, 0.5)
 		
 func checkPlayerHealth(playerHealth):
 	if playerHealth <= 0:
 		get_tree().paused = true
-		$"../../UI2/Panel".visible = true
-		
+		$"../../UI2/PanelDied".visible = true
+
 func flash():
 	safeModeTimer.start()
 	collision.set_deferred("disabled", true)

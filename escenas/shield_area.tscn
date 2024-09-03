@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1s6x4anpaqyj"]
+
+[ext_resource type="Script" path="res://Scripts/Player/shield_area.gd" id="1_lgwbp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c7jql"]
+radius = 741.528
+
+[node name="ShieldArea" type="Area2D"]
+collision_layer = 2052
+collision_mask = 2048
+script = ExtResource("1_lgwbp")
+
+[node name="ShieldCollision" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-1.335, 2.485)
+scale = Vector2(0.0472055, 0.0436005)
+shape = SubResource("CircleShape2D_c7jql")
+debug_color = Color(0.598354, 0.537991, 0.235296, 0.42)

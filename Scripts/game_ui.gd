@@ -24,3 +24,8 @@ func _on_touch_screen_button_pressed() -> void:
 func _on_click_finished() -> void:
 	get_tree().paused = false  # Unpauses the game after reloading the scene
 	get_tree().reload_current_scene()
+
+
+func _on_texture_button_pressed() -> void:
+	print('h0la')
+	pass # Replace with function body.

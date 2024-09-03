@@ -6,15 +6,15 @@ signal isDead
 
 @export var health: int = 5
 @onready var particles: Node = $"../particles"
-@onready var collision: CollisionShape2D = $"../CollisionShape2D"
+@onready var collision: CollisionShape2D = $"../GlobalArea2d/CollisionShape2D"
 @onready var health_collision: CollisionShape2D = $CollisionShape2D
 @onready var dead_clip: AudioStreamPlayer2D = $"../Sounds/EnemieDeadClip"
+var is_dead: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var enemie_hit_component = $"../HitComponent"
 	enemie_hit_component.playerHited.connect(on_player_hit)
-
 	area_entered.connect(hit)
 
 func hit(area):
@@ -24,23 +24,30 @@ func hit(area):
 		check_heal()
 		show_damage_particles()
 		isDamaged.emit(area.global_position)
-
+	if area is Area_shield:
+		health -= area.damage
+		check_heal()
+		show_damage_particles()
+		isDamaged.emit(area.global_position)
+		
 func on_player_hit():
-	enemie_dead()
+	if not is_dead:
+		enemie_dead()
 
 func check_heal():
 	#! revisar esta logica, si es menos de 0 no muere
-	if health == 0:
+	if health <= 0 and not is_dead:
+		is_dead = true
 		enemie_dead()
 		
 func enemie_dead() ->void:
-	dead_clip.play()
+	collision.set_deferred("disabled", true)
+	health_collision.disabled = true
+	if !dead_clip.playing:
+		dead_clip.play()
 	isDead.emit()
 	Signals.emit_signal("EnemieDead") # Señal global
 	show_dead_particles()
-	if is_instance_valid(collision):
-		collision.queue_free()
-		health_collision.queue_free()
 
 func show_dead_particles() -> void:
 	var particle = particles.find_child("dead_GPUParticles2D")

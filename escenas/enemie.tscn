@@ -95,7 +95,7 @@ scale = Vector2(0.035, 0.035)
 texture = ExtResource("5_1j33y")
 
 [node name="HealthComponent" type="Area2D" parent="."]
-collision_layer = 0
+collision_layer = 2048
 collision_mask = 4
 script = ExtResource("3_w2xo1")
 
