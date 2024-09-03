@@ -668,7 +668,7 @@ position = Vector2(134, 105)
 position = Vector2(86.5, 105)
 
 [node name="Nave" type="CharacterBody2D" parent="."]
-position = Vector2(110.5, 92.5)
+position = Vector2(110.5, 102.5)
 script = ExtResource("27_yewa7")
 
 [node name="Camera2D" type="Camera2D" parent="Nave"]
