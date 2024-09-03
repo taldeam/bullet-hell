@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://raijelxy7xok"
-path="res://.godot/imported/explosion_enemy-80156.mp3-b2bfb2df2c6ea87cf033f4acb25bac77.mp3str"
+path="res://.godot/imported/explosion_enemy-80156.mp3-a97a5221006521abf79386b7ae2847f0.mp3str"
 
 [deps]
 
-source_file="res://assets/Efectos de sonido/Shoots/explosion_enemy-80156.mp3"
-dest_files=["res://.godot/imported/explosion_enemy-80156.mp3-b2bfb2df2c6ea87cf033f4acb25bac77.mp3str"]
+source_file="res://Assets/Efectos de sonido/Shoots/explosion_enemy-80156.mp3"
+dest_files=["res://.godot/imported/explosion_enemy-80156.mp3-a97a5221006521abf79386b7ae2847f0.mp3str"]
 
 [params]
 

@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://bhjkivnmbml2h"
-path="res://.godot/imported/laser-45816.mp3-8c2d0f8efe3a6a9b7df2414d51f900be.mp3str"
+path="res://.godot/imported/laser-45816.mp3-36a0deeecd71ea36f70cc82797f4712f.mp3str"
 
 [deps]
 
-source_file="res://assets/Efectos de sonido/Shoots/laser-45816.mp3"
-dest_files=["res://.godot/imported/laser-45816.mp3-8c2d0f8efe3a6a9b7df2414d51f900be.mp3str"]
+source_file="res://Assets/Efectos de sonido/Shoots/laser-45816.mp3"
+dest_files=["res://.godot/imported/laser-45816.mp3-36a0deeecd71ea36f70cc82797f4712f.mp3str"]
 
 [params]
 

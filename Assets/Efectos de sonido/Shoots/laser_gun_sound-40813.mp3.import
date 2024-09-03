@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://ya078w7fl2ti"
-path="res://.godot/imported/laser_gun_sound-40813.mp3-741caae801bb160d5d3f2f20e8815c9c.mp3str"
+path="res://.godot/imported/laser_gun_sound-40813.mp3-ff4b4506dd5aea2d8110a33c2b1161d1.mp3str"
 
 [deps]
 
-source_file="res://assets/Efectos de sonido/Shoots/laser_gun_sound-40813.mp3"
-dest_files=["res://.godot/imported/laser_gun_sound-40813.mp3-741caae801bb160d5d3f2f20e8815c9c.mp3str"]
+source_file="res://Assets/Efectos de sonido/Shoots/laser_gun_sound-40813.mp3"
+dest_files=["res://.godot/imported/laser_gun_sound-40813.mp3-ff4b4506dd5aea2d8110a33c2b1161d1.mp3str"]
 
 [params]
 
