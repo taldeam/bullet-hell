@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://b2mtty1g25yvs"]
+[gd_scene load_steps=33 format=4 uid="uid://b2mtty1g25yvs"]
 
 [ext_resource type="Script" path="res://Scripts/ParallaxBackground.gd" id="1_rm0b7"]
 [ext_resource type="Texture2D" uid="uid://b67hbbdsnswv" path="res://assets/fondo/fondo nuevo/layers/parallax-space-backgound.png" id="2_0tacc"]
@@ -25,8 +25,9 @@
 [ext_resource type="PackedScene" uid="uid://dyfgwd5c0xx13" path="res://escenas/enemie.tscn" id="27_6fkls"]
 [ext_resource type="PackedScene" uid="uid://2ri5bn5gsd1p" path="res://escenas/nave.tscn" id="27_7tdwt"]
 [ext_resource type="Script" path="res://escenas/reestartButton.gd" id="27_pp0k1"]
-[ext_resource type="AudioStream" uid="uid://dn18506mojbai" path="res://Assets/Efectos de sonido/UI/mixkit-sci-fi-click-900.mp3" id="28_k4tke"]
-[ext_resource type="AudioStream" uid="uid://cvs0jl6ikv1gq" path="res://Assets/Efectos de sonido/Shoots/laser-gun-shot-sound-future-sci-fi-lazer-wobble-chakongaudio-174883.mp3" id="33_mkte1"]
+[ext_resource type="PackedScene" uid="uid://bhkthfyiyixmr" path="res://upgrades.tscn" id="28_a5rjw"]
+[ext_resource type="AudioStream" uid="uid://dn18506mojbai" path="res://assets/Efectos de sonido/UI/mixkit-sci-fi-click-900.mp3" id="28_k4tke"]
+[ext_resource type="AudioStream" uid="uid://cvs0jl6ikv1gq" path="res://assets/Efectos de sonido/Shoots/laser-gun-shot-sound-future-sci-fi-lazer-wobble-chakongaudio-174883.mp3" id="33_mkte1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_f5f2v"]
 
@@ -623,6 +624,8 @@ shape = SubResource("RectangleShape2D_rpbj7")
 disabled = true
 
 [node name="Nave" parent="." instance=ExtResource("27_7tdwt")]
+
+[node name="Node2D" parent="." instance=ExtResource("28_a5rjw")]
 
 [connection signal="pressed" from="UI2/Panel/TouchScreenButton" to="UI2" method="_on_touch_screen_button_pressed"]
 [connection signal="finished" from="UI2/Sounds/Click" to="UI2" method="_on_click_finished"]

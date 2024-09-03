@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://t4yj30wk742n"
-path="res://.godot/imported/huge-distant-explosion-25317 (mp3cut.net).mp3-9967c276948f4b763cd2c1aaa522d3b2.mp3str"
+path="res://.godot/imported/huge-distant-explosion-25317 (mp3cut.net).mp3-959ea1e230ace5233b873966374fc684.mp3str"
 
 [deps]
 
-source_file="res://Assets/Efectos de sonido/Explosiones/huge-distant-explosion-25317 (mp3cut.net).mp3"
-dest_files=["res://.godot/imported/huge-distant-explosion-25317 (mp3cut.net).mp3-9967c276948f4b763cd2c1aaa522d3b2.mp3str"]
+source_file="res://assets/Efectos de sonido/Explosiones/huge-distant-explosion-25317 (mp3cut.net).mp3"
+dest_files=["res://.godot/imported/huge-distant-explosion-25317 (mp3cut.net).mp3-959ea1e230ace5233b873966374fc684.mp3str"]
 
 [params]
 

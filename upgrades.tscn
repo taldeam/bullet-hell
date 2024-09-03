@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhkthfyiyixmr"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pp2gx"]
+blend_mode = 1
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fygfw"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(1, 7)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_pp2gx")
+position = Vector2(422, 166)
+process_material = SubResource("ParticleProcessMaterial_fygfw")
