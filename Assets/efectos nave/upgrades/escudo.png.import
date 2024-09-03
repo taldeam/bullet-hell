@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cc0ll4l0hcigd"
-path="res://.godot/imported/escudo.png-f6c7ef4f314c8912bfdc9a8dc93dcf64.ctex"
+path="res://.godot/imported/escudo.png-1335612a7696037783aadb799a1bb428.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/efectos nave/upgrades/escudo.png"
-dest_files=["res://.godot/imported/escudo.png-f6c7ef4f314c8912bfdc9a8dc93dcf64.ctex"]
+source_file="res://assets/efectos nave/upgrades/escudo.png"
+dest_files=["res://.godot/imported/escudo.png-1335612a7696037783aadb799a1bb428.ctex"]
 
 [params]
 

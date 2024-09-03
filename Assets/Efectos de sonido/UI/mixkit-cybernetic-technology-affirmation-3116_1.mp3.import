@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://jax8wofcdrwq"
-path="res://.godot/imported/mixkit-cybernetic-technology-affirmation-3116_1.mp3-254b61c770116fcea16f7f93e5eeacd6.mp3str"
+path="res://.godot/imported/mixkit-cybernetic-technology-affirmation-3116_1.mp3-84fe0be08560429711d30753bc5b721d.mp3str"
 
 [deps]
 
-source_file="res://Assets/Efectos de sonido/UI/mixkit-cybernetic-technology-affirmation-3116_1.mp3"
-dest_files=["res://.godot/imported/mixkit-cybernetic-technology-affirmation-3116_1.mp3-254b61c770116fcea16f7f93e5eeacd6.mp3str"]
+source_file="res://assets/Efectos de sonido/UI/mixkit-cybernetic-technology-affirmation-3116_1.mp3"
+dest_files=["res://.godot/imported/mixkit-cybernetic-technology-affirmation-3116_1.mp3-84fe0be08560429711d30753bc5b721d.mp3str"]
 
 [params]
 
