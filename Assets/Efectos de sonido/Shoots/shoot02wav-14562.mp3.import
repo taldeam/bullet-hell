@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://cmivyu3rqb6ic"
-path="res://.godot/imported/shoot02wav-14562.mp3-bb5b33c52b470fada295ffb518c1e149.mp3str"
+path="res://.godot/imported/shoot02wav-14562.mp3-6995fe449c629b775246d40b831b37df.mp3str"
 
 [deps]
 
-source_file="res://Assets/Efectos de sonido/Shoots/shoot02wav-14562.mp3"
-dest_files=["res://.godot/imported/shoot02wav-14562.mp3-bb5b33c52b470fada295ffb518c1e149.mp3str"]
+source_file="res://assets/Efectos de sonido/Shoots/shoot02wav-14562.mp3"
+dest_files=["res://.godot/imported/shoot02wav-14562.mp3-6995fe449c629b775246d40b831b37df.mp3str"]
 
 [params]
 

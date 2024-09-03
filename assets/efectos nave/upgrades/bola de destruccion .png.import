@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c0sku3h2tw6qw"
-path="res://.godot/imported/bola de destruccion .png-c713ef355927d2208975129e98bc7ddd.ctex"
+path="res://.godot/imported/bola de destruccion .png-730ee697084c907d659e03fcf6b40fa2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/efectos nave/upgrades/bola de destruccion .png"
-dest_files=["res://.godot/imported/bola de destruccion .png-c713ef355927d2208975129e98bc7ddd.ctex"]
+source_file="res://assets/efectos nave/upgrades/bola de destruccion .png"
+dest_files=["res://.godot/imported/bola de destruccion .png-730ee697084c907d659e03fcf6b40fa2.ctex"]
 
 [params]
 

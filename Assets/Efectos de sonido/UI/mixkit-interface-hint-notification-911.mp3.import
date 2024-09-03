@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://dqduypx3rhelh"
-path="res://.godot/imported/mixkit-interface-hint-notification-911.mp3-88db29ba60b48c2542beebaea587e2e4.mp3str"
+path="res://.godot/imported/mixkit-interface-hint-notification-911.mp3-4a32e3ecea54730e488543b86766fdb2.mp3str"
 
 [deps]
 
-source_file="res://Assets/Efectos de sonido/UI/mixkit-interface-hint-notification-911.mp3"
-dest_files=["res://.godot/imported/mixkit-interface-hint-notification-911.mp3-88db29ba60b48c2542beebaea587e2e4.mp3str"]
+source_file="res://assets/Efectos de sonido/UI/mixkit-interface-hint-notification-911.mp3"
+dest_files=["res://.godot/imported/mixkit-interface-hint-notification-911.mp3-4a32e3ecea54730e488543b86766fdb2.mp3str"]
 
 [params]
 

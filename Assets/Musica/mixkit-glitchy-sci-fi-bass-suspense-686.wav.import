@@ -7,7 +7,7 @@ valid=false
 
 [deps]
 
-source_file="res://Assets/Musica/mixkit-glitchy-sci-fi-bass-suspense-686.wav"
+source_file="res://assets/Musica/mixkit-glitchy-sci-fi-bass-suspense-686.wav"
 
 [params]
 
