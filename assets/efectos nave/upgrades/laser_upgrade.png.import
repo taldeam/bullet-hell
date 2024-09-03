@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ftdvv5a3jtbu"
-path="res://.godot/imported/laser_upgrade.png-9979168ff5c179e5d7b533947d16bd0f.ctex"
+path="res://.godot/imported/laser_upgrade.png-9c8818f896b86f154d678b0d105f459c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/efectos nave/upgrades/laser_upgrade.png"
-dest_files=["res://.godot/imported/laser_upgrade.png-9979168ff5c179e5d7b533947d16bd0f.ctex"]
+source_file="res://assets/efectos nave/upgrades/laser_upgrade.png"
+dest_files=["res://.godot/imported/laser_upgrade.png-9c8818f896b86f154d678b0d105f459c.ctex"]
 
 [params]
 
