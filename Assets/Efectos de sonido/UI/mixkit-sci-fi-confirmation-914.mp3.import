@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://4v1qvgoxiqys"
-path="res://.godot/imported/mixkit-sci-fi-confirmation-914.mp3-044fd3f5c07a62019b8c7d4b61e81c0b.mp3str"
+path="res://.godot/imported/mixkit-sci-fi-confirmation-914.mp3-f9144f8a6c144f3d1821bc538f6f2aee.mp3str"
 
 [deps]
 
-source_file="res://assets/Efectos de sonido/UI/mixkit-sci-fi-confirmation-914.mp3"
-dest_files=["res://.godot/imported/mixkit-sci-fi-confirmation-914.mp3-044fd3f5c07a62019b8c7d4b61e81c0b.mp3str"]
+source_file="res://Assets/Efectos de sonido/UI/mixkit-sci-fi-confirmation-914.mp3"
+dest_files=["res://.godot/imported/mixkit-sci-fi-confirmation-914.mp3-f9144f8a6c144f3d1821bc538f6f2aee.mp3str"]
 
 [params]
 
