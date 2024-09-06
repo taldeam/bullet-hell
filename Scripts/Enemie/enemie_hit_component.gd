@@ -11,5 +11,5 @@ func _ready() -> void:
 
 func hit(area):
 	if area is Player_health_component:
-		collision_shape.disabled = true
+		collision_shape.set_deferred("disabled",true)
 		playerHited.emit()

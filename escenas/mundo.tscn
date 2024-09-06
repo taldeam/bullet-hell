@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=4 uid="uid://b2mtty1g25yvs"]
+[gd_scene load_steps=46 format=4 uid="uid://b2mtty1g25yvs"]
 
 [ext_resource type="Script" path="res://Scripts/ParallaxBackground.gd" id="1_rm0b7"]
 [ext_resource type="Texture2D" uid="uid://b67hbbdsnswv" path="res://Assets/fondo/fondo nuevo/layers/parallax-space-backgound.png" id="2_0tacc"]
@@ -10,9 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://d2n5imvcdpe6g" path="res://Assets/planetas/Planet_03.png" id="7_ub62a"]
 [ext_resource type="Texture2D" uid="uid://k2klhr0ljcqo" path="res://Assets/planetas/PlanetsPNG/Planet_04.png" id="7_ws1o1"]
 [ext_resource type="Texture2D" uid="uid://bcuo7me4yk12e" path="res://Assets/efectos nave/Laser Sprites/37.png" id="8_3l8vs"]
+[ext_resource type="Theme" uid="uid://bsidgnggcaxhp" path="res://GUI/GUI_themes/GUI_theme.tres" id="9_mcngb"]
 [ext_resource type="AudioStream" uid="uid://ccy5suqbsmbxh" path="res://Assets/Musica/DavidKBD - Cosmic Pack 05 - Stellar Confrontation-full.ogg" id="10_mfcqf"]
 [ext_resource type="Texture2D" uid="uid://4ofbd2jufi6v" path="res://Assets/efectos nave/Laser Sprites/32.png" id="11_31l53"]
-[ext_resource type="Texture2D" uid="uid://bdr27ugctkeb0" path="res://GUI/PNG/Hangar/Armor_Icon.png" id="11_phbsb"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="13_tdgpp"]
 [ext_resource type="Script" path="res://Scripts/game_ui.gd" id="16_c6oqm"]
 [ext_resource type="Script" path="res://Scripts/Enemie/enemie_respawn_area.gd" id="17_voiut"]
@@ -20,14 +20,10 @@
 [ext_resource type="Texture2D" uid="uid://yvxyuspk2wn3" path="res://GUI/PNG/Loading_Bar/Table.png" id="19_ahx41"]
 [ext_resource type="Texture2D" uid="uid://citu1t1dev8k0" path="res://Assets/tileset/TileSet v1.0.png" id="22_5tffe"]
 [ext_resource type="Texture2D" uid="uid://bmj68bnwkgquu" path="res://GUI/PNG/You_Lose/Record.png" id="22_co3hl"]
-[ext_resource type="Texture2D" uid="uid://85ytpa3vuvum" path="res://GUI/PNG/Hangar/Table_02.png" id="22_q8i0g"]
-[ext_resource type="Texture2D" uid="uid://b0tn4mnbk3ix6" path="res://GUI/PNG/Hangar/HP_Icon.png" id="23_poks7"]
 [ext_resource type="Texture2D" uid="uid://dlt24kjl8vvgq" path="res://Buttons/Sprites/flat-dark/flatDark15.png" id="26_uaduu"]
-[ext_resource type="PackedScene" uid="uid://cfej6wvmwwl4a" path="res://escenas/nave_aliada.tscn" id="27_n34y4"]
 [ext_resource type="Script" path="res://escenas/reestartButton.gd" id="27_pp0k1"]
 [ext_resource type="Script" path="res://Scripts/Player/nave_principal.gd" id="27_yewa7"]
 [ext_resource type="Texture2D" uid="uid://cc0ll4l0hcigd" path="res://Assets/efectos nave/upgrades/escudo.png" id="28_blhyg"]
-[ext_resource type="PackedScene" uid="uid://b1s6x4anpaqyj" path="res://escenas/shield_area.tscn" id="28_gyjxo"]
 [ext_resource type="AudioStream" uid="uid://dn18506mojbai" path="res://Assets/Efectos de sonido/UI/mixkit-sci-fi-click-900.mp3" id="28_k4tke"]
 [ext_resource type="Shader" path="res://shaders/nave.gdshader" id="28_xoixe"]
 [ext_resource type="Texture2D" uid="uid://tijmp7il875o" path="res://Assets/nave y enemigos/ShipsPNG/ship1.png" id="29_4gf21"]
@@ -36,9 +32,6 @@
 [ext_resource type="AudioStream" uid="uid://cvs0jl6ikv1gq" path="res://Assets/Efectos de sonido/Shoots/laser-gun-shot-sound-future-sci-fi-lazer-wobble-chakongaudio-174883.mp3" id="33_mkte1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_f5f2v"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_l85d0"]
-font_size = 10
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gmr7y"]
 texture = ExtResource("22_5tffe")
@@ -394,6 +387,7 @@ texture = ExtResource("22_5tffe")
 
 [sub_resource type="TileSet" id="TileSet_shubs"]
 physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 0
 sources/1 = SubResource("TileSetAtlasSource_gmr7y")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rpbj7"]
@@ -467,25 +461,6 @@ offset_right = -33.0
 offset_bottom = 62.0
 grow_horizontal = 0
 value = 5.0
-
-[node name="Table02" type="Sprite2D" parent="UI2"]
-visible = false
-z_index = -1
-position = Vector2(852, 45)
-scale = Vector2(0.52648, 0.5)
-texture = ExtResource("22_q8i0g")
-
-[node name="HpIcon2" type="Sprite2D" parent="UI2/Table02"]
-position = Vector2(-95.9201, -2)
-texture = ExtResource("23_poks7")
-
-[node name="HpIcon3" type="Sprite2D" parent="UI2/Table02"]
-position = Vector2(0.94973, -4)
-texture = ExtResource("23_poks7")
-
-[node name="HpIcon" type="Sprite2D" parent="UI2/Table02"]
-position = Vector2(95.9201, -4)
-texture = ExtResource("23_poks7")
 
 [node name="Virtual joystick left" parent="UI2" instance=ExtResource("13_tdgpp")]
 offset_top = -306.0
@@ -566,76 +541,109 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -221.0
-offset_top = -154.5
-offset_right = 221.0
-offset_bottom = 154.5
+offset_left = -270.0
+offset_top = -155.5
+offset_right = 270.0
+offset_bottom = 155.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("9_mcngb")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI2/PowerUpsPanel"]
+[node name="PowerUpItem" type="Control" parent="UI2/PowerUpsPanel"]
+anchors_preset = 0
+offset_left = 49.0
+offset_top = 87.0
+offset_right = 255.0
+offset_bottom = 236.0
+
+[node name="PowerUpButton" type="Button" parent="UI2/PowerUpsPanel/PowerUpItem"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
+offset_left = -38.5
+offset_top = -75.0
+offset_right = 38.5
 grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
+grow_vertical = 0
+theme = ExtResource("9_mcngb")
+action_mode = 0
 
-[node name="Shield" type="BoxContainer" parent="UI2/PowerUpsPanel/HBoxContainer"]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-alignment = 1
-vertical = true
+[node name="Label" type="Label" parent="UI2/PowerUpsPanel/PowerUpItem"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -85.5
+offset_right = 85.5
+offset_bottom = 66.0
+grow_horizontal = 2
+theme = ExtResource("9_mcngb")
+text = "Añade un escudo a tu nave que resiste hasta 5 colisiones"
+horizontal_alignment = 1
+autowrap_mode = 2
 
-[node name="Label" type="Label" parent="UI2/PowerUpsPanel/HBoxContainer/Shield"]
-layout_mode = 2
-text = "Añade un escudo a tu nave que soporta hasta 5 colisiones"
-label_settings = SubResource("LabelSettings_l85d0")
+[node name="PowerUpItem2" type="Control" parent="UI2/PowerUpsPanel"]
+anchors_preset = 0
+offset_left = 268.0
+offset_top = 87.5
+offset_right = 474.0
+offset_bottom = 236.5
+
+[node name="PowerUpButtonNave" type="Button" parent="UI2/PowerUpsPanel/PowerUpItem2"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -38.5
+offset_top = -75.0
+offset_right = 38.5
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("9_mcngb")
+action_mode = 0
+
+[node name="Label" type="Label" parent="UI2/PowerUpsPanel/PowerUpItem2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -85.5
+offset_right = 85.5
+offset_bottom = 66.0
+grow_horizontal = 2
+theme = ExtResource("9_mcngb")
+text = "Añade una nave aliada"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="TextureButton" type="TextureButton" parent="UI2/PowerUpsPanel/HBoxContainer/Shield"]
-layout_mode = 2
-texture_normal = ExtResource("11_phbsb")
-stretch_mode = 3
+[node name="Enemies_in_game" type="Control" parent="UI2"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="Shield2" type="BoxContainer" parent="UI2/PowerUpsPanel/HBoxContainer"]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-alignment = 1
-vertical = true
-
-[node name="Label" type="Label" parent="UI2/PowerUpsPanel/HBoxContainer/Shield2"]
-layout_mode = 2
-text = "Añade un escudo a tu nave que soporta hasta 5 colisiones"
-label_settings = SubResource("LabelSettings_l85d0")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-
-[node name="TextureButton" type="TextureButton" parent="UI2/PowerUpsPanel/HBoxContainer/Shield2"]
-layout_mode = 2
-texture_normal = ExtResource("11_phbsb")
-stretch_mode = 3
-
-[node name="Label2" type="Label" parent="UI2"]
-offset_left = 334.0
-offset_top = 20.0
-offset_right = 452.0
-offset_bottom = 43.0
-text = "Enemigos vivos"
-
-[node name="Label3" type="Label" parent="UI2"]
+[node name="Label3" type="Label" parent="UI2/Enemies_in_game"]
+layout_mode = 0
 offset_left = 478.0
 offset_top = 22.0
 offset_right = 596.0
 offset_bottom = 45.0
 text = "0"
 autowrap_mode = 2
+
+[node name="Label2" type="Label" parent="UI2/Enemies_in_game"]
+layout_mode = 0
+offset_left = 334.0
+offset_top = 20.0
+offset_right = 452.0
+offset_bottom = 43.0
+text = "Enemigos vivos"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -651,7 +659,7 @@ texture = ExtResource("2_0tacc")
 [node name="2" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/fondo"]
 modulate = Color(0.522846, 0.0829584, 0.0848068, 1)
 texture_filter = 1
-position = Vector2(-252.313, 0.391773)
+position = Vector2(-252.106, 1.01861)
 scale = Vector2(0.0298507, 0.027873)
 skew = 0.000432134
 texture = ExtResource("3_73xss")
@@ -751,27 +759,19 @@ max_distance = 10000.0
 position = Vector2(-684, 453)
 script = ExtResource("17_voiut")
 spawn_interval = 1.0
-max_enemies = 20
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RespawnArea"]
 shape = SubResource("RectangleShape2D_rpbj7")
 disabled = true
 
-[node name="Nave_aliada" parent="." instance=ExtResource("27_n34y4")]
-position = Vector2(134, 105)
-
-[node name="Nave_aliada2" parent="." instance=ExtResource("27_n34y4")]
-position = Vector2(86.5, 105)
-
 [node name="Nave" type="CharacterBody2D" parent="."]
-position = Vector2(108.5, 106.5)
+position = Vector2(-70, 65)
+motion_mode = 1
 script = ExtResource("27_yewa7")
-
-[node name="ShieldArea" parent="Nave" instance=ExtResource("28_gyjxo")]
 
 [node name="Escudo" type="GPUParticles2D" parent="Nave"]
 visible = false
-modulate = Color(0.103726, 0.522111, 0.910238, 0.146)
+modulate = Color(0.101961, 0.521569, 0.909804, 0.176471)
 z_index = 1
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_63fgc")
@@ -824,5 +824,9 @@ one_shot = true
 
 [connection signal="pressed" from="UI2/PanelDied/TouchScreenButton" to="UI2" method="_on_touch_screen_button_pressed"]
 [connection signal="finished" from="UI2/Sounds/Click" to="UI2" method="_on_click_finished"]
+[connection signal="pressed" from="UI2/PowerUpsPanel/PowerUpItem/PowerUpButton" to="RespawnArea" method="_on_power_up_button_pressed"]
+[connection signal="pressed" from="UI2/PowerUpsPanel/PowerUpItem/PowerUpButton" to="Nave" method="_on_power_up_button_pressed"]
+[connection signal="pressed" from="UI2/PowerUpsPanel/PowerUpItem2/PowerUpButtonNave" to="RespawnArea" method="_on_power_up_button_nave_pressed"]
+[connection signal="pressed" from="UI2/PowerUpsPanel/PowerUpItem2/PowerUpButtonNave" to="Nave" method="_on_power_up_button_nave_pressed"]
 [connection signal="timeout" from="Nave/Timer" to="Nave" method="_on_timer_timeout"]
 [connection signal="timeout" from="Nave/SafeMode" to="Nave/HealthComponent" method="_on_safe_mode_timeout"]

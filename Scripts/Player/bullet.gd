@@ -4,14 +4,24 @@ class_name Bullet
 const SPEED: float = 600.0
 const DAMAGE: int = 1
 var direction: Vector2 = Vector2.ZERO
-var spriteScale: float = 0.45
+var spriteScale: float
+var collisionScale: float
+var parentPosition : Vector2
+var isNaveAliada : bool = false
 
 @onready var sprite : Sprite2D = $Sprite2D
 @onready var shootClip : AudioStreamPlayer = $"../Sounds/ShootClip"
+@onready var collision : CollisionShape2D = $Area2D/CollisionShape2D
 
 func _ready() -> void:
-	sprite.scale = Vector2(spriteScale, spriteScale)
-	shootClip.play()
+	if collisionScale:
+		collision.scale = Vector2(collisionScale, collisionScale)
+	if spriteScale:
+		sprite.scale = Vector2(spriteScale, spriteScale)
+	if !isNaveAliada:
+		shootClip.play()
+		
+	self.global_position = parentPosition
 	rotation = direction.angle()
 	remove_bullet()
 	

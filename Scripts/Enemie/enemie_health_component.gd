@@ -6,7 +6,7 @@ signal isDead
 
 @export var health: int = 5
 @onready var particles: Node = $"../particles"
-@onready var collision: CollisionShape2D = $"../GlobalArea2d/CollisionShape2D"
+@onready var collision: CollisionShape2D = $"../CollisionShape2D"
 @onready var health_collision: CollisionShape2D = $CollisionShape2D
 @onready var dead_clip: AudioStreamPlayer2D = $"../Sounds/EnemieDeadClip"
 var is_dead: bool = false
@@ -41,14 +41,18 @@ func check_heal():
 		enemie_dead()
 		
 func enemie_dead() ->void:
-	collision.set_deferred("disabled", true)
-	health_collision.disabled = true
+	call_deferred("_deferred_disable_collision")
+
 	if !dead_clip.playing:
 		dead_clip.play()
 	isDead.emit()
 	Signals.emit_signal("EnemieDead") # Señal global
 	show_dead_particles()
-
+	
+func _deferred_disable_collision() -> void:
+	collision.disabled = true
+	health_collision.disabled = true
+	
 func show_dead_particles() -> void:
 	var particle = particles.find_child("dead_GPUParticles2D")
 	particle.one_shot = true 

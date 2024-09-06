@@ -25,7 +25,5 @@ func _on_click_finished() -> void:
 	get_tree().paused = false  # Unpauses the game after reloading the scene
 	get_tree().reload_current_scene()
 
-
-func _on_texture_button_pressed() -> void:
-	print('h0la')
+func _on_power_up_button_nave_pressed() -> void:
 	pass # Replace with function body.

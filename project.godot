@@ -64,6 +64,7 @@ pointing/emulate_touch_from_mouse=true
 
 [layer_names]
 
+2d_physics/layer_1="Enviroment"
 2d_physics/layer_2="Player health component"
 2d_physics/layer_3="Enemie health component"
 2d_physics/layer_4="Player weapons"

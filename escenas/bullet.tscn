@@ -5,6 +5,8 @@
 [ext_resource type="Script" path="res://Scripts/Player/bullet_area_component.gd" id="2_skyrm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_elv13"]
+radius = 6.5
+height = 13.0
 
 [node name="Bullet" type="CharacterBody2D"]
 position = Vector2(230, 106.5)
@@ -14,7 +16,7 @@ script = ExtResource("1_kjx40")
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("2_skyrm")
-damage = 3
+damage = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CapsuleShape2D_elv13")

@@ -66,10 +66,13 @@ colors = PackedColorArray(1, 0, 0, 1, 0.941176, 0.494118, 0, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cd76h"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_huw21"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wyc6y"]
+size = Vector2(11.5, 11.5)
 
 [node name="Enemie" type="CharacterBody2D"]
 position = Vector2(231.5, 83)
+collision_layer = 3072
+collision_mask = 3072
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_c85vm")
@@ -150,12 +153,8 @@ shape = SubResource("CircleShape2D_cd76h")
 stream = ExtResource("9_83f4w")
 volume_db = 15.0
 
-[node name="GlobalArea2d" type="Area2D" parent="."]
-collision_layer = 1024
-collision_mask = 1024
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GlobalArea2d"]
-shape = SubResource("RectangleShape2D_huw21")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wyc6y")
 
 [connection signal="isDamaged" from="HealthComponent" to="." method="_on_health_component_is_damaged"]
 [connection signal="isDead" from="HealthComponent" to="." method="_on_health_component_is_dead"]

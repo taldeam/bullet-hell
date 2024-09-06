@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cfej6wvmwwl4a"]
+[gd_scene load_steps=12 format=3 uid="uid://cfej6wvmwwl4a"]
 
 [ext_resource type="Script" path="res://Scripts/Player/nave_aliada.gd" id="1_lnsro"]
 [ext_resource type="Shader" path="res://shaders/nave.gdshader" id="2_o6ado"]
@@ -34,16 +34,14 @@ curve_z = SubResource("Curve_igjur")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u2e77"]
 particle_flag_disable_z = true
 gravity = Vector3(0, 0, 0)
-scale_min = 0.03
-scale_max = 0.03
+scale_min = 0.01
+scale_max = 0.02
 scale_curve = SubResource("CurveXYZTexture_yyc8l")
 color = Color(1, 0.219608, 0.0431373, 1)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_b811t"]
-
 [node name="Nave_aliada" type="CharacterBody2D"]
-position = Vector2(134, 104.5)
 scale = Vector2(0.515, 0.515)
+motion_mode = 1
 script = ExtResource("1_lnsro")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -61,16 +59,8 @@ process_material = SubResource("ParticleProcessMaterial_u2e77")
 texture = ExtResource("4_t57ux")
 lifetime = 0.3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_b811t")
-disabled = true
-
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.2
 autostart = true
-
-[node name="SafeMode" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
