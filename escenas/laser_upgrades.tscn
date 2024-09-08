@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://q213aq5kud4g"]
 
 [ext_resource type="Shader" uid="uid://huu1jw5iqxyf" path="res://shader/laser_shader.tres" id="1_6r4iy"]
-[ext_resource type="Texture2D" uid="uid://ftdvv5a3jtbu" path="res://assets/efectos nave/upgrades/laser_upgrade.png" id="2_hq18a"]
+[ext_resource type="Texture2D" uid="uid://ftdvv5a3jtbu" path="res://Assets/efectos nave/upgrades/laser_upgrade.png" id="2_hq18a"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mihee"]
 shader = ExtResource("1_6r4iy")
@@ -12,9 +12,9 @@ shader_parameter/basic_texture = ExtResource("2_hq18a")
 [node name="Line2D" type="Line2D"]
 z_index = -1
 material = SubResource("ShaderMaterial_mihee")
-position = Vector2(-7.62939e-06, -118.5)
-scale = Vector2(0.117707, 0.14087)
-points = PackedVector2Array(-5.8501, 63, -7.52158, 790.07)
+position = Vector2(21, -115)
+scale = Vector2(0.117707, 0.142646)
+points = PackedVector2Array(-25.487, -546.807, -25.487, 731.171)
 width = 150.0
 default_color = Color(19.46, 0.679, 0.056, 1)
 texture_mode = 2

@@ -20,7 +20,7 @@ func _ready() -> void:
 func hit(area):
 	if area is Area_bullet:
 		health -= area.damage
-		area.bullet_hit(true)
+		area.bullet_hit(area.removeOnHit)
 		check_heal()
 		show_damage_particles()
 		isDamaged.emit(area.global_position)

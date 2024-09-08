@@ -72,6 +72,7 @@ pointing/emulate_touch_from_mouse=true
 2d_physics/layer_10="Player global collision"
 2d_physics/layer_11="Enemie global collision"
 2d_physics/layer_12="Player shield"
+2d_physics/layer_17="raycast"
 
 [physics]
 

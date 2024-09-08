@@ -13,6 +13,7 @@ extends CharacterBody2D
 @onready var sprite : Sprite2D = $Sprite2D
 @onready var collisionShape : CollisionShape2D = $CollisionShape2D
 @onready var closer_enemie : RayCast2D = $RayCast2D
+@onready var laser : Line2D = $Sprite2D/LaserRayos/LaserRayos
 
 var move_vector := Vector2.ZERO
 var last_angle = 0
@@ -29,7 +30,6 @@ var aliados_positions: Array[Vector2] = [
 	Vector2(22, -22),
 	Vector2(-22, 22)
 ]
-
 
 func _physics_process(delta: float) -> void:
 	# Movimiento basado en el joystick izquierdo
@@ -52,6 +52,20 @@ func _physics_process(delta: float) -> void:
 		var joystick_angle = joystick_right.output.angle() + sprite_angle_correction # esto ajusta el sprite
 		sprite.rotation = joystick_angle
 		last_angle = joystick_angle
+
+
+func _shoot_laser():
+	# REVISAR COMO ESTOY PSANDO TODOS LOS ELEMENTOS, CREAR ESCENA CON EL LASER Y HACER 
+	# QUE TODO FUNCIONE
+	var laserAreaTween : Tween = get_tree().create_tween()
+	$Sprite2D/LaserRayos/Cargando.play()
+	laserAreaTween.tween_property($Sprite2D/LaserRayos, "scale", Vector2(1,1113.74), 2).set_delay(4)
+	await get_tree().create_timer(4).timeout
+	$Sprite2D/LaserRayos/Disparo.play()
+	
+func _remove_laser():
+	var laserAreaTween : Tween = get_tree().create_tween()
+	laserAreaTween.tween_property($Sprite2D/LaserRayos, "scale", Vector2(1,0), 1.5).set_delay(5)
 
 func _state_shoot1():
 	var bullet_instance = bullet_scene.instantiate()
@@ -82,3 +96,8 @@ func _on_power_up_button_nave_pressed() -> void:
 		number_of_allies += 1  # Incrementa el número de aliados
 		# Elimina la posición después de usarla
 		aliados_positions.remove_at(0)  # Usa el índice correcto, aquí eliminas la posición utilizada (índice 0)
+
+func _on_laser_timer_timeout() -> void:
+	_shoot_laser()
+	call_deferred("_remove_laser")
+	

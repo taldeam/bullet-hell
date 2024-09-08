@@ -96,7 +96,7 @@ func _on_total_time_timeout() -> void:
 
 func showBuffPanel(current_time) -> void:
 	match current_time:
-		5.0, 15.0, 25.0, 35.0, 55.0, 120.0, 140.0:  # Añade más casos si es necesario
+		15.0, 35.0, 65.0, 105.0, 155.0, 220.0, 340.0:  # Añade más casos si es necesario
 			get_tree().paused = true
 			powerUpPanel.visible = true
 			_spawn_timer.stop()  # Detén el temporizador mientras el juego está en pausa
