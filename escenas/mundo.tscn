@@ -451,7 +451,7 @@ shader_parameter/speed = Vector2(2, 0)
 shader_parameter/basic_texture = ExtResource("32_xcoby")
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_nu0to"]
-b = Vector2(0, -48.3628)
+b = Vector2(0, -5.71567)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rp0qp"]
 
@@ -480,6 +480,7 @@ value = 5.0
 offset_top = -306.0
 offset_bottom = -6.0
 visibility_mode = 2
+use_input_actions = false
 
 [node name="Virtual joystick right" parent="UI2" instance=ExtResource("13_tdgpp")]
 anchors_preset = 3
@@ -782,6 +783,8 @@ disabled = true
 position = Vector2(-70, 65)
 motion_mode = 1
 script = ExtResource("27_yewa7")
+SPEED = 300.0
+friction = 300.0
 
 [node name="Escudo" type="GPUParticles2D" parent="Nave"]
 visible = false
@@ -821,7 +824,7 @@ scale = Vector2(1, 0.445)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("30_30qvv")
-damage = 5
+damage = 3
 removeOnHit = false
 
 [node name="LaserRayos" type="Line2D" parent="Nave/Sprite2D/LaserRayos"]
@@ -859,7 +862,6 @@ autostart = true
 collision_layer = 2
 collision_mask = 256
 script = ExtResource("31_c3s4m")
-playerHealth = 5000
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Nave/HealthComponent"]
 shape = SubResource("CircleShape2D_dahu2")

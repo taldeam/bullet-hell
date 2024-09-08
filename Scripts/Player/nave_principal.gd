@@ -34,7 +34,6 @@ var aliados_positions: Array[Vector2] = [
 func _physics_process(delta: float) -> void:
 	# Movimiento basado en el joystick izquierdo
 	var direction := joystick_left.output
-	
 	if direction != Vector2.ZERO:
 		direction = direction.normalized()
 		# Aumentar gradualmente el vector de movimiento en la dirección de la entrada
@@ -72,6 +71,7 @@ func _state_shoot1():
 	
 	bullet_instance.isNaveAliada = false
 	# Configurar la dirección de la bala
+
 	var shoot_direction = Vector2.RIGHT.rotated(joystick_right.output.angle())
 	# Configurar la posición local de la bala (puede que necesites ajustar esto)
 	bullet_instance.parentPosition = self.global_position

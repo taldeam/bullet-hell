@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://l3aproxdfaue"
+path="res://.godot/imported/shields-down-47607.mp3-d500160e74ff1d25dab235e084d43ce1.mp3str"
+
+[deps]
+
+source_file="res://Assets/Efectos de sonido/Powerups/shields-down-47607.mp3"
+dest_files=["res://.godot/imported/shields-down-47607.mp3-d500160e74ff1d25dab235e084d43ce1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

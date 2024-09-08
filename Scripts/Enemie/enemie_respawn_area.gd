@@ -4,6 +4,8 @@ extends Area2D
 @export var enemy_scene_1 : PackedScene = preload("res://escenas/enemie.tscn")
 @export var spawn_interval : float = 2.0
 @export var max_enemies : int = 5
+@export var enemies_respawn_cup : int = 10 # limite de enemigos por respaw
+@export var max_enemies_cup : int = 250 # limite de enemigos por simultaneos
 @export var min_spawn_interval : float = 0.1  # Tiempo mínimo entre spawns
 @export var spawn_decrement : float = 0.05  # Cantidad fija para disminuir el spawn interval
 @export var enemies_per_spawn : int = 1  # Cantidad de enemigos por spawn
@@ -83,9 +85,9 @@ func _on_enemy_exited() -> void:
 		_spawn_timer.wait_time = spawn_interval
 	
 	# Incrementar el número máximo de enemigos y la cantidad de enemigos por spawn
-	if _enemies_killed % 10 == 0:  # Cada 10 enemigos muertos
+	if _enemies_killed % 10 == 0 and max_enemies <= max_enemies_cup:  # Cada 10 enemigos muertos
 		max_enemies += 1
-		if _enemies_killed % 20 == 0:  # Cada 20 enemigos muertos
+		if _enemies_killed % 20 == 0 and enemies_per_spawn < enemies_respawn_cup:  # Cada 20 enemigos muertos
 			enemies_per_spawn += 1
 
 func _on_total_time_timeout() -> void:

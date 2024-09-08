@@ -64,4 +64,4 @@ func show_damage_particles() -> void:
 	particles.find_child("damaged_GPUParticles2D").emitting = true   # Inicia la emisión de partículas
 
 func _on_dead_gpu_particles_2d_finished() -> void:
-	get_parent().queue_free()
+	get_parent().call_deferred("queue_free")

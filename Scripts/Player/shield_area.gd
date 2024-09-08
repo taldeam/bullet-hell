@@ -5,9 +5,11 @@ class_name Area_shield
 @export var damage : float = 5
 @export var shield : float = 5
 @onready var shieldGpu : GPUParticles2D = $"../Escudo"
+@onready var shieldUpSound : AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	shieldUpSound.play()
 	area_entered.connect(hit)
 	shieldGpu.set_deferred("emitting", false)
 	shieldGpu.set_deferred("visible", false)
