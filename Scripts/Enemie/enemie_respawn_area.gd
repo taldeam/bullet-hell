@@ -1,5 +1,6 @@
 extends Area2D
 
+@onready var power_up_item : PackedScene = preload("res://escenas/GUI/power_up_item.tscn")
 @onready var powerUpPanel : Panel = $"../UI2/PowerUpsPanel"
 @export var enemy_scene_1 : PackedScene = preload("res://escenas/enemie.tscn")
 @export var spawn_interval : float = 2.0
@@ -21,6 +22,7 @@ var random = RandomNumberGenerator.new()
 
 func _ready() -> void:
 	random.randomize()
+	Signals.connect("EnableBuff", _hidePowerUpPanel, 0)
 
 	# Configuración del temporizador de spawn
 	_spawn_timer = Timer.new()
@@ -98,25 +100,40 @@ func _on_total_time_timeout() -> void:
 
 func showBuffPanel(current_time) -> void:
 	match current_time:
-		15.0, 35.0, 65.0, 105.0, 155.0, 220.0, 340.0:  # Añade más casos si es necesario
-			get_tree().paused = true
-			powerUpPanel.visible = true
-			_spawn_timer.stop()  # Detén el temporizador mientras el juego está en pausa
-			_total_time_timer.stop()  # Detén también el temporizador del tiempo total
+		2.0, 5.0, 10.0, 15.0, 20.0, 25.0, 30.0, 35.0, 40.0, 45.0, 50.0:
+			# buscamos que buff estan disponibles
+			var available_buffs = Signals.BuffArray.filter(func(item):
+				return not item["state"]
+			)
+			if available_buffs.size() <= 0:
+				print("No hay buffos disponibles!")
+				return
+			
+			var random_index = available_buffs.pick_random().buffKey
+
+			# instanciamos el tipo de buff y su label
+			var power_up_item_instance = power_up_item.instantiate()
+			power_up_item_instance.get_node("PowerUpButton").buffType = Signals.BuffArray[random_index].buffKey
+			power_up_item_instance.get_node("Label").text = Signals.BuffArray[random_index].buffLabel
+			powerUpPanel.find_child("HBoxContainer").add_child(power_up_item_instance)
+			# mostramos el panel
+			_showPowerUpPanel()
 		_:
 			pass
 
-
-#! Tengo que hacer algo con esto, estandarizarlo
-func _on_power_up_button_pressed() -> void:
+func removeBuffButtons() -> void:
+	for child in powerUpPanel.find_child("HBoxContainer").get_children():
+		child.queue_free()
+		
+func _hidePowerUpPanel(buff) -> void:
+	call_deferred("removeBuffButtons")
 	powerUpPanel.visible = false
 	get_tree().paused = false
 	_spawn_timer.start()
-	_total_time_timer.start()  # Reanuda el temporizador del tiempo total
-
-
-func _on_power_up_button_nave_pressed() -> void:
-	powerUpPanel.visible = false
-	get_tree().paused = false
-	_spawn_timer.start()
-	_total_time_timer.start()  # Reanuda el temporizador del tiempo total
+	_total_time_timer.start()
+	
+func _showPowerUpPanel() ->void:
+	get_tree().paused = true
+	powerUpPanel.visible = true
+	_spawn_timer.stop()  # Detén el temporizador mientras el juego está en pausa
+	_total_time_timer.stop()  # Detén también el temporizador del tiempo total

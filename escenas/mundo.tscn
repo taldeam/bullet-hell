@@ -564,78 +564,20 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("9_mcngb")
 
-[node name="PowerUpItem" type="Control" parent="UI2/PowerUpsPanel"]
-anchors_preset = 0
-offset_left = 49.0
-offset_top = 87.0
-offset_right = 255.0
-offset_bottom = 236.0
-
-[node name="PowerUpButton" type="Button" parent="UI2/PowerUpsPanel/PowerUpItem"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI2/PowerUpsPanel"]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -38.5
-offset_top = -75.0
-offset_right = 38.5
+anchor_bottom = 0.5
+offset_left = -252.0
+offset_top = -90.5
+offset_right = 252.0
+offset_bottom = 90.5
 grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("9_mcngb")
-action_mode = 0
-
-[node name="Label" type="Label" parent="UI2/PowerUpsPanel/PowerUpItem"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -85.5
-offset_right = 85.5
-offset_bottom = 66.0
-grow_horizontal = 2
-theme = ExtResource("9_mcngb")
-text = "Añade un escudo a tu nave que resiste hasta 5 colisiones"
-horizontal_alignment = 1
-autowrap_mode = 2
-
-[node name="PowerUpItem2" type="Control" parent="UI2/PowerUpsPanel"]
-anchors_preset = 0
-offset_left = 268.0
-offset_top = 87.5
-offset_right = 474.0
-offset_bottom = 236.5
-
-[node name="PowerUpButtonNave" type="Button" parent="UI2/PowerUpsPanel/PowerUpItem2"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -38.5
-offset_top = -75.0
-offset_right = 38.5
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("9_mcngb")
-action_mode = 0
-
-[node name="Label" type="Label" parent="UI2/PowerUpsPanel/PowerUpItem2"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -85.5
-offset_right = 85.5
-offset_bottom = 66.0
-grow_horizontal = 2
-theme = ExtResource("9_mcngb")
-text = "Añade una nave aliada"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
+grow_vertical = 2
+alignment = 1
 
 [node name="Enemies_in_game" type="Control" parent="UI2"]
 layout_mode = 3
@@ -873,10 +815,6 @@ one_shot = true
 
 [connection signal="pressed" from="UI2/PanelDied/TouchScreenButton" to="UI2" method="_on_touch_screen_button_pressed"]
 [connection signal="finished" from="UI2/Sounds/Click" to="UI2" method="_on_click_finished"]
-[connection signal="pressed" from="UI2/PowerUpsPanel/PowerUpItem/PowerUpButton" to="RespawnArea" method="_on_power_up_button_pressed"]
-[connection signal="pressed" from="UI2/PowerUpsPanel/PowerUpItem/PowerUpButton" to="Nave" method="_on_power_up_button_pressed"]
-[connection signal="pressed" from="UI2/PowerUpsPanel/PowerUpItem2/PowerUpButtonNave" to="RespawnArea" method="_on_power_up_button_nave_pressed"]
-[connection signal="pressed" from="UI2/PowerUpsPanel/PowerUpItem2/PowerUpButtonNave" to="Nave" method="_on_power_up_button_nave_pressed"]
 [connection signal="timeout" from="Nave/Sprite2D/LaserRayos/laserTimer" to="Nave" method="_on_laser_timer_timeout"]
 [connection signal="timeout" from="Nave/Timer" to="Nave" method="_on_timer_timeout"]
 [connection signal="timeout" from="Nave/SafeMode" to="Nave/HealthComponent" method="_on_safe_mode_timeout"]

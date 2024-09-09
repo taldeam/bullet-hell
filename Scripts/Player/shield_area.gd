@@ -38,3 +38,4 @@ func removeShieldGpu() -> void:
 	shieldGpu.set_deferred("visible", false)
 	shieldGpu.set_deferred("amount_ratio", 0)
 	self.queue_free()
+	Signals.BuffArray[0].state = false

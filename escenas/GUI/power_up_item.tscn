@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://thnqsgnp8rps"]
+
+[ext_resource type="Theme" uid="uid://bsidgnggcaxhp" path="res://GUI/GUI_themes/GUI_theme.tres" id="1_70iwq"]
+[ext_resource type="Script" path="res://Scripts/GUI/power_up_button.gd" id="2_8et66"]
+
+[node name="PowerUpItem" type="Control"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 3
+anchors_preset = 0
+
+[node name="PowerUpButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -38.5
+offset_top = -75.0
+offset_right = 38.5
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_70iwq")
+action_mode = 0
+script = ExtResource("2_8et66")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -85.5
+offset_right = 85.5
+offset_bottom = 66.0
+grow_horizontal = 2
+theme = ExtResource("1_70iwq")
+text = "Añade un escudo a tu nave que resiste hasta 5 colisiones"
+horizontal_alignment = 1
+autowrap_mode = 2

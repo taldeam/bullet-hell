@@ -31,6 +31,9 @@ var aliados_positions: Array[Vector2] = [
 	Vector2(-22, 22)
 ]
 
+func _ready() -> void:
+	Signals.connect("EnableBuff", _on_power_up_button_buff_type_signal)
+
 func _physics_process(delta: float) -> void:
 	# Movimiento basado en el joystick izquierdo
 	var direction := joystick_left.output
@@ -52,20 +55,6 @@ func _physics_process(delta: float) -> void:
 		sprite.rotation = joystick_angle
 		last_angle = joystick_angle
 
-
-func _shoot_laser():
-	# REVISAR COMO ESTOY PSANDO TODOS LOS ELEMENTOS, CREAR ESCENA CON EL LASER Y HACER 
-	# QUE TODO FUNCIONE
-	var laserAreaTween : Tween = get_tree().create_tween()
-	$Sprite2D/LaserRayos/Cargando.play()
-	laserAreaTween.tween_property($Sprite2D/LaserRayos, "scale", Vector2(1,1113.74), 2).set_delay(4)
-	await get_tree().create_timer(4).timeout
-	$Sprite2D/LaserRayos/Disparo.play()
-	
-func _remove_laser():
-	var laserAreaTween : Tween = get_tree().create_tween()
-	laserAreaTween.tween_property($Sprite2D/LaserRayos, "scale", Vector2(1,0), 1.5).set_delay(5)
-
 func _state_shoot1():
 	var bullet_instance = bullet_scene.instantiate()
 	
@@ -84,11 +73,12 @@ func _on_timer_timeout() -> void: # velocidad de ataque
 	if joystick_right and joystick_right.is_pressed:
 		_state_shoot1()
 
-func _on_power_up_button_pressed() -> void:
+# POWERUPS
+func activate_shield() -> void:
 	var instance = shieldEscene.instantiate()
 	add_child(instance)
 
-func _on_power_up_button_nave_pressed() -> void:
+func activate_ally_ship() -> void:
 	if	aliados_positions.size() > 0:
 		var nave_aliada_instance = nave_aliada.instantiate()
 		nave_aliada_instance.parentPosition = aliados_positions[0]  # Asegúrate de usar la propiedad `position`
@@ -97,7 +87,34 @@ func _on_power_up_button_nave_pressed() -> void:
 		# Elimina la posición después de usarla
 		aliados_positions.remove_at(0)  # Usa el índice correcto, aquí eliminas la posición utilizada (índice 0)
 
+func _shoot_laser():
+	# REVISAR COMO ESTOY PSANDO TODOS LOS ELEMENTOS, CREAR ESCENA CON EL LASER Y HACER 
+	# QUE TODO FUNCIONE
+	var laserAreaTween : Tween = get_tree().create_tween()
+	$Sprite2D/LaserRayos/Cargando.play()
+	laserAreaTween.tween_property($Sprite2D/LaserRayos, "scale", Vector2(1,1113.74), 2).set_delay(4)
+	await get_tree().create_timer(4).timeout
+	$Sprite2D/LaserRayos/Disparo.play()
+	
+func _remove_laser():
+	var laserAreaTween : Tween = get_tree().create_tween()
+	laserAreaTween.tween_property($Sprite2D/LaserRayos, "scale", Vector2(1,0), 1.5).set_delay(5)
+
 func _on_laser_timer_timeout() -> void:
 	_shoot_laser()
 	call_deferred("_remove_laser")
-	
+# END POWERUPS
+
+func _on_power_up_button_buff_type_signal(buffType) -> void:
+	match buffType:
+		"escudo":
+			activate_shield()
+			Signals.BuffArray[0].state = true
+		"laser":
+			Signals.BuffArray[1].state = true
+		"nave":
+			activate_ally_ship()
+			if number_of_allies >= 8:
+				Signals.BuffArray[2].state = true
+		_:
+			pass
