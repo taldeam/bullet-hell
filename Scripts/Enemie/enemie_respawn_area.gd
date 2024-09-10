@@ -10,9 +10,12 @@ extends Area2D
 @export var min_spawn_interval : float = 0.1  # Tiempo mínimo entre spawns
 @export var spawn_decrement : float = 0.05  # Cantidad fija para disminuir el spawn interval
 @export var enemies_per_spawn : int = 1  # Cantidad de enemigos por spawn
+@export var TIME_TO_SHOW_BUFFPANEL : int = 120
+
 var enemy_scenes : Array = []
 
 var _spawn_timer : Timer
+var buff_panel_timer : Timer
 var _total_time_timer : Timer  # Nuevo temporizador para el tiempo total transcurrido
 var _total_time_elapsed : float = 0.0  # Variable para almacenar el tiempo total transcurrido
 
@@ -21,6 +24,12 @@ var _enemies_killed : int = 0
 var random = RandomNumberGenerator.new()
 
 func _ready() -> void:
+	buff_panel_timer = Timer.new()
+	buff_panel_timer.wait_time = TIME_TO_SHOW_BUFFPANEL 
+	buff_panel_timer.connect("timeout", Callable(self, "showBuffPanel"))
+	add_child(buff_panel_timer)
+	buff_panel_timer.start()
+
 	random.randomize()
 	Signals.connect("EnableBuff", _hidePowerUpPanel, 0)
 
@@ -95,31 +104,46 @@ func _on_enemy_exited() -> void:
 func _on_total_time_timeout() -> void:
 	# Incrementar el tiempo total transcurrido en segundos
 	_total_time_elapsed += 1.0
-	# Puedes añadir aquí lógica para lo que quieras hacer con el tiempo transcurrido
-	showBuffPanel(_total_time_elapsed)
 
-func showBuffPanel(current_time) -> void:
-	match current_time:
-		2.0, 5.0, 10.0, 15.0, 20.0, 25.0, 30.0, 35.0, 40.0, 45.0, 50.0:
-			# buscamos que buff estan disponibles
-			var available_buffs = Signals.BuffArray.filter(func(item):
-				return not item["state"]
-			)
-			if available_buffs.size() <= 0:
-				print("No hay buffos disponibles!")
-				return
+
+func showBuffPanel() -> void:
+	# Verifica si el tiempo actual es un múltiplo de 60.0 segundos
+	addPowerUpButtonToPanel(2)
+	
+	#var time = int(abs(current_time));
+	#print(time)
+	#if time > 10 and (time % 120 == 0):  # Usar 60.0 como float y tolerancia también como float
+
 			
-			var random_index = available_buffs.pick_random().buffKey
+func addPowerUpButtonToPanel(numOfButtons) -> void:
+	# Lista para almacenar los índices seleccionados
+	# Ya que si no, puede repetir buff en la segunda vuelta
+	var used_indices : Array = []
+	var show_buff_panel : bool = false
 
-			# instanciamos el tipo de buff y su label
-			var power_up_item_instance = power_up_item.instantiate()
-			power_up_item_instance.get_node("PowerUpButton").buffType = Signals.BuffArray[random_index].buffKey
-			power_up_item_instance.get_node("Label").text = Signals.BuffArray[random_index].buffLabel
-			powerUpPanel.find_child("HBoxContainer").add_child(power_up_item_instance)
-			# mostramos el panel
-			_showPowerUpPanel()
-		_:
-			pass
+	for i in range(numOfButtons):
+		# Filtramos los buffs disponibles del array global
+		var available_buffs = Signals.BuffArray.filter(func(item):
+			return not item["state"] and item["buffKey"] not in used_indices
+		)
+
+		if available_buffs.size() <= 0:
+			print("No hay buffos disponibles!")
+			break
+
+		show_buff_panel = true
+		var random_buff_json = available_buffs.pick_random()
+		# Añadimos el índice seleccionado a la lista de índices usados
+		used_indices.append(random_buff_json.buffKey)
+
+		# Instanciamos el tipo de buff y su label
+		var power_up_item_instance = power_up_item.instantiate()
+		power_up_item_instance.get_node("PowerUpButton").buffType = random_buff_json.buffKey
+		power_up_item_instance.get_node("Label").text = random_buff_json.buffLabel
+		powerUpPanel.find_child("HBoxContainer").add_child(power_up_item_instance)
+	
+	if show_buff_panel:
+		_showPowerUpPanel()
 
 func removeBuffButtons() -> void:
 	for child in powerUpPanel.find_child("HBoxContainer").get_children():
@@ -129,11 +153,7 @@ func _hidePowerUpPanel(buff) -> void:
 	call_deferred("removeBuffButtons")
 	powerUpPanel.visible = false
 	get_tree().paused = false
-	_spawn_timer.start()
-	_total_time_timer.start()
 	
 func _showPowerUpPanel() ->void:
 	get_tree().paused = true
 	powerUpPanel.visible = true
-	_spawn_timer.stop()  # Detén el temporizador mientras el juego está en pausa
-	_total_time_timer.stop()  # Detén también el temporizador del tiempo total

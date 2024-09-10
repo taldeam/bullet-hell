@@ -7,13 +7,13 @@ extends CharacterBody2D
 @onready var shieldEscene : PackedScene = preload("res://escenas/shield_area.tscn")
 @onready var bullet_scene : PackedScene = preload("res://escenas/bullet.tscn")
 @onready var nave_aliada : PackedScene = preload("res://escenas/nave_aliada.tscn")
+@onready var rayo_layer : PackedScene = preload("res://escenas/nave_aliada/laser_rayos.tscn")
 
 @onready var joystick_left : VirtualJoystick = $"../UI2/Virtual joystick left"
 @onready var joystick_right : VirtualJoystick = $"../UI2/Virtual joystick right"
-@onready var sprite : Sprite2D = $Sprite2D
+@onready var sprite : Sprite2D = $mainSprite
 @onready var collisionShape : CollisionShape2D = $CollisionShape2D
 @onready var closer_enemie : RayCast2D = $RayCast2D
-@onready var laser : Line2D = $Sprite2D/LaserRayos/LaserRayos
 
 var move_vector := Vector2.ZERO
 var last_angle = 0
@@ -87,22 +87,10 @@ func activate_ally_ship() -> void:
 		# Elimina la posición después de usarla
 		aliados_positions.remove_at(0)  # Usa el índice correcto, aquí eliminas la posición utilizada (índice 0)
 
-func _shoot_laser():
-	# REVISAR COMO ESTOY PSANDO TODOS LOS ELEMENTOS, CREAR ESCENA CON EL LASER Y HACER 
-	# QUE TODO FUNCIONE
-	var laserAreaTween : Tween = get_tree().create_tween()
-	$Sprite2D/LaserRayos/Cargando.play()
-	laserAreaTween.tween_property($Sprite2D/LaserRayos, "scale", Vector2(1,1113.74), 2).set_delay(4)
-	await get_tree().create_timer(4).timeout
-	$Sprite2D/LaserRayos/Disparo.play()
-	
-func _remove_laser():
-	var laserAreaTween : Tween = get_tree().create_tween()
-	laserAreaTween.tween_property($Sprite2D/LaserRayos, "scale", Vector2(1,0), 1.5).set_delay(5)
+func activate_laser() -> void:
+	var instance = rayo_layer.instantiate()
+	sprite.add_child(instance)
 
-func _on_laser_timer_timeout() -> void:
-	_shoot_laser()
-	call_deferred("_remove_laser")
 # END POWERUPS
 
 func _on_power_up_button_buff_type_signal(buffType) -> void:
@@ -111,6 +99,7 @@ func _on_power_up_button_buff_type_signal(buffType) -> void:
 			activate_shield()
 			Signals.BuffArray[0].state = true
 		"laser":
+			activate_laser()
 			Signals.BuffArray[1].state = true
 		"nave":
 			activate_ally_ship()

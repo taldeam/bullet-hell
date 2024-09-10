@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://bfyjde4hxwpxy"]
+
+[ext_resource type="Script" path="res://Scripts/Player/bullet_area_component.gd" id="1_fegv8"]
+[ext_resource type="Shader" uid="uid://huu1jw5iqxyf" path="res://shader/laser_shader.tres" id="2_750gk"]
+[ext_resource type="Texture2D" uid="uid://ftdvv5a3jtbu" path="res://Assets/efectos nave/upgrades/laser_upgrade.png" id="3_5hxh0"]
+[ext_resource type="AudioStream" uid="uid://d30axxqb62pcw" path="res://Assets/Efectos de sonido/Shoots/charge_laser.mp3" id="4_nfdhb"]
+[ext_resource type="AudioStream" uid="uid://cslpo7ar0bpte" path="res://Assets/Efectos de sonido/Shoots/shoot_laser.mp3" id="5_jiylp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mihee"]
+shader = ExtResource("2_750gk")
+shader_parameter/vanishing_value = 0.0
+shader_parameter/speed = Vector2(2, 0)
+shader_parameter/basic_texture = ExtResource("3_5hxh0")
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_nu0to"]
+b = Vector2(0, -5.71567)
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_2hu7t"]
+loop = false
+stream_count = 2
+stream_0 = ExtResource("4_nfdhb")
+stream_1 = ExtResource("5_jiylp")
+
+[node name="LaserRayos" type="Area2D"]
+scale = Vector2(1, 0.445)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_fegv8")
+damage = 3
+removeOnHit = false
+
+[node name="LaserRayos" type="Line2D" parent="."]
+z_index = -1
+material = SubResource("ShaderMaterial_mihee")
+scale = Vector2(352.072, -0.720698)
+points = PackedVector2Array(0, 0, 0, 159.525)
+width = 2.0
+default_color = Color(19.46, 0.679, 0.056, 1)
+texture_mode = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(116.05, 54.06)
+shape = SubResource("SegmentShape2D_nu0to")
+
+[node name="laserTimer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[node name="laser_clip" type="AudioStreamPlayer2D" parent="."]
+scale = Vector2(1, 2.24719)
+stream = SubResource("AudioStreamPlaylist_2hu7t")
+
+[connection signal="timeout" from="laserTimer" to="." method="_on_laser_timer_timeout"]

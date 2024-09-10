@@ -3,7 +3,7 @@ class_name Player_health_component
 
 @export var playerHealth : int = 5
 @onready var playerHealthVar : TextureProgressBar = $"../../UI2/TextureProgressBar"
-@onready var sprite : Sprite2D = $"../Sprite2D"
+@onready var sprite : Sprite2D = $"../mainSprite"
 @onready var collision : CollisionShape2D = $CollisionShape2D
 @onready var safeModeTimer : Timer = $"../SafeMode"
 @onready var camera: Camera2D = $"../Camera2D"
