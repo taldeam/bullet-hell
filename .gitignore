@@ -9,3 +9,5 @@ export/
 # System and editor-specific files
 *.tmp
 *.log
+
+**/*.import
