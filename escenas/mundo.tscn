@@ -456,9 +456,9 @@ modulate = Color(1, 1, 1, 0.509804)
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -183.0
+offset_left = -188.0
 offset_top = 22.0
-offset_right = -33.0
+offset_right = -38.0
 offset_bottom = 62.0
 grow_horizontal = 0
 value = 5.0
@@ -702,6 +702,7 @@ max_distance = 10000.0
 [node name="RespawnArea" type="Area2D" parent="."]
 position = Vector2(-684, 453)
 script = ExtResource("17_voiut")
+TIME_TO_SHOW_BUFFPANEL = 45
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RespawnArea"]
 shape = SubResource("RectangleShape2D_rpbj7")
@@ -729,7 +730,6 @@ speed_scale = 50.0
 fixed_fps = 60
 
 [node name="Camera2D" type="Camera2D" parent="Nave"]
-zoom = Vector2(0.7, 0.7)
 
 [node name="mainSprite" type="Sprite2D" parent="Nave"]
 material = SubResource("ShaderMaterial_a2n5l")

@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=3 uid="uid://di85ofwl1n75j"]
+
+[ext_resource type="Script" path="res://Scripts/GUI/start_page.gd" id="1_6ppam"]
+[ext_resource type="Texture2D" uid="uid://giwuvejvt8fk" path="res://GUI/PNG/Main_Menu/BG.png" id="1_rfyxh"]
+[ext_resource type="Theme" uid="uid://bsidgnggcaxhp" path="res://GUI/GUI_themes/GUI_theme.tres" id="2_v3af7"]
+
+[node name="Control" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6ppam")
+
+[node name="Bg" type="Sprite2D" parent="."]
+position = Vector2(654, 359)
+rotation = 1.5708
+scale = Vector2(0.72, 0.72)
+texture = ExtResource("1_rfyxh")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 344.0
+offset_top = 114.0
+offset_right = 963.0
+offset_bottom = 551.0
+theme = ExtResource("2_v3af7")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.5
+offset_top = -86.5
+offset_right = 122.5
+offset_bottom = -18.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_v3af7")
+text = "START"
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.5
+offset_top = -47.0
+offset_right = 51.5
+offset_bottom = 47.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.992858, 1)
+text = "	"
+
+[connection signal="pressed" from="Panel/Button" to="." method="_on_button_pressed"]
