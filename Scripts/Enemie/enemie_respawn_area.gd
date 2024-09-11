@@ -10,7 +10,7 @@ extends Area2D
 @export var min_spawn_interval : float = 0.1  # Tiempo mínimo entre spawns
 @export var spawn_decrement : float = 0.03  # Cantidad fija para disminuir el spawn interval
 @export var enemies_per_spawn : int = 1  # Cantidad de enemigos por spawn
-@export var TIME_TO_SHOW_BUFFPANEL : int = 120
+@export var TIME_TO_SHOW_BUFFPANEL : int = 60
 
 var enemy_scenes : Array = []
 
