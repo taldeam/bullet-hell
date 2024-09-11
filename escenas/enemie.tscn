@@ -1,14 +1,21 @@
-[gd_scene load_steps=23 format=3 uid="uid://dyfgwd5c0xx13"]
+[gd_scene load_steps=25 format=3 uid="uid://dyfgwd5c0xx13"]
 
 [ext_resource type="Script" path="res://Scripts/Enemie/enemie_1.gd" id="1_c85vm"]
-[ext_resource type="Texture2D" uid="uid://di0vgsftc8vsb" path="res://assets/nave y enemigos/ShipsPNG/ship8.png" id="2_whfn3"]
-[ext_resource type="Texture2D" uid="uid://cltp4b018ia0u" path="res://assets/nave y enemigos/ShipsPNG/ship4.png" id="3_7wlk1"]
+[ext_resource type="Shader" path="res://shaders/nave.gdshader" id="2_tc5ps"]
+[ext_resource type="Texture2D" uid="uid://di0vgsftc8vsb" path="res://__assets/nave y enemigos/ShipsPNG/ship8.png" id="2_whfn3"]
 [ext_resource type="Script" path="res://Scripts/Enemie/enemie_health_component.gd" id="3_w2xo1"]
-[ext_resource type="Texture2D" uid="uid://dvmww85rb2qg7" path="res://assets/efectos nave/efectos explosion/cuidado que explota.jpg" id="4_mvhch"]
-[ext_resource type="Texture2D" uid="uid://dfvriy8sexnly" path="res://assets/nave y enemigos/ShipsPNG/ship2.png" id="4_wqk1r"]
-[ext_resource type="Texture2D" uid="uid://cul051evbfq3g" path="res://assets/nave y enemigos/ShipsPNG/ship7.png" id="5_1j33y"]
+[ext_resource type="Texture2D" uid="uid://dfvriy8sexnly" path="res://__assets/nave y enemigos/ShipsPNG/ship2.png" id="4_0tu23"]
+[ext_resource type="Texture2D" uid="uid://dvmww85rb2qg7" path="res://__assets/efectos nave/efectos explosion/cuidado que explota.jpg" id="4_mvhch"]
+[ext_resource type="Texture2D" uid="uid://y75bdhxj26gy" path="res://__assets/nave y enemigos/ShipsPNG/ship3.png" id="5_qrly2"]
+[ext_resource type="Texture2D" uid="uid://cltp4b018ia0u" path="res://__assets/nave y enemigos/ShipsPNG/ship4.png" id="6_0siwl"]
 [ext_resource type="Script" path="res://Scripts/Enemie/enemie_hit_component.gd" id="8_cl3he"]
 [ext_resource type="AudioStream" uid="uid://t4yj30wk742n" path="res://Assets/Efectos de sonido/Explosiones/huge-distant-explosion-25317 (mp3cut.net).mp3" id="9_83f4w"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gux7l"]
+resource_local_to_scene = true
+shader = ExtResource("2_tc5ps")
+shader_parameter/flash_color = Vector4(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c5g04"]
 
@@ -79,23 +86,27 @@ script = ExtResource("1_c85vm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
+material = SubResource("ShaderMaterial_gux7l")
 scale = Vector2(0.035, 0.035)
 texture = ExtResource("2_whfn3")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 visible = false
+material = SubResource("ShaderMaterial_gux7l")
 scale = Vector2(0.035, 0.035)
-texture = ExtResource("3_7wlk1")
+texture = ExtResource("4_0tu23")
 
 [node name="Sprite2D3" type="Sprite2D" parent="."]
 visible = false
+material = SubResource("ShaderMaterial_gux7l")
 scale = Vector2(0.035, 0.035)
-texture = ExtResource("4_wqk1r")
+texture = ExtResource("5_qrly2")
 
 [node name="Sprite2D4" type="Sprite2D" parent="."]
 visible = false
+material = SubResource("ShaderMaterial_gux7l")
 scale = Vector2(0.035, 0.035)
-texture = ExtResource("5_1j33y")
+texture = ExtResource("6_0siwl")
 
 [node name="HealthComponent" type="Area2D" parent="."]
 collision_layer = 2048
@@ -158,4 +169,5 @@ shape = SubResource("RectangleShape2D_wyc6y")
 
 [connection signal="isDamaged" from="HealthComponent" to="." method="_on_health_component_is_damaged"]
 [connection signal="isDead" from="HealthComponent" to="." method="_on_health_component_is_dead"]
+[connection signal="isHited" from="HealthComponent" to="." method="_on_health_component_is_hited"]
 [connection signal="finished" from="particles/dead_GPUParticles2D" to="HealthComponent" method="_on_dead_gpu_particles_2d_finished"]

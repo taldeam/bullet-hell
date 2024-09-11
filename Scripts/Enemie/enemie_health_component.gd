@@ -3,12 +3,15 @@ class_name Enemie_health_component
 
 signal isDamaged
 signal isDead
+signal isHited
 
 @export var health: int = 3
 @onready var particles: Node = $"../particles"
 @onready var collision: CollisionShape2D = $"../CollisionShape2D"
 @onready var health_collision: CollisionShape2D = $CollisionShape2D
 @onready var dead_clip: AudioStreamPlayer2D = $"../Sounds/EnemieDeadClip"
+@onready var sprite : Sprite2D = $"../Sprite2D"
+
 var is_dead: bool = false
 
 # Called when the node enters the scene tree for the first time.
@@ -29,7 +32,10 @@ func hit(area):
 		check_heal()
 		show_damage_particles()
 		isDamaged.emit(area.global_position)
+		
+	isHited.emit()
 
+	
 func on_player_hit():
 	if not is_dead:
 		enemie_dead()

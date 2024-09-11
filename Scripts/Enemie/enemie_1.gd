@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var sprite2 : Sprite2D = $Sprite2D2
 @onready var sprite3 : Sprite2D = $Sprite2D3
 @onready var sprite4 : Sprite2D = $Sprite2D4
+@onready var tweenFlash : Tween
 
 var sprites : Array
 var selectedSprite : Sprite2D
@@ -62,3 +63,19 @@ func _on_health_component_is_damaged(damage_origin: Vector2) -> void:
 
 func _on_health_component_is_dead() -> void:
 	isDead = true
+
+
+func _on_health_component_is_hited() -> void:
+	tweenFlash = get_tree().create_tween()
+	tweenFlash.tween_property(
+		selectedSprite.material, 
+		"shader_parameter/flash_modifier", 
+		0.8,
+		0.2,
+	)
+	tweenFlash.chain().tween_property(
+		selectedSprite.material, 
+		"shader_parameter/flash_modifier", 
+		0.0,
+		0.2,
+	)

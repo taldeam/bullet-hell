@@ -44,7 +44,7 @@ func flash():
 			0.2,
 		)
 		# Apagamos el flash (bajando el valor)
-		tween.tween_property(
+		tween.chain().tween_property(
 			sprite.material, 
 			"shader_parameter/flash_modifier", 
 			0.0,
