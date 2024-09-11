@@ -5,11 +5,13 @@ extends Button
 enum BuffEnum {
 	ESCUDO,
 	LASER,
-	NAVE
+	NAVE,
+	ATTACK_SPEED,
+	ATTACK_SPEED_ALLY
 }
 
 # Array que mapea los valores del enum a strings
-var buffTypeStrings = ["escudo", "laser", "nave"]
+var buffTypeStrings = ["escudo", "laser", "nave", "attack_speed", "attack_speed_ally"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

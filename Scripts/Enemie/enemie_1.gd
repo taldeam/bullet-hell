@@ -1,12 +1,13 @@
 extends CharacterBody2D
 
-@export var SPEED: float = 45.0
+@export var SPEED: float = 20.0
 
 @onready var player : CharacterBody2D = $"../Nave"
 @onready var sprite : Sprite2D = $Sprite2D
 @onready var sprite2 : Sprite2D = $Sprite2D2
 @onready var sprite3 : Sprite2D = $Sprite2D3
 @onready var sprite4 : Sprite2D = $Sprite2D4
+
 var sprites : Array
 var selectedSprite : Sprite2D
 @export var knockback_strength = 1000
@@ -41,15 +42,23 @@ func move_to_player():
 	else:
 		velocity = Vector2.ZERO
 
+	
 func _on_health_component_is_damaged(damage_origin: Vector2) -> void:
 	# Calcula la dirección del knockback
 	if !isDead:
-		var knockback_direction = (position - damage_origin).normalized()
-		
-		var new_position = position + (knockback_direction * knockback_strength * get_process_delta_time())
-		var tween := create_tween()
-		# Anima el nodo hacia la nueva posición usando Tween
-		tween.tween_property(self, "position", new_position, 0.2)
+		# mejorar el nockup
+
+		# TEMPORAL
+		SPEED = 5.00
+		await get_tree().create_timer(0.1).timeout
+		SPEED = 20.0
+			
+		#var knockback_direction = (position - damage_origin).normalized()
+		#
+		#var new_position = position + (knockback_direction * knockback_strength * get_process_delta_time())
+		#var tween := create_tween()
+		## Anima el nodo hacia la nueva posición usando Tween
+		#tween.tween_property(self, "position", new_position, 0.2)
 
 func _on_health_component_is_dead() -> void:
 	isDead = true

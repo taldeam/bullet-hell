@@ -8,7 +8,7 @@ extends Area2D
 @export var enemies_respawn_cup : int = 10 # limite de enemigos por respaw
 @export var max_enemies_cup : int = 250 # limite de enemigos por simultaneos
 @export var min_spawn_interval : float = 0.1  # Tiempo mínimo entre spawns
-@export var spawn_decrement : float = 0.05  # Cantidad fija para disminuir el spawn interval
+@export var spawn_decrement : float = 0.03  # Cantidad fija para disminuir el spawn interval
 @export var enemies_per_spawn : int = 1  # Cantidad de enemigos por spawn
 @export var TIME_TO_SHOW_BUFFPANEL : int = 120
 
@@ -96,15 +96,14 @@ func _on_enemy_exited() -> void:
 		_spawn_timer.wait_time = spawn_interval
 	
 	# Incrementar el número máximo de enemigos y la cantidad de enemigos por spawn
-	if _enemies_killed % 10 == 0 and max_enemies <= max_enemies_cup:  # Cada 10 enemigos muertos
+	if _enemies_killed % 15 == 0 and max_enemies <= max_enemies_cup:  # Cada 15 enemigos muertos
 		max_enemies += 1
-		if _enemies_killed % 20 == 0 and enemies_per_spawn < enemies_respawn_cup:  # Cada 20 enemigos muertos
+		if _enemies_killed % 30 == 0 and enemies_per_spawn < enemies_respawn_cup:  # Cada 30 enemigos muertos
 			enemies_per_spawn += 1
 
 func _on_total_time_timeout() -> void:
 	# Incrementar el tiempo total transcurrido en segundos
 	_total_time_elapsed += 1.0
-
 
 func showBuffPanel() -> void:
 	# Verifica si el tiempo actual es un múltiplo de 60.0 segundos

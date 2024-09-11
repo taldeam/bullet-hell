@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Player/bullet_area_component.gd" id="1_fegv8"]
 [ext_resource type="Shader" uid="uid://huu1jw5iqxyf" path="res://shader/laser_shader.tres" id="2_750gk"]
-[ext_resource type="Texture2D" uid="uid://ftdvv5a3jtbu" path="res://Assets/efectos nave/upgrades/laser_upgrade.png" id="3_5hxh0"]
+[ext_resource type="Texture2D" uid="uid://ftdvv5a3jtbu" path="res://assets/efectos nave/upgrades/laser_upgrade.png" id="3_5hxh0"]
 [ext_resource type="AudioStream" uid="uid://d30axxqb62pcw" path="res://Assets/Efectos de sonido/Shoots/charge_laser.mp3" id="4_nfdhb"]
 [ext_resource type="AudioStream" uid="uid://cslpo7ar0bpte" path="res://Assets/Efectos de sonido/Shoots/shoot_laser.mp3" id="5_jiylp"]
 
@@ -44,7 +44,6 @@ shape = SubResource("SegmentShape2D_nu0to")
 
 [node name="laserTimer" type="Timer" parent="."]
 wait_time = 10.0
-autostart = true
 
 [node name="laser_clip" type="AudioStreamPlayer2D" parent="."]
 scale = Vector2(1, 2.24719)

@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scripts/Player/nave_aliada.gd" id="1_lnsro"]
 [ext_resource type="Shader" path="res://shaders/nave.gdshader" id="2_o6ado"]
-[ext_resource type="Texture2D" uid="uid://tijmp7il875o" path="res://Assets/nave y enemigos/ShipsPNG/ship1.png" id="3_7yfm0"]
-[ext_resource type="Texture2D" uid="uid://dvmww85rb2qg7" path="res://Assets/efectos nave/efectos explosion/cuidado que explota.jpg" id="4_t57ux"]
+[ext_resource type="Texture2D" uid="uid://tijmp7il875o" path="res://assets/nave y enemigos/ShipsPNG/ship1.png" id="3_7yfm0"]
+[ext_resource type="Texture2D" uid="uid://dvmww85rb2qg7" path="res://assets/efectos nave/efectos explosion/cuidado que explota.jpg" id="4_t57ux"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pt2p8"]
 resource_local_to_scene = true
@@ -39,7 +39,7 @@ scale_max = 0.02
 scale_curve = SubResource("CurveXYZTexture_yyc8l")
 color = Color(1, 0.219608, 0.0431373, 1)
 
-[node name="Nave_aliada" type="CharacterBody2D"]
+[node name="Nave_aliada" type="CharacterBody2D" groups=["naves_aliadas_group"]]
 scale = Vector2(0.515, 0.515)
 motion_mode = 1
 script = ExtResource("1_lnsro")
@@ -59,8 +59,6 @@ process_material = SubResource("ParticleProcessMaterial_u2e77")
 texture = ExtResource("4_t57ux")
 lifetime = 0.3
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.2
-autostart = true
+[node name="ShootTimer" type="Timer" parent="."]
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_timer_timeout"]

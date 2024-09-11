@@ -4,7 +4,7 @@ class_name Enemie_health_component
 signal isDamaged
 signal isDead
 
-@export var health: int = 5
+@export var health: int = 3
 @onready var particles: Node = $"../particles"
 @onready var collision: CollisionShape2D = $"../CollisionShape2D"
 @onready var health_collision: CollisionShape2D = $CollisionShape2D
@@ -29,7 +29,7 @@ func hit(area):
 		check_heal()
 		show_damage_particles()
 		isDamaged.emit(area.global_position)
-		
+
 func on_player_hit():
 	if not is_dead:
 		enemie_dead()

@@ -1,8 +1,8 @@
 extends CharacterBody2D
 class_name Bullet
 
-const SPEED: float = 600.0
-const DAMAGE: int = 1
+var SPEED: float = 600.0
+var damage: int = 1
 var direction: Vector2 = Vector2.ZERO
 var spriteScale: float
 var collisionScale: float

@@ -1,24 +1,28 @@
 extends CharacterBody2D
 
-@export var SPEED = 450.0
-@export var acceleration = 1000.0
-@export var friction = 200.0
+@export var SPEED = 200.0
+@export var acceleration = 500.0
+@export var friction = 50.0
+@export var attack_speed : float = 1.0
+@export var bullet_damage : int = 1
 
 @onready var shieldEscene : PackedScene = preload("res://escenas/shield_area.tscn")
 @onready var bullet_scene : PackedScene = preload("res://escenas/bullet.tscn")
 @onready var nave_aliada : PackedScene = preload("res://escenas/nave_aliada.tscn")
-@onready var rayo_layer : PackedScene = preload("res://escenas/nave_aliada/laser_rayos.tscn")
+@onready var rayo_layer : PackedScene = preload("res://escenas/nave_principal/laser_rayos.tscn")
 
 @onready var joystick_left : VirtualJoystick = $"../UI2/Virtual joystick left"
 @onready var joystick_right : VirtualJoystick = $"../UI2/Virtual joystick right"
 @onready var sprite : Sprite2D = $mainSprite
 @onready var collisionShape : CollisionShape2D = $CollisionShape2D
 @onready var closer_enemie : RayCast2D = $RayCast2D
+@onready var shoot_timer : Timer = $ShootTimer
 
 var move_vector := Vector2.ZERO
 var last_angle = 0
 var sprite_angle_correction = 1.6
 var number_of_allies = 0
+var allies_actual_attack_speed = 1.0
 
 var aliados_positions: Array[Vector2] = [
 	Vector2(-25, 0),
@@ -32,6 +36,8 @@ var aliados_positions: Array[Vector2] = [
 ]
 
 func _ready() -> void:
+	shoot_timer.wait_time = attack_speed
+	shoot_timer.start()
 	Signals.connect("EnableBuff", _on_power_up_button_buff_type_signal)
 
 func _physics_process(delta: float) -> void:
@@ -57,11 +63,10 @@ func _physics_process(delta: float) -> void:
 
 func _state_shoot1():
 	var bullet_instance = bullet_scene.instantiate()
-	
 	bullet_instance.isNaveAliada = false
 	# Configurar la dirección de la bala
-
 	var shoot_direction = Vector2.RIGHT.rotated(joystick_right.output.angle())
+	bullet_instance.find_child("Area2D").damage = 1
 	# Configurar la posición local de la bala (puede que necesites ajustar esto)
 	bullet_instance.parentPosition = self.global_position
 	# Configurar la dirección de la bala antes de agregarla a la escena
@@ -73,14 +78,32 @@ func _on_timer_timeout() -> void: # velocidad de ataque
 	if joystick_right and joystick_right.is_pressed:
 		_state_shoot1()
 
+func update_attack_speed() -> void:
+	if attack_speed <= 0.3:
+		Signals.BuffArray[3].state = true
+	else:
+		attack_speed -= 0.10
+		shoot_timer.wait_time = attack_speed
+
+func update_attack_speed_ally() -> void:
+	var naves_aliadas_group = get_tree().get_nodes_in_group("naves_aliadas_group")
+	allies_actual_attack_speed -= 0.10
+	for nave in naves_aliadas_group:
+		nave.shoot_timer.wait_time = allies_actual_attack_speed
+	if allies_actual_attack_speed <= 0.3:
+		Signals.BuffArray[4].state = true
+
 # POWERUPS
 func activate_shield() -> void:
 	var instance = shieldEscene.instantiate()
 	add_child(instance)
 
 func activate_ally_ship() -> void:
+	if number_of_allies < 8 and Signals.BuffArray[4].state:
+		Signals.BuffArray[4].state = false
 	if	aliados_positions.size() > 0:
 		var nave_aliada_instance = nave_aliada.instantiate()
+		nave_aliada_instance.attack_speed = allies_actual_attack_speed
 		nave_aliada_instance.parentPosition = aliados_positions[0]  # Asegúrate de usar la propiedad `position`
 		self.add_child(nave_aliada_instance)
 		number_of_allies += 1  # Incrementa el número de aliados
@@ -105,5 +128,9 @@ func _on_power_up_button_buff_type_signal(buffType) -> void:
 			activate_ally_ship()
 			if number_of_allies >= 8:
 				Signals.BuffArray[2].state = true
+		"attack_speed":
+			update_attack_speed()
+		"attack_speed_ally":
+			update_attack_speed_ally()
 		_:
 			pass

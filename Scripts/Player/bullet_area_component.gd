@@ -5,10 +5,14 @@ class_name Area_bullet
 @export var removeOnHit : bool = true
 @onready var laserTimer : Timer
 @onready var laserClip : AudioStreamPlayer2D
+@export var laser_cooldown : int = 15
 
 func _ready() -> void:
-	laserTimer = self.find_child("laserTimer")
 	laserClip = self.find_child("laser_clip")
+	laserTimer = self.find_child("laserTimer")
+	if laserTimer:
+		laserTimer.wait_time = laser_cooldown
+		laserTimer.start()
 
 func bullet_hit(remove) -> void:
 	if remove:

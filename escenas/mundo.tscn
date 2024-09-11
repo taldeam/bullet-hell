@@ -1,33 +1,33 @@
 [gd_scene load_steps=46 format=4 uid="uid://b2mtty1g25yvs"]
 
 [ext_resource type="Script" path="res://Scripts/ParallaxBackground.gd" id="1_rm0b7"]
-[ext_resource type="Texture2D" uid="uid://b67hbbdsnswv" path="res://Assets/fondo/fondo nuevo/layers/parallax-space-backgound.png" id="2_0tacc"]
-[ext_resource type="Texture2D" uid="uid://p5dv5mgfh2r8" path="res://Assets/fondo/fondo nuevo/2.jpg" id="3_73xss"]
-[ext_resource type="Texture2D" uid="uid://ckuj5nq3brwm2" path="res://Assets/planetas/Planet_01.png" id="4_ocxb1"]
-[ext_resource type="Texture2D" uid="uid://e8dw71mb8jjd" path="res://Assets/efectos nave/Laser Sprites/33.png" id="5_l2hk4"]
-[ext_resource type="Texture2D" uid="uid://dsv88u10e2ciu" path="res://Assets/planetas/Planet_02.png" id="5_oju7j"]
-[ext_resource type="Texture2D" uid="uid://cw6i8jtu8tvlr" path="res://Assets/planetas/Planet_04.png" id="6_ci4t1"]
-[ext_resource type="Texture2D" uid="uid://d2n5imvcdpe6g" path="res://Assets/planetas/Planet_03.png" id="7_ub62a"]
-[ext_resource type="Texture2D" uid="uid://k2klhr0ljcqo" path="res://Assets/planetas/PlanetsPNG/Planet_04.png" id="7_ws1o1"]
-[ext_resource type="Texture2D" uid="uid://bcuo7me4yk12e" path="res://Assets/efectos nave/Laser Sprites/37.png" id="8_3l8vs"]
+[ext_resource type="Texture2D" uid="uid://b67hbbdsnswv" path="res://assets/fondo/fondo nuevo/layers/parallax-space-backgound.png" id="2_0tacc"]
+[ext_resource type="Texture2D" uid="uid://p5dv5mgfh2r8" path="res://assets/fondo/fondo nuevo/2.jpg" id="3_73xss"]
+[ext_resource type="Texture2D" uid="uid://ckuj5nq3brwm2" path="res://assets/planetas/Planet_01.png" id="4_ocxb1"]
+[ext_resource type="Texture2D" uid="uid://e8dw71mb8jjd" path="res://assets/efectos nave/Laser Sprites/33.png" id="5_l2hk4"]
+[ext_resource type="Texture2D" uid="uid://dsv88u10e2ciu" path="res://assets/planetas/Planet_02.png" id="5_oju7j"]
+[ext_resource type="Texture2D" uid="uid://cw6i8jtu8tvlr" path="res://assets/planetas/Planet_04.png" id="6_ci4t1"]
+[ext_resource type="Texture2D" uid="uid://d2n5imvcdpe6g" path="res://assets/planetas/Planet_03.png" id="7_ub62a"]
+[ext_resource type="Texture2D" uid="uid://k2klhr0ljcqo" path="res://assets/planetas/PlanetsPNG/Planet_04.png" id="7_ws1o1"]
+[ext_resource type="Texture2D" uid="uid://bcuo7me4yk12e" path="res://assets/efectos nave/Laser Sprites/37.png" id="8_3l8vs"]
 [ext_resource type="Theme" uid="uid://bsidgnggcaxhp" path="res://GUI/GUI_themes/GUI_theme.tres" id="9_mcngb"]
-[ext_resource type="AudioStream" uid="uid://ccy5suqbsmbxh" path="res://Assets/Musica/DavidKBD - Cosmic Pack 05 - Stellar Confrontation-full.ogg" id="10_mfcqf"]
-[ext_resource type="Texture2D" uid="uid://4ofbd2jufi6v" path="res://Assets/efectos nave/Laser Sprites/32.png" id="11_31l53"]
+[ext_resource type="AudioStream" uid="uid://ccy5suqbsmbxh" path="res://assets/Musica/DavidKBD - Cosmic Pack 05 - Stellar Confrontation-full.ogg" id="10_mfcqf"]
+[ext_resource type="Texture2D" uid="uid://4ofbd2jufi6v" path="res://assets/efectos nave/Laser Sprites/32.png" id="11_31l53"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="13_tdgpp"]
 [ext_resource type="Script" path="res://Scripts/game_ui.gd" id="16_c6oqm"]
 [ext_resource type="Script" path="res://Scripts/Enemie/enemie_respawn_area.gd" id="17_voiut"]
 [ext_resource type="PackedScene" uid="uid://dadijju34h08e" path="res://escenas/texture_progress_bar.tscn" id="19_2wi65"]
 [ext_resource type="Texture2D" uid="uid://yvxyuspk2wn3" path="res://GUI/PNG/Loading_Bar/Table.png" id="19_ahx41"]
-[ext_resource type="Texture2D" uid="uid://citu1t1dev8k0" path="res://Assets/tileset/TileSet v1.0.png" id="22_5tffe"]
+[ext_resource type="Texture2D" uid="uid://citu1t1dev8k0" path="res://assets/tileset/TileSet v1.0.png" id="22_5tffe"]
 [ext_resource type="Texture2D" uid="uid://bmj68bnwkgquu" path="res://GUI/PNG/You_Lose/Record.png" id="22_co3hl"]
 [ext_resource type="Texture2D" uid="uid://dlt24kjl8vvgq" path="res://Buttons/Sprites/flat-dark/flatDark15.png" id="26_uaduu"]
 [ext_resource type="Script" path="res://escenas/reestartButton.gd" id="27_pp0k1"]
 [ext_resource type="Script" path="res://Scripts/Player/nave_principal.gd" id="27_yewa7"]
-[ext_resource type="Texture2D" uid="uid://cc0ll4l0hcigd" path="res://Assets/efectos nave/upgrades/escudo.png" id="28_blhyg"]
+[ext_resource type="Texture2D" uid="uid://cc0ll4l0hcigd" path="res://assets/efectos nave/upgrades/escudo.png" id="28_blhyg"]
 [ext_resource type="AudioStream" uid="uid://dn18506mojbai" path="res://Assets/Efectos de sonido/UI/mixkit-sci-fi-click-900.mp3" id="28_k4tke"]
 [ext_resource type="Shader" path="res://shaders/nave.gdshader" id="28_xoixe"]
-[ext_resource type="Texture2D" uid="uid://tijmp7il875o" path="res://Assets/nave y enemigos/ShipsPNG/ship1.png" id="29_4gf21"]
-[ext_resource type="Texture2D" uid="uid://dvmww85rb2qg7" path="res://Assets/efectos nave/efectos explosion/cuidado que explota.jpg" id="30_lkehu"]
+[ext_resource type="Texture2D" uid="uid://tijmp7il875o" path="res://assets/nave y enemigos/ShipsPNG/ship1.png" id="29_4gf21"]
+[ext_resource type="Texture2D" uid="uid://dvmww85rb2qg7" path="res://assets/efectos nave/efectos explosion/cuidado que explota.jpg" id="30_lkehu"]
 [ext_resource type="Script" path="res://Scripts/Player/Health_component.gd" id="31_c3s4m"]
 [ext_resource type="AudioStream" uid="uid://cvs0jl6ikv1gq" path="res://Assets/Efectos de sonido/Shoots/laser-gun-shot-sound-future-sci-fi-lazer-wobble-chakongaudio-174883.mp3" id="33_mkte1"]
 
@@ -702,7 +702,6 @@ max_distance = 10000.0
 position = Vector2(-684, 453)
 script = ExtResource("17_voiut")
 spawn_interval = 1.0
-TIME_TO_SHOW_BUFFPANEL = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RespawnArea"]
 shape = SubResource("RectangleShape2D_rpbj7")
@@ -712,7 +711,6 @@ disabled = true
 position = Vector2(-70, 65)
 motion_mode = 1
 script = ExtResource("27_yewa7")
-SPEED = 300.0
 friction = 300.0
 
 [node name="Escudo" type="GPUParticles2D" parent="Nave"]
@@ -751,9 +749,8 @@ lifetime = 0.3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Nave"]
 shape = SubResource("CircleShape2D_rp0qp")
 
-[node name="Timer" type="Timer" parent="Nave"]
+[node name="ShootTimer" type="Timer" parent="Nave"]
 wait_time = 0.2
-autostart = true
 
 [node name="HealthComponent" type="Area2D" parent="Nave"]
 collision_layer = 2
@@ -770,5 +767,5 @@ one_shot = true
 
 [connection signal="pressed" from="UI2/PanelDied/TouchScreenButton" to="UI2" method="_on_touch_screen_button_pressed"]
 [connection signal="finished" from="UI2/Sounds/Click" to="UI2" method="_on_click_finished"]
-[connection signal="timeout" from="Nave/Timer" to="Nave" method="_on_timer_timeout"]
+[connection signal="timeout" from="Nave/ShootTimer" to="Nave" method="_on_timer_timeout"]
 [connection signal="timeout" from="Nave/SafeMode" to="Nave/HealthComponent" method="_on_safe_mode_timeout"]
