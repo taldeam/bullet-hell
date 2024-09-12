@@ -42,5 +42,4 @@ func _state_shoot1():
 	
 func _on_timer_timeout() -> void:
 	if joystick_right and joystick_right.is_pressed:
-		print(shoot_timer.wait_time)
 		_state_shoot1()

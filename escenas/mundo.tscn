@@ -464,8 +464,10 @@ grow_horizontal = 0
 value = 5.0
 
 [node name="Virtual joystick left" parent="UI2" instance=ExtResource("13_tdgpp")]
-offset_top = -306.0
-offset_bottom = -6.0
+offset_left = 20.0
+offset_top = -344.0
+offset_right = 420.0
+offset_bottom = -44.0
 joystick_mode = 1
 visibility_mode = 2
 use_input_actions = false
@@ -474,10 +476,10 @@ use_input_actions = false
 anchors_preset = 3
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -302.0
-offset_top = -306.0
-offset_right = -2.0
-offset_bottom = -6.0
+offset_left = -366.0
+offset_top = -344.0
+offset_right = -66.0
+offset_bottom = -44.0
 grow_horizontal = 0
 joystick_mode = 1
 visibility_mode = 2
@@ -590,6 +592,12 @@ offset_top = 20.0
 offset_right = 452.0
 offset_bottom = 43.0
 text = "Enemigos vivos"
+
+[node name="fps" type="Label" parent="UI2"]
+offset_left = 11.0
+offset_top = 69.0
+offset_right = 51.0
+offset_bottom = 86.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -704,7 +712,7 @@ max_distance = 10000.0
 [node name="RespawnArea" type="Area2D" parent="."]
 position = Vector2(-684, 453)
 script = ExtResource("17_voiut")
-TIME_TO_SHOW_BUFFPANEL = 45
+TIME_TO_SHOW_BUFFPANEL = 30
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RespawnArea"]
 shape = SubResource("RectangleShape2D_rpbj7")
@@ -758,6 +766,7 @@ wait_time = 0.2
 collision_layer = 2
 collision_mask = 256
 script = ExtResource("31_c3s4m")
+playerHealth = 20
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Nave/HealthComponent"]
 shape = SubResource("CircleShape2D_dahu2")

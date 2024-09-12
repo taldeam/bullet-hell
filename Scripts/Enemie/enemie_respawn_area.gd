@@ -32,6 +32,7 @@ func _ready() -> void:
 
 	random.randomize()
 	Signals.connect("EnableBuff", _hidePowerUpPanel, 0)
+	Signals.connect("EnemieDead", _on_enemy_exited, 0)
 
 	# Configuración del temporizador de spawn
 	_spawn_timer = Timer.new()
@@ -81,7 +82,7 @@ func _spawn_enemy() -> void:
 	get_tree().current_scene.add_child(enemy_instance)
 
 	_current_enemies += 1
-	enemy_instance.connect("tree_exited", Callable(self, "_on_enemy_exited"))
+	#enemy_instance.connect("tree_exited", Callable(self, "_on_enemy_exited"))
 
 func _on_enemy_exited() -> void:
 	_current_enemies -= 1
@@ -145,7 +146,7 @@ func removeBuffButtons() -> void:
 	for child in powerUpPanel.find_child("HBoxContainer").get_children():
 		child.queue_free()
 		
-func _hidePowerUpPanel() -> void:
+func _hidePowerUpPanel(_buff) -> void:
 	call_deferred("removeBuffButtons")
 	powerUpPanel.visible = false
 	get_tree().paused = false
