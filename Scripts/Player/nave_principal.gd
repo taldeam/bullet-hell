@@ -15,7 +15,6 @@ extends CharacterBody2D
 @onready var joystick_right : VirtualJoystick = $"../UI2/Virtual joystick right"
 @onready var sprite : Sprite2D = $mainSprite
 @onready var collisionShape : CollisionShape2D = $CollisionShape2D
-@onready var closer_enemie : RayCast2D = $RayCast2D
 @onready var shoot_timer : Timer = $ShootTimer
 
 var move_vector := Vector2.ZERO

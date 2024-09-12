@@ -25,7 +25,7 @@ func _ready() -> void:
 	selected_sprite.visible = true
 	selectedSprite = selected_sprite
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	move_and_slide()
 	move_to_player()
 
@@ -44,7 +44,7 @@ func move_to_player():
 		velocity = Vector2.ZERO
 
 	
-func _on_health_component_is_damaged(damage_origin: Vector2) -> void:
+func _on_health_component_is_damaged(_damage_origin: Vector2) -> void:
 	# Calcula la dirección del knockback
 	if !isDead:
 		# mejorar el nockup

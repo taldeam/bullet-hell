@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scripts/Player/nave_aliada.gd" id="1_lnsro"]
 [ext_resource type="Shader" path="res://shaders/nave.gdshader" id="2_o6ado"]
-[ext_resource type="Texture2D" uid="uid://tijmp7il875o" path="res://assets/nave y enemigos/ShipsPNG/ship1.png" id="3_7yfm0"]
-[ext_resource type="Texture2D" uid="uid://dvmww85rb2qg7" path="res://assets/efectos nave/efectos explosion/cuidado que explota.jpg" id="4_t57ux"]
+[ext_resource type="Texture2D" uid="uid://bpx7f1fs8sbup" path="res://Assets/nave y enemigos/ShipsPNG/ship1.png" id="3_7yfm0"]
+[ext_resource type="Texture2D" uid="uid://dfs2ggmgb2ebb" path="res://Assets/efectos nave/efectos explosion/cuidado que explota.jpg" id="4_t57ux"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pt2p8"]
 resource_local_to_scene = true

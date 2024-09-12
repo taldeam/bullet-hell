@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://dadijju34h08e"]
 
-[ext_resource type="Texture2D" uid="uid://dl0g0dwoiwvmp" path="res://GUI/PNG/Loading_Bar/barra_de_vida.png" id="1_3x53f"]
-[ext_resource type="Texture2D" uid="uid://48mr3harq74o" path="res://GUI/PNG/Hangar/Dot_01.png" id="2_t641p"]
-[ext_resource type="Texture2D" uid="uid://85ytpa3vuvum" path="res://GUI/PNG/Hangar/Table_02.png" id="3_0jjja"]
-[ext_resource type="Texture2D" uid="uid://b0tn4mnbk3ix6" path="res://GUI/PNG/Hangar/HP_Icon.png" id="3_i0t80"]
+[ext_resource type="Texture2D" uid="uid://dajyod76n33tx" path="res://GUI/PNG/Loading_Bar/barra_de_vida.png" id="1_3x53f"]
+[ext_resource type="Texture2D" uid="uid://daf5hoihe3kxy" path="res://GUI/PNG/Hangar/Dot_01.png" id="2_t641p"]
+[ext_resource type="Texture2D" uid="uid://cg40784yl5q47" path="res://GUI/PNG/Hangar/Table_02.png" id="3_0jjja"]
+[ext_resource type="Texture2D" uid="uid://dobo5riospp3m" path="res://GUI/PNG/Hangar/HP_Icon.png" id="3_i0t80"]
 
 [node name="TextureProgressBar" type="TextureProgressBar"]
 texture_filter = 1

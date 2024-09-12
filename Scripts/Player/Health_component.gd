@@ -19,12 +19,12 @@ func hit(area):
 	if area is Enemie_hit_component && !playerShield.visible:
 		playerHealth -= area.damage
 		playerHealthVar.set_value_no_signal(playerHealth)
-		checkPlayerHealth(playerHealth)
+		checkPlayerHealth()
 		flash()
 		var camera_tween: Tween = get_tree().create_tween()
 		camera_tween.tween_method(startCameraShake, 15.0, 1.0, 0.5)
 		
-func checkPlayerHealth(playerHealth):
+func checkPlayerHealth():
 	if playerHealth <= 0:
 		get_tree().paused = true
 		$"../../UI2/PanelDied".visible = true

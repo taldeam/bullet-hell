@@ -62,9 +62,6 @@ func _spawn_enemy() -> void:
 	var selected_scene = enemy_scenes[random_index]
 	var enemy_instance = selected_scene.instantiate()
 
-	var collision_shape = $CollisionShape2D.shape as RectangleShape2D
-	var area_size = collision_shape.extents * 2
-
 	var random_position_top = Vector2(random.randi_range(-687, 895), -240)
 	var random_position_bottom = Vector2(random.randi_range(-687, 895), 464)
 	var random_position_right = Vector2(900, random.randi_range(-240, 466))
@@ -148,7 +145,7 @@ func removeBuffButtons() -> void:
 	for child in powerUpPanel.find_child("HBoxContainer").get_children():
 		child.queue_free()
 		
-func _hidePowerUpPanel(buff) -> void:
+func _hidePowerUpPanel() -> void:
 	call_deferred("removeBuffButtons")
 	powerUpPanel.visible = false
 	get_tree().paused = false

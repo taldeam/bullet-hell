@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://Scripts/Player/nave_principal.gd" id="1_k1e62"]
 [ext_resource type="Shader" path="res://shaders/nave.gdshader" id="2_k5esr"]
-[ext_resource type="Texture2D" uid="uid://tijmp7il875o" path="res://assets/nave y enemigos/ShipsPNG/ship1.png" id="2_otbid"]
-[ext_resource type="Texture2D" uid="uid://dvmww85rb2qg7" path="res://assets/efectos nave/efectos explosion/cuidado que explota.jpg" id="3_chis1"]
+[ext_resource type="Texture2D" uid="uid://tijmp7il875o" path="res://Assets/nave y enemigos/ShipsPNG/ship1.png" id="2_otbid"]
+[ext_resource type="Texture2D" uid="uid://dvmww85rb2qg7" path="res://Assets/efectos nave/efectos explosion/cuidado que explota.jpg" id="3_chis1"]
 [ext_resource type="Script" path="res://Scripts/Player/Health_component.gd" id="4_7iufe"]
 [ext_resource type="Shader" uid="uid://huu1jw5iqxyf" path="res://shader/laser_shader.tres" id="5_w7iuo"]
-[ext_resource type="Texture2D" uid="uid://ftdvv5a3jtbu" path="res://assets/efectos nave/upgrades/laser_upgrade.png" id="6_4lau1"]
+[ext_resource type="Texture2D" uid="uid://ftdvv5a3jtbu" path="res://Assets/efectos nave/upgrades/laser_upgrade.png" id="6_4lau1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cqb37"]
 resource_local_to_scene = true

@@ -20,7 +20,7 @@ func _ready() -> void:
 	shoot_timer.start()
 	self.position = parentPosition
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if joystick_right and joystick_right.is_pressed:
 		var joystick_angle = joystick_right.output.angle() + sprite_angle_correction # esto ajusta el sprite
 		sprite.rotation = joystick_angle
