@@ -49,12 +49,13 @@ func _ready() -> void:
 	_total_time_timer.start()
 	
 	enemy_scenes.append(enemy_scene_1)
-
+			
 func _on_spawn_timeout() -> void:
 	if _current_enemies < max_enemies:
 		for i in range(enemies_per_spawn):
-			if _current_enemies < max_enemies:  # Asegurarse de no superar el límite
-				_spawn_enemy()
+			if _current_enemies < max_enemies:
+				await get_tree().create_timer(0.1).timeout
+				call_deferred('_spawn_enemy')
 
 func _spawn_enemy() -> void:
 	$"../UI2/Enemies_in_game/Label3".text = str(_current_enemies)
@@ -106,10 +107,6 @@ func _on_total_time_timeout() -> void:
 func showBuffPanel() -> void:
 	# Verifica si el tiempo actual es un múltiplo de 60.0 segundos
 	addPowerUpButtonToPanel(2)
-	
-	#var time = int(abs(current_time));
-	#print(time)
-	#if time > 10 and (time % 120 == 0):  # Usar 60.0 como float y tolerancia también como float
 
 			
 func addPowerUpButtonToPanel(numOfButtons) -> void:

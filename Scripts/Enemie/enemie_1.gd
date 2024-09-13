@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @export var SPEED: float = 20.0
+@export var knockback_strength = 1000
 
 @onready var player : CharacterBody2D = $"../Nave"
 @onready var sprite : Sprite2D = $Sprite2D
@@ -11,8 +12,10 @@ extends CharacterBody2D
 
 var sprites : Array
 var selectedSprite : Sprite2D
-@export var knockback_strength = 1000
 var isDead = false
+var distance_to_player
+var direction : Vector2
+var angle_to_player : float
 
 func _ready() -> void:
 	sprites.append(sprite)
@@ -30,15 +33,18 @@ func _physics_process(_delta: float) -> void:
 	move_to_player()
 
 func move_to_player():
-	var distance_to_player = position.distance_to(player.position)
+	if isDead:
+		return
+		
+	distance_to_player = position.distance_to(player.position)
 	
-	if distance_to_player > 10.0 && !isDead:
-		var direction = (player.position - position).normalized()
+	if distance_to_player > 10.0:
+		direction = (player.position - position).normalized()
 		velocity = direction * SPEED
 		position += velocity * get_process_delta_time()
 		
 		# Ajustar el ángulo del sprite para que apunte hacia el jugador
-		var angle_to_player = (player.position - position).angle() + 1.6 # ajuste del sprite
+		angle_to_player = (player.position - position).angle() + 1.6 # ajuste del sprite
 		selectedSprite.rotation = angle_to_player
 	else:
 		velocity = Vector2.ZERO
@@ -63,7 +69,6 @@ func _on_health_component_is_damaged(_damage_origin: Vector2) -> void:
 
 func _on_health_component_is_dead() -> void:
 	isDead = true
-
 
 func _on_health_component_is_hited() -> void:
 	tweenFlash = get_tree().create_tween()
