@@ -31,7 +31,7 @@ func _state_shoot1():
 	
 	bullet_instance.isNaveAliada = true
 	bullet_instance.collisionScale = 0.65
-	bullet_instance.spriteScale = 0.25
+	bullet_instance.spriteScale = 0.35
 	var shoot_direction = Vector2.RIGHT.rotated(joystick_right.output.angle())
 	# Configurar la posición local de la bala (puede que necesites ajustar esto)
 	bullet_instance.parentPosition = self.global_position

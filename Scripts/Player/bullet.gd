@@ -20,6 +20,10 @@ func _ready() -> void:
 		sprite.scale = Vector2(spriteScale, spriteScale)
 	if !isNaveAliada:
 		shootClip.play()
+	else:
+		var random_sprite_path = "res://Assets/efectos nave/Laser Sprites/01.png"
+		var spriteTexture = load(random_sprite_path)
+		sprite.texture = spriteTexture
 		
 	self.global_position = parentPosition
 	rotation = direction.angle()

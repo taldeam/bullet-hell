@@ -711,7 +711,7 @@ max_distance = 10000.0
 [node name="RespawnArea" type="Area2D" parent="."]
 position = Vector2(-684, 453)
 script = ExtResource("17_voiut")
-TIME_TO_SHOW_BUFFPANEL = 2
+TIME_TO_SHOW_BUFFPANEL = 30
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RespawnArea"]
 shape = SubResource("RectangleShape2D_rpbj7")

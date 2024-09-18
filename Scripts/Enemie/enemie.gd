@@ -1,6 +1,6 @@
 extends Sprite2D
 
-const SPEED = 30.0
+@export var SPEED = 30.0
 const MIN_DISTANCE = 80.0 # Distancia mínima entre enemigos
 const REPULSION_FORCE = 600.0 # Fuerza de repulsión
 const CHECK_FREQUENCY = 5 # Actualiza la repulsión cada 1 frame (puedes ajustarlo para mejorar el rendimiento)
@@ -30,7 +30,7 @@ func _physics_process(delta: float) -> void:
 func set_random_prite() -> void:
 	var random_sprite_path = sprites_array.pick_random()  # Pick a random sprite path
 	var spriteTexture = load(random_sprite_path)  # Load the texture from the path
-	self.texture = texture  # Assign the texture to the Sprite2D 
+	self.texture = spriteTexture  # Assign the texture to the Sprite2D 
 
 func move_to_player(delta: float) -> void:
 	var player_position = Signals.player_position

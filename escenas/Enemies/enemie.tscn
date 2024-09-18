@@ -74,7 +74,6 @@ radius = 300.0
 
 [node name="Enemie" type="Sprite2D" groups=["enemies"]]
 material = SubResource("ShaderMaterial_xcd56")
-position = Vector2(-49, -21)
 scale = Vector2(0.035, 0.035)
 texture = ExtResource("1_a1i6n")
 script = ExtResource("2_xobfw")
