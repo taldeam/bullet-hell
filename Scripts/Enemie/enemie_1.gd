@@ -10,10 +10,12 @@ extends CharacterBody2D
 @onready var sprite4 : Sprite2D = $Sprite2D4
 @onready var tweenFlash : Tween
 
-var sprites : Array
-var selectedSprite : Sprite2D
-var isDead = false
-var distance_to_player
+var sprites: Array[Sprite2D]
+var selectedSprite: Sprite2D
+var isDead: bool = false
+var distance_to_player: float
+var player_position: Vector2 # Una posición que viene del singleton, asumiendo que es 2D
+
 var direction : Vector2
 var angle_to_player : float
 
@@ -27,7 +29,7 @@ func _ready() -> void:
 	var selected_sprite = sprites[random_index]
 	selected_sprite.visible = true
 	selectedSprite = selected_sprite
-
+	
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
 	move_to_player()
@@ -36,20 +38,20 @@ func move_to_player():
 	if isDead:
 		return
 		
-	distance_to_player = position.distance_to(player.position)
+	player_position = Signals.player_position
+	distance_to_player = position.distance_to(player_position)
 	
 	if distance_to_player > 10.0:
-		direction = (player.position - position).normalized()
+		direction = (player_position - position).normalized()
 		velocity = direction * SPEED
 		position += velocity * get_process_delta_time()
 		
 		# Ajustar el ángulo del sprite para que apunte hacia el jugador
-		angle_to_player = (player.position - position).angle() + 1.6 # ajuste del sprite
+		angle_to_player = (player_position - position).angle() + 1.6 # ajuste del sprite
 		selectedSprite.rotation = angle_to_player
 	else:
 		velocity = Vector2.ZERO
 
-	
 func _on_health_component_is_damaged(_damage_origin: Vector2) -> void:
 	# Calcula la dirección del knockback
 	if !isDead:

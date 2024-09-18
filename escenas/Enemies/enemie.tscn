@@ -1,23 +1,21 @@
-[gd_scene load_steps=25 format=3 uid="uid://dyfgwd5c0xx13"]
+[gd_scene load_steps=21 format=3 uid="uid://b1m6h0eh10kgc"]
 
-[ext_resource type="Script" path="res://Scripts/Enemie/enemie_1.gd" id="1_c85vm"]
-[ext_resource type="Shader" path="res://shaders/nave.gdshader" id="2_tc5ps"]
-[ext_resource type="Texture2D" uid="uid://cjm73pybw42op" path="res://Assets/nave y enemigos/ShipsPNG/ship8.png" id="2_whfn3"]
-[ext_resource type="Script" path="res://Scripts/Enemie/enemie_health_component.gd" id="3_w2xo1"]
-[ext_resource type="Texture2D" uid="uid://c7p2rw2a4o1uk" path="res://Assets/nave y enemigos/ShipsPNG/ship2.png" id="4_0tu23"]
-[ext_resource type="Texture2D" uid="uid://dfs2ggmgb2ebb" path="res://Assets/efectos nave/efectos explosion/cuidado que explota.jpg" id="4_mvhch"]
-[ext_resource type="Texture2D" uid="uid://bw6kpiifltdsu" path="res://Assets/nave y enemigos/ShipsPNG/ship3.png" id="5_qrly2"]
-[ext_resource type="Texture2D" uid="uid://dnmdrjjsxqd62" path="res://Assets/nave y enemigos/ShipsPNG/ship4.png" id="6_0siwl"]
-[ext_resource type="Script" path="res://Scripts/Enemie/enemie_hit_component.gd" id="8_cl3he"]
-[ext_resource type="AudioStream" uid="uid://cvk02dnrecoae" path="res://Assets/Efectos de sonido/Explosiones/huge-distant-explosion-25317 (mp3cut.net).mp3" id="9_83f4w"]
+[ext_resource type="Texture2D" uid="uid://bpx7f1fs8sbup" path="res://Assets/nave y enemigos/ShipsPNG/ship1.png" id="1_a1i6n"]
+[ext_resource type="Shader" path="res://shaders/nave.gdshader" id="1_fmf8j"]
+[ext_resource type="Script" path="res://Scripts/Enemie/enemie.gd" id="2_xobfw"]
+[ext_resource type="Script" path="res://Scripts/Enemie/enemie_health_component.gd" id="3_lpaak"]
+[ext_resource type="Texture2D" uid="uid://dfs2ggmgb2ebb" path="res://Assets/efectos nave/efectos explosion/cuidado que explota.jpg" id="4_sqyjc"]
+[ext_resource type="Script" path="res://Scripts/Enemie/enemie_hit_component.gd" id="5_frt7t"]
+[ext_resource type="AudioStream" uid="uid://cvk02dnrecoae" path="res://Assets/Efectos de sonido/Explosiones/huge-distant-explosion-25317 (mp3cut.net).mp3" id="6_d7mdv"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2u4v5"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xcd56"]
 resource_local_to_scene = true
-shader = ExtResource("2_tc5ps")
+shader = ExtResource("1_fmf8j")
 shader_parameter/flash_color = Vector4(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c5g04"]
+radius = 291.373
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_p16lv"]
 blend_mode = 1
@@ -72,48 +70,19 @@ colors = PackedColorArray(1, 0.0156863, 0, 1, 1, 1, 0, 1)
 colors = PackedColorArray(1, 0, 0, 1, 0.941176, 0.494118, 0, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cd76h"]
+radius = 300.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wyc6y"]
-size = Vector2(11.5, 11.5)
-
-[node name="Enemie" type="CharacterBody2D"]
-position = Vector2(231.5, 83)
-collision_layer = 3072
-collision_mask = 1024
-motion_mode = 1
-wall_min_slide_angle = 0.0
-platform_floor_layers = 0
-safe_margin = 10.0
-script = ExtResource("1_c85vm")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-material = SubResource("ShaderMaterial_2u4v5")
+[node name="Enemie" type="Sprite2D" groups=["enemies"]]
+material = SubResource("ShaderMaterial_xcd56")
+position = Vector2(-49, -21)
 scale = Vector2(0.035, 0.035)
-texture = ExtResource("2_whfn3")
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-visible = false
-material = SubResource("ShaderMaterial_2u4v5")
-scale = Vector2(0.035, 0.035)
-texture = ExtResource("4_0tu23")
-
-[node name="Sprite2D3" type="Sprite2D" parent="."]
-visible = false
-material = SubResource("ShaderMaterial_2u4v5")
-scale = Vector2(0.035, 0.035)
-texture = ExtResource("5_qrly2")
-
-[node name="Sprite2D4" type="Sprite2D" parent="."]
-visible = false
-material = SubResource("ShaderMaterial_2u4v5")
-scale = Vector2(0.035, 0.035)
-texture = ExtResource("6_0siwl")
+texture = ExtResource("1_a1i6n")
+script = ExtResource("2_xobfw")
 
 [node name="HealthComponent" type="Area2D" parent="."]
 collision_layer = 2048
 collision_mask = 4
-script = ExtResource("3_w2xo1")
+script = ExtResource("3_lpaak")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HealthComponent"]
 shape = SubResource("CircleShape2D_c5g04")
@@ -127,7 +96,7 @@ scale = Vector2(0.02, 0.02)
 emitting = false
 amount = 20
 process_material = SubResource("ParticleProcessMaterial_hachg")
-texture = ExtResource("4_mvhch")
+texture = ExtResource("4_sqyjc")
 lifetime = 0.15
 fixed_fps = 60
 
@@ -140,7 +109,7 @@ amount = 40
 lifetime = 1.5
 speed_scale = 3.0
 explosiveness = 1.0
-texture = ExtResource("4_mvhch")
+texture = ExtResource("4_sqyjc")
 spread = 180.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 50.0
@@ -152,10 +121,10 @@ color = Color(1, 1, 1, 0.211)
 color_ramp = SubResource("Gradient_0ey7k")
 color_initial_ramp = SubResource("Gradient_dwkr4")
 
-[node name="HitComponent" type="Area2D" parent="."]
+[node name="HitComponent" type="Area2D" parent="." groups=["enemies"]]
 collision_layer = 256
 collision_mask = 2
-script = ExtResource("8_cl3he")
+script = ExtResource("5_frt7t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitComponent"]
 shape = SubResource("CircleShape2D_cd76h")
@@ -163,13 +132,9 @@ shape = SubResource("CircleShape2D_cd76h")
 [node name="Sounds" type="Node" parent="."]
 
 [node name="EnemieDeadClip" type="AudioStreamPlayer2D" parent="Sounds"]
-stream = ExtResource("9_83f4w")
+stream = ExtResource("6_d7mdv")
 volume_db = 15.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_wyc6y")
-
-[connection signal="isDamaged" from="HealthComponent" to="." method="_on_health_component_is_damaged"]
-[connection signal="isDead" from="HealthComponent" to="." method="_on_health_component_is_dead"]
 [connection signal="isHited" from="HealthComponent" to="." method="_on_health_component_is_hited"]
 [connection signal="finished" from="particles/dead_GPUParticles2D" to="HealthComponent" method="_on_dead_gpu_particles_2d_finished"]
+[connection signal="playerHited" from="HitComponent" to="HealthComponent" method="_on_hit_component_player_hited"]

@@ -3,6 +3,11 @@ extends Node
 signal EnemieDead
 signal EnableBuff
 
+var nave: CharacterBody2D
+
+var player_position
+var enemies_in_group : Array = []
+
 # cada vez que añada un buff aqui, hacerlo en power_up_item
 var BuffArray : Array = [
 	{
@@ -36,3 +41,12 @@ var BuffArray : Array = [
 	"buffLabel": "Aumenta la velocidad de ataque de las naves aliadas un 10%."
 	}
 ]
+
+func _ready() -> void:
+	nave = get_tree().root.get_node("mundo/Nave")
+	player_position = nave.position
+	enemies_in_group = get_tree().get_nodes_in_group("enemies")
+	
+func _process(delta: float) -> void:
+	player_position = nave.position
+	#enemies_in_group = get_tree().get_nodes_in_group("enemies")

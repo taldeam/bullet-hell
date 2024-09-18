@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=4 uid="uid://b2mtty1g25yvs"]
+[gd_scene load_steps=46 format=4 uid="uid://b2mtty1g25yvs"]
 
 [ext_resource type="Script" path="res://Scripts/ParallaxBackground.gd" id="1_rm0b7"]
 [ext_resource type="Texture2D" uid="uid://dyfnx84vv7bta" path="res://Assets/fondo/fondo nuevo/layers/parallax-space-backgound.png" id="2_0tacc"]
@@ -29,7 +29,6 @@
 [ext_resource type="Texture2D" uid="uid://bpx7f1fs8sbup" path="res://Assets/nave y enemigos/ShipsPNG/ship1.png" id="29_4gf21"]
 [ext_resource type="Texture2D" uid="uid://dfs2ggmgb2ebb" path="res://Assets/efectos nave/efectos explosion/cuidado que explota.jpg" id="30_lkehu"]
 [ext_resource type="Script" path="res://Scripts/Player/Health_component.gd" id="31_c3s4m"]
-[ext_resource type="PackedScene" uid="uid://dyfgwd5c0xx13" path="res://escenas/enemie.tscn" id="31_irsxg"]
 [ext_resource type="AudioStream" uid="uid://dc1e5og04nu07" path="res://Assets/Efectos de sonido/Shoots/laser-gun-shot-sound-future-sci-fi-lazer-wobble-chakongaudio-174883.mp3" id="33_mkte1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_f5f2v"]
@@ -403,8 +402,8 @@ particle_flag_rotate_y = true
 angular_velocity_min = -141.97
 angular_velocity_max = 141.97
 gravity = Vector3(0, 0, 0)
-scale_min = 0.3
-scale_max = 0.3
+scale_min = 0.13
+scale_max = 0.15
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a2n5l"]
 resource_local_to_scene = true
@@ -712,13 +711,14 @@ max_distance = 10000.0
 [node name="RespawnArea" type="Area2D" parent="."]
 position = Vector2(-684, 453)
 script = ExtResource("17_voiut")
+TIME_TO_SHOW_BUFFPANEL = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RespawnArea"]
 shape = SubResource("RectangleShape2D_rpbj7")
 disabled = true
 
 [node name="Nave" type="CharacterBody2D" parent="."]
-position = Vector2(-70, 65)
+position = Vector2(-44, -155)
 motion_mode = 1
 script = ExtResource("27_yewa7")
 friction = 300.0
@@ -731,11 +731,11 @@ texture_filter = 1
 material = SubResource("CanvasItemMaterial_63fgc")
 position = Vector2(0, -1)
 emitting = false
-amount = 15
+amount = 14
 amount_ratio = 0.0
 process_material = SubResource("ParticleProcessMaterial_eruys")
 texture = ExtResource("28_blhyg")
-speed_scale = 50.0
+speed_scale = 30.0
 fixed_fps = 60
 
 [node name="Camera2D" type="Camera2D" parent="Nave"]
@@ -774,8 +774,6 @@ debug_color = Color(0.914081, 0.254716, 0.369102, 0.42)
 [node name="SafeMode" type="Timer" parent="Nave"]
 wait_time = 2.0
 one_shot = true
-
-[node name="Enemie" parent="." instance=ExtResource("31_irsxg")]
 
 [connection signal="pressed" from="UI2/PanelDied/TouchScreenButton" to="UI2" method="_on_touch_screen_button_pressed"]
 [connection signal="finished" from="UI2/Sounds/Click" to="UI2" method="_on_click_finished"]

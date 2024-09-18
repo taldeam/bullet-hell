@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://b6a8dfutyl6qu"]
 
-[ext_resource type="Texture2D" uid="uid://dvmww85rb2qg7" path="res://Assets/efectos nave/efectos explosion/cuidado que explota.jpg" id="1_cthfj"]
+[ext_resource type="Texture2D" uid="uid://dfs2ggmgb2ebb" path="res://Assets/efectos nave/efectos explosion/cuidado que explota.jpg" id="1_my87q"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_p16lv"]
 blend_mode = 1
@@ -50,6 +50,6 @@ scale = Vector2(0.02, 0.02)
 emitting = false
 amount = 20
 process_material = SubResource("ParticleProcessMaterial_hachg")
-texture = ExtResource("1_cthfj")
+texture = ExtResource("1_my87q")
 lifetime = 0.15
 fixed_fps = 60

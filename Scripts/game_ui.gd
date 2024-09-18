@@ -7,7 +7,7 @@ extends CanvasLayer
 
 var total_enemies_dead = 0
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	fps_label.text = "FPS %d" % Engine.get_frames_per_second()
 	
 # Called when the node enters the scene tree for the first time.

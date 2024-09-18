@@ -6,10 +6,10 @@ extends CharacterBody2D
 @export var attack_speed : float = 1.0
 @export var bullet_damage : int = 1
 
-@onready var shieldEscene : PackedScene = preload("res://escenas/shield_area.tscn")
+@onready var shieldEscene : PackedScene = preload("res://escenas/Player/shield_area.tscn")
 @onready var bullet_scene : PackedScene = preload("res://escenas/bullet.tscn")
-@onready var nave_aliada : PackedScene = preload("res://escenas/nave_aliada.tscn")
-@onready var rayo_layer : PackedScene = preload("res://escenas/nave_principal/laser_rayos.tscn")
+@onready var nave_aliada : PackedScene = preload("res://escenas/Player/nave_aliada.tscn")
+@onready var rayo_layer : PackedScene = preload("res://escenas/Player/laser_rayos.tscn")
 
 @onready var joystick_left : VirtualJoystick = $"../UI2/Virtual joystick left"
 @onready var joystick_right : VirtualJoystick = $"../UI2/Virtual joystick right"

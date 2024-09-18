@@ -15,8 +15,8 @@ func _ready() -> void:
 	area_entered.connect(hit)
 	cameraShakeNoise = FastNoiseLite.new()
 
-func hit(area):
-	if area is Enemie_hit_component && !playerShield.visible:
+func hit(area : Area2D):
+	if 	area.is_in_group("enemies") && !playerShield.visible:
 		playerHealth -= area.damage
 		playerHealthVar.set_value_no_signal(playerHealth)
 		checkPlayerHealth()

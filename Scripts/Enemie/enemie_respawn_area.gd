@@ -1,8 +1,9 @@
 extends Area2D
 
+
+@onready var enemie_escene : PackedScene = preload("res://escenas/Enemies/enemie.tscn")
 @onready var power_up_item : PackedScene = preload("res://escenas/GUI/power_up_item.tscn")
 @onready var powerUpPanel : Panel = $"../UI2/PowerUpsPanel"
-@export var enemy_scene_1 : PackedScene = preload("res://escenas/enemie.tscn")
 @export var spawn_interval : float = 2.0
 @export var max_enemies : int = 5
 @export var enemies_respawn_cup : int = 10 # limite de enemigos por respaw
@@ -11,8 +12,6 @@ extends Area2D
 @export var spawn_decrement : float = 0.03  # Cantidad fija para disminuir el spawn interval
 @export var enemies_per_spawn : int = 1  # Cantidad de enemigos por spawn
 @export var TIME_TO_SHOW_BUFFPANEL : int = 60
-
-var enemy_scenes : Array = []
 
 var _spawn_timer : Timer
 var buff_panel_timer : Timer
@@ -47,8 +46,7 @@ func _ready() -> void:
 	_total_time_timer.connect("timeout", Callable(self, "_on_total_time_timeout"))
 	add_child(_total_time_timer)
 	_total_time_timer.start()
-	
-	enemy_scenes.append(enemy_scene_1)
+		
 			
 func _on_spawn_timeout() -> void:
 	if _current_enemies < max_enemies:
@@ -59,10 +57,7 @@ func _on_spawn_timeout() -> void:
 
 func _spawn_enemy() -> void:
 	$"../UI2/Enemies_in_game/Label3".text = str(_current_enemies)
-	
-	var random_index = randi() % enemy_scenes.size()
-	var selected_scene = enemy_scenes[random_index]
-	var enemy_instance = selected_scene.instantiate()
+	var enemy_instance = enemie_escene.instantiate()
 
 	var random_position_top = Vector2(random.randi_range(-687, 895), -240)
 	var random_position_bottom = Vector2(random.randi_range(-687, 895), 464)
@@ -76,7 +71,7 @@ func _spawn_enemy() -> void:
 		random_position_left
 	]
 
-	var selected_position = positions[random.randi_range(0, positions.size() - 1)]
+	var selected_position = positions.pick_random()
 	
 	enemy_instance.global_position = selected_position
 
