@@ -65,7 +65,7 @@ func _state_shoot1():
 	bullet_instance.isNaveAliada = false
 	# Configurar la dirección de la bala
 	var shoot_direction = Vector2.RIGHT.rotated(joystick_right.output.angle())
-	bullet_instance.find_child("Area2D").damage = 1
+	bullet_instance.find_child("Area2D").damage = 3
 	# Configurar la posición local de la bala (puede que necesites ajustar esto)
 	bullet_instance.parentPosition = self.global_position
 	# Configurar la dirección de la bala antes de agregarla a la escena

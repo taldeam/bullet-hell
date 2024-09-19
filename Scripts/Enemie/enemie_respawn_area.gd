@@ -1,6 +1,6 @@
 extends Area2D
 
-
+@onready var enemies_pool: Node = $"../Enemies_pool"
 @onready var enemie_escene : PackedScene = preload("res://escenas/Enemies/enemie.tscn")
 @onready var power_up_item : PackedScene = preload("res://escenas/GUI/power_up_item.tscn")
 @onready var powerUpPanel : Panel = $"../UI2/PowerUpsPanel"
@@ -46,24 +46,27 @@ func _ready() -> void:
 	_total_time_timer.connect("timeout", Callable(self, "_on_total_time_timeout"))
 	add_child(_total_time_timer)
 	_total_time_timer.start()
-		
+	
 			
 func _on_spawn_timeout() -> void:
 	if _current_enemies < max_enemies:
 		for i in range(enemies_per_spawn):
 			if _current_enemies < max_enemies:
-				await get_tree().create_timer(0.1).timeout
+				#await get_tree().create_timer(0.4).timeout
 				call_deferred('_spawn_enemy')
 
 func _spawn_enemy() -> void:
 	$"../UI2/Enemies_in_game/Label3".text = str(_current_enemies)
-	var enemy_instance = enemie_escene.instantiate()
-
+	# Obtener un enemigo del pool
+	var enemy_instance = enemies_pool.get_object()
+	
+	# Definir posiciones aleatorias
 	var random_position_top = Vector2(random.randi_range(-687, 895), -240)
 	var random_position_bottom = Vector2(random.randi_range(-687, 895), 464)
 	var random_position_right = Vector2(900, random.randi_range(-240, 466))
 	var random_position_left = Vector2(-680, random.randi_range(-243, 453))
 
+	# Crear un array con las posiciones posibles
 	var positions = [
 		random_position_top,
 		random_position_bottom,
@@ -71,13 +74,19 @@ func _spawn_enemy() -> void:
 		random_position_left
 	]
 
+	# Elegir una posición aleatoria
 	var selected_position = positions.pick_random()
-	
+
+	enemy_instance.visible = true
+	# Asignar la posición al enemigo
 	enemy_instance.global_position = selected_position
 
+	# Añadir el enemigo a la escena principal
 	get_tree().current_scene.add_child(enemy_instance)
 
+	# Incrementar el contador de enemigos
 	_current_enemies += 1
+
 	#enemy_instance.connect("tree_exited", Callable(self, "_on_enemy_exited"))
 
 func _on_enemy_exited() -> void:

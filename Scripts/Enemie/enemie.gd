@@ -1,13 +1,10 @@
 extends Sprite2D
 
-@export var SPEED = 30.0
-const MIN_DISTANCE = 80.0 # Distancia mínima entre enemigos
-const REPULSION_FORCE = 600.0 # Fuerza de repulsión
-const CHECK_FREQUENCY = 5 # Actualiza la repulsión cada 1 frame (puedes ajustarlo para mejorar el rendimiento)
+@export var SPEED = 40.0
 
 @onready var tweenFlash : Tween
-
-var frame_counter = 0
+@onready var health_collision: CollisionShape2D = $HealthComponent/CollisionShape2D
+@onready var hit_collision: CollisionShape2D = $HitComponent/CollisionShape2D
 
 var sprites_array : Array = [
 	"res://Assets/nave y enemigos/ShipsPNG/ship8.png",
@@ -20,12 +17,8 @@ var sprites_array : Array = [
 func _ready() -> void:
 	set_random_prite()
 	
-func _physics_process(delta: float) -> void:
-	# Solo calcular repulsión cada X frames
+func _physics_process(delta: float) -> void:		
 	move_to_player(delta)
-	#frame_counter += 1
-	#if frame_counter % CHECK_FREQUENCY == 0:
-		#apply_repulsion_from_enemies()
 
 func set_random_prite() -> void:
 	var random_sprite_path = sprites_array.pick_random()  # Pick a random sprite path
@@ -49,7 +42,6 @@ func move_to_player(delta: float) -> void:
 	else:
 		var velocity = Vector2.ZERO
 
-
 func _on_health_component_is_hited() -> void:
 	tweenFlash = get_tree().create_tween()
 	tweenFlash.tween_property(
@@ -65,17 +57,6 @@ func _on_health_component_is_hited() -> void:
 		0.2,
 	)
 	
-# Función optimizada para aplicar la fuerza de repulsión
-func apply_repulsion_from_enemies() -> void:
-	for enemy in Signals.enemies_in_group:
-		if enemy == self:
-			continue
-		
-		# Solo calcular si están dentro de un rango razonable
-		var distance_to_enemy = position.distance_to(enemy.position)
-		if distance_to_enemy < MIN_DISTANCE * 3: # Solo si están razonablemente cerca
-			# Si están muy cerca, aplicar una fuerza de repulsión
-			if distance_to_enemy < MIN_DISTANCE:
-				var repulsion_dir = (position - enemy.position).normalized()
-				var repulsion_force = repulsion_dir * REPULSION_FORCE / distance_to_enemy # Cuanto más cerca, más fuerte la repulsión
-				position += repulsion_force * get_process_delta_time() # Ajustar la posición con la repulsión
+	SPEED = 0
+	await get_tree().create_timer(0.1).timeout
+	SPEED = 40

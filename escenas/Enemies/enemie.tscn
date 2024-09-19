@@ -134,6 +134,6 @@ shape = SubResource("CircleShape2D_cd76h")
 stream = ExtResource("6_d7mdv")
 volume_db = 15.0
 
+[connection signal="isDead" from="HealthComponent" to="." method="_on_health_component_is_dead"]
 [connection signal="isHited" from="HealthComponent" to="." method="_on_health_component_is_hited"]
-[connection signal="finished" from="particles/dead_GPUParticles2D" to="HealthComponent" method="_on_dead_gpu_particles_2d_finished"]
 [connection signal="playerHited" from="HitComponent" to="HealthComponent" method="_on_hit_component_player_hited"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=4 uid="uid://b2mtty1g25yvs"]
+[gd_scene load_steps=48 format=4 uid="uid://b2mtty1g25yvs"]
 
 [ext_resource type="Script" path="res://Scripts/ParallaxBackground.gd" id="1_rm0b7"]
 [ext_resource type="Texture2D" uid="uid://dyfnx84vv7bta" path="res://Assets/fondo/fondo nuevo/layers/parallax-space-backgound.png" id="2_0tacc"]
@@ -28,7 +28,9 @@
 [ext_resource type="Shader" path="res://shaders/nave.gdshader" id="28_xoixe"]
 [ext_resource type="Texture2D" uid="uid://bpx7f1fs8sbup" path="res://Assets/nave y enemigos/ShipsPNG/ship1.png" id="29_4gf21"]
 [ext_resource type="Texture2D" uid="uid://dfs2ggmgb2ebb" path="res://Assets/efectos nave/efectos explosion/cuidado que explota.jpg" id="30_lkehu"]
+[ext_resource type="Script" path="res://Scripts/enemies_pool.gd" id="31_4c4m1"]
 [ext_resource type="Script" path="res://Scripts/Player/Health_component.gd" id="31_c3s4m"]
+[ext_resource type="PackedScene" uid="uid://b1m6h0eh10kgc" path="res://escenas/Enemies/enemie.tscn" id="32_0klf1"]
 [ext_resource type="AudioStream" uid="uid://dc1e5og04nu07" path="res://Assets/Efectos de sonido/Shoots/laser-gun-shot-sound-future-sci-fi-lazer-wobble-chakongaudio-174883.mp3" id="33_mkte1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_f5f2v"]
@@ -718,7 +720,7 @@ shape = SubResource("RectangleShape2D_rpbj7")
 disabled = true
 
 [node name="Nave" type="CharacterBody2D" parent="."]
-position = Vector2(-44, -155)
+position = Vector2(54.5, -79)
 motion_mode = 1
 script = ExtResource("27_yewa7")
 friction = 300.0
@@ -739,6 +741,7 @@ speed_scale = 30.0
 fixed_fps = 60
 
 [node name="Camera2D" type="Camera2D" parent="Nave"]
+zoom = Vector2(0.9, 0.9)
 
 [node name="mainSprite" type="Sprite2D" parent="Nave"]
 material = SubResource("ShaderMaterial_a2n5l")
@@ -774,6 +777,10 @@ debug_color = Color(0.914081, 0.254716, 0.369102, 0.42)
 [node name="SafeMode" type="Timer" parent="Nave"]
 wait_time = 2.0
 one_shot = true
+
+[node name="Enemies_pool" type="Node" parent="."]
+script = ExtResource("31_4c4m1")
+enemie_scene = ExtResource("32_0klf1")
 
 [connection signal="pressed" from="UI2/PanelDied/TouchScreenButton" to="UI2" method="_on_touch_screen_button_pressed"]
 [connection signal="finished" from="UI2/Sounds/Click" to="UI2" method="_on_click_finished"]
