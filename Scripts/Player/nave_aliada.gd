@@ -1,10 +1,10 @@
 extends CharacterBody2D
 
-@onready var bullet_scene : PackedScene= preload("res://escenas/bullet.tscn")
+#@onready var bullet_scene : PackedScene= preload("res://escenas/bullet.tscn")
 @onready var joystick_right : VirtualJoystick = $"../../UI2/Virtual joystick right"
 @onready var sprite : Sprite2D = $Sprite2D
-@onready var collisionShape : CollisionShape2D = $CollisionShape2D
 @onready var shoot_timer : Timer = $ShootTimer
+@onready var bullets_pool: Node = get_tree().current_scene.get_node("Bullets_pool")
 
 var attack_speed : float
 var parentPosition : Vector2
@@ -27,9 +27,10 @@ func _physics_process(_delta: float) -> void:
 		last_angle = joystick_angle
 
 func _state_shoot1():
-	var bullet_instance = bullet_scene.instantiate()
+	var bullet_instance = bullets_pool.get_object()
 	
 	bullet_instance.isNaveAliada = true
+	bullet_instance.find_child("Area2D").damage = 1
 	bullet_instance.collisionScale = 0.65
 	bullet_instance.spriteScale = 0.35
 	var shoot_direction = Vector2.RIGHT.rotated(joystick_right.output.angle())

@@ -7,10 +7,11 @@ extends CharacterBody2D
 @export var bullet_damage : int = 1
 
 @onready var shieldEscene : PackedScene = preload("res://escenas/Player/shield_area.tscn")
-@onready var bullet_scene : PackedScene = preload("res://escenas/bullet.tscn")
+#@onready var bullet_scene : PackedScene = preload("res://escenas/bullet.tscn")
 @onready var nave_aliada : PackedScene = preload("res://escenas/Player/nave_aliada.tscn")
 @onready var rayo_layer : PackedScene = preload("res://escenas/Player/laser_rayos.tscn")
 
+@onready var bullets_pool: Node = $"../Bullets_pool"
 @onready var joystick_left : VirtualJoystick = $"../UI2/Virtual joystick left"
 @onready var joystick_right : VirtualJoystick = $"../UI2/Virtual joystick right"
 @onready var sprite : Sprite2D = $mainSprite
@@ -61,7 +62,8 @@ func _physics_process(delta: float) -> void:
 		last_angle = joystick_angle
 
 func _state_shoot1():
-	var bullet_instance = bullet_scene.instantiate()
+	#var bullet_instance = bullet_scene.instantiate()
+	var bullet_instance = bullets_pool.get_object()
 	bullet_instance.isNaveAliada = false
 	# Configurar la dirección de la bala
 	var shoot_direction = Vector2.RIGHT.rotated(joystick_right.output.angle())
@@ -98,7 +100,7 @@ func activate_shield() -> void:
 	add_child(instance)
 
 func activate_ally_ship() -> void:
-	if number_of_allies < 8 and Signals.BuffArray[4].state:
+	if Signals.BuffArray[4].state and allies_actual_attack_speed > 0.3:
 		Signals.BuffArray[4].state = false
 	if	aliados_positions.size() > 0:
 		var nave_aliada_instance = nave_aliada.instantiate()

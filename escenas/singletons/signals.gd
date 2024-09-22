@@ -47,7 +47,7 @@ func _ready() -> void:
 	player_position = nave.position
 	#enemies_in_group = get_tree().get_nodes_in_group("enemies")
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if !nave:
 		nave = get_tree().root.get_node("mundo/Nave")
 	

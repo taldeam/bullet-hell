@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://b2mtty1g25yvs"]
+[gd_scene load_steps=50 format=4 uid="uid://b2mtty1g25yvs"]
 
 [ext_resource type="Script" path="res://Scripts/ParallaxBackground.gd" id="1_rm0b7"]
 [ext_resource type="Texture2D" uid="uid://dyfnx84vv7bta" path="res://Assets/fondo/fondo nuevo/layers/parallax-space-backgound.png" id="2_0tacc"]
@@ -32,6 +32,8 @@
 [ext_resource type="Script" path="res://Scripts/Player/Health_component.gd" id="31_c3s4m"]
 [ext_resource type="PackedScene" uid="uid://b1m6h0eh10kgc" path="res://escenas/Enemies/enemie.tscn" id="32_0klf1"]
 [ext_resource type="AudioStream" uid="uid://dc1e5og04nu07" path="res://Assets/Efectos de sonido/Shoots/laser-gun-shot-sound-future-sci-fi-lazer-wobble-chakongaudio-174883.mp3" id="33_mkte1"]
+[ext_resource type="Script" path="res://Scripts/bullets_pool.gd" id="33_u06h7"]
+[ext_resource type="PackedScene" uid="uid://cjateoqienga3" path="res://escenas/bullet.tscn" id="35_qsqsy"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_f5f2v"]
 
@@ -712,8 +714,10 @@ max_distance = 10000.0
 
 [node name="RespawnArea" type="Area2D" parent="."]
 position = Vector2(-684, 453)
+monitoring = false
+monitorable = false
 script = ExtResource("17_voiut")
-TIME_TO_SHOW_BUFFPANEL = 30
+TIME_TO_SHOW_BUFFPANEL = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RespawnArea"]
 shape = SubResource("RectangleShape2D_rpbj7")
@@ -781,6 +785,10 @@ one_shot = true
 [node name="Enemies_pool" type="Node" parent="."]
 script = ExtResource("31_4c4m1")
 enemie_scene = ExtResource("32_0klf1")
+
+[node name="Bullets_pool" type="Node" parent="."]
+script = ExtResource("33_u06h7")
+bullet_scene = ExtResource("35_qsqsy")
 
 [connection signal="pressed" from="UI2/PanelDied/TouchScreenButton" to="UI2" method="_on_touch_screen_button_pressed"]
 [connection signal="finished" from="UI2/Sounds/Click" to="UI2" method="_on_click_finished"]

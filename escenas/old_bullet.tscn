@@ -1,22 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjateoqienga3"]
+[gd_scene load_steps=5 format=3 uid="uid://6dqgvlmbku2g"]
 
 [ext_resource type="Script" path="res://Scripts/Player/bullet.gd" id="1_kjx40"]
 [ext_resource type="Script" path="res://Scripts/Player/bullet_area_component.gd" id="2_skyrm"]
+[ext_resource type="Texture2D" uid="uid://dfpigtkq05fkm" path="res://Assets/efectos nave/Laser Sprites/14.png" id="3_5fa0p"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g0mfk"]
 radius = 3.75
 height = 20.0
 
-[node name="Bullet" type="Sprite2D"]
+[node name="Bullet" type="CharacterBody2D"]
+scale = Vector2(0.8, 0.8)
 script = ExtResource("1_kjx40")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 0
-monitoring = false
 script = ExtResource("2_skyrm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(5.06, 0.27)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_g0mfk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.215, 0.215)
+texture = ExtResource("3_5fa0p")
