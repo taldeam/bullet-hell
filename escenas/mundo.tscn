@@ -717,17 +717,18 @@ position = Vector2(-684, 453)
 monitoring = false
 monitorable = false
 script = ExtResource("17_voiut")
-TIME_TO_SHOW_BUFFPANEL = 1
+TIME_TO_SHOW_BUFFPANEL = 30
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RespawnArea"]
 shape = SubResource("RectangleShape2D_rpbj7")
 disabled = true
 
 [node name="Nave" type="CharacterBody2D" parent="."]
-position = Vector2(54.5, -79)
+position = Vector2(2, 122)
 motion_mode = 1
 script = ExtResource("27_yewa7")
 friction = 300.0
+attack_speed = 2.0
 
 [node name="Escudo" type="GPUParticles2D" parent="Nave"]
 visible = false
@@ -772,7 +773,6 @@ wait_time = 0.2
 collision_layer = 2
 collision_mask = 256
 script = ExtResource("31_c3s4m")
-playerHealth = 20
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Nave/HealthComponent"]
 shape = SubResource("CircleShape2D_dahu2")

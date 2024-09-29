@@ -14,31 +14,43 @@ var BuffArray : Array = [
 		"state": false,
 		"buffKey": 0,
 		"buffName": "escudo",
-		"buffLabel": "Adds a shield that withstands up to 5 impacts."
+		"buffLabel": "Adds a shield that withstands up to 5 impacts"
 	},
 	{
 		"state": false,
 		"buffKey": 1,
 		"buffName": "laser",
-		"buffLabel": "Adds an automatic laser every 15 seconds."
+		"buffLabel": "Adds an automatic laser every 15 seconds"
 	},
 	{
 		"state": false,
 		"buffKey": 2,
 		"buffName": "nave",
-		"buffLabel": "Adds an allied ship at your position."
+		"buffLabel": "Adds an allied ship at your position"
 	},
 	{
 		"state": false,
 		"buffKey": 3,
 		"buffName": "attack_speed",
-		"buffLabel": "Increases your attack speed by 10%."
+		"buffLabel": "Increases your attack speed by 10%"
 	},
 	{
 		"state": true,
 		"buffKey": 4,
 		"buffName": "attack_speed_ally",
-		"buffLabel": "Increases the attack speed of allied ships by 10%."
+		"buffLabel": "Increases the attack speed of allied ships by 10%"
+	},
+	{
+		"state": false,
+		"buffKey": 5,
+		"buffName": "attack_damage",
+		"buffLabel": "Increases your attack damage by 1"
+	},
+	{
+		"state": false,
+		"buffKey": 6,
+		"buffName": "movement_speed",
+		"buffLabel": "Increases your movement speed by 10%"
 	}
 ]
 

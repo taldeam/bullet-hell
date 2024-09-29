@@ -7,11 +7,13 @@ enum BuffEnum {
 	LASER,
 	NAVE,
 	ATTACK_SPEED,
-	ATTACK_SPEED_ALLY
+	ATTACK_SPEED_ALLY,
+	DAMAGE,
+	MOVEMENT_SPEED
 }
 
 # Array que mapea los valores del enum a strings
-var buffTypeStrings = ["escudo", "laser", "nave", "attack_speed", "attack_speed_ally"]
+var buffTypeStrings = ["escudo", "laser", "nave", "attack_speed", "attack_speed_ally", "damage", "movement_speed"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

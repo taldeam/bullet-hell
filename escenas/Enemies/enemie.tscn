@@ -1,12 +1,12 @@
 [gd_scene load_steps=21 format=3 uid="uid://b1m6h0eh10kgc"]
 
-[ext_resource type="Texture2D" uid="uid://bpx7f1fs8sbup" path="res://Assets/nave y enemigos/ShipsPNG/ship1.png" id="1_a1i6n"]
+[ext_resource type="Texture2D" uid="uid://d0qx3b2bum2sw" path="res://Assets/nave y enemigos/ShipsPNG/ship1.png" id="1_a1i6n"]
 [ext_resource type="Shader" path="res://shaders/nave.gdshader" id="1_fmf8j"]
 [ext_resource type="Script" path="res://Scripts/Enemie/enemie.gd" id="2_xobfw"]
 [ext_resource type="Script" path="res://Scripts/Enemie/enemie_health_component.gd" id="3_lpaak"]
-[ext_resource type="Texture2D" uid="uid://dfs2ggmgb2ebb" path="res://Assets/efectos nave/efectos explosion/cuidado que explota.jpg" id="4_sqyjc"]
+[ext_resource type="Texture2D" uid="uid://bxehrds5rqdaw" path="res://Assets/efectos nave/efectos explosion/cuidado que explota.jpg" id="4_sqyjc"]
 [ext_resource type="Script" path="res://Scripts/Enemie/enemie_hit_component.gd" id="5_frt7t"]
-[ext_resource type="AudioStream" uid="uid://cvk02dnrecoae" path="res://Assets/Efectos de sonido/Explosiones/huge-distant-explosion-25317 (mp3cut.net).mp3" id="6_d7mdv"]
+[ext_resource type="AudioStream" uid="uid://2rf6e746nmi1" path="res://Assets/Efectos de sonido/Explosiones/huge-distant-explosion-25317 (mp3cut.net).mp3" id="6_d7mdv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xcd56"]
 resource_local_to_scene = true
@@ -81,14 +81,16 @@ script = ExtResource("2_xobfw")
 [node name="HealthComponent" type="Area2D" parent="."]
 collision_layer = 2048
 collision_mask = 4
-monitorable = false
 script = ExtResource("3_lpaak")
+health = 5
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HealthComponent"]
 shape = SubResource("CircleShape2D_c5g04")
 
 [node name="particles" type="Node2D" parent="."]
 z_index = -1
+metadata/_edit_lock_ = true
 
 [node name="damaged_GPUParticles2D" type="GPUParticles2D" parent="particles"]
 material = SubResource("CanvasItemMaterial_p16lv")
@@ -125,6 +127,7 @@ color_initial_ramp = SubResource("Gradient_dwkr4")
 collision_layer = 256
 collision_mask = 2
 script = ExtResource("5_frt7t")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitComponent"]
 shape = SubResource("CircleShape2D_cd76h")

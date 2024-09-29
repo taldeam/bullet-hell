@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var SPEED = 200.0
+@export var SPEED = 180.0
 @export var acceleration = 500.0
 @export var friction = 50.0
 @export var attack_speed : float = 1.0
@@ -115,6 +115,17 @@ func activate_laser() -> void:
 	var instance = rayo_layer.instantiate()
 	sprite.add_child(instance)
 
+func update_attack_damage() -> void:
+	bullet_damage += 1
+	if bullet_damage >= 5:
+		Signals.BuffArray[5].state = true
+		
+func update_movement_speed() -> void:
+	var increase = SPEED * 0.10
+	SPEED += increase
+	if SPEED >= 280:
+		Signals.BuffArray[6].state = true
+
 # END POWERUPS
 
 func _on_power_up_button_buff_type_signal(buffType) -> void:
@@ -133,5 +144,9 @@ func _on_power_up_button_buff_type_signal(buffType) -> void:
 			update_attack_speed()
 		"attack_speed_ally":
 			update_attack_speed_ally()
+		"attack_damage":
+			update_attack_damage()
+		"movement_speed":
+			update_movement_speed()
 		_:
 			pass

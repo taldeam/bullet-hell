@@ -5,12 +5,12 @@ extends Area2D
 @onready var power_up_item : PackedScene = preload("res://escenas/GUI/power_up_item.tscn")
 @onready var powerUpPanel : Panel = $"../UI2/PowerUpsPanel"
 @export var spawn_interval : float = 2.0
-@export var max_enemies : int = 5
+@export var max_enemies : int = 10
 @export var enemies_respawn_cup : int = 10 # limite de enemigos por respaw
 @export var max_enemies_cup : int = 250 # limite de enemigos por simultaneos
 @export var min_spawn_interval : float = 0.1  # Tiempo mínimo entre spawns
-@export var spawn_decrement : float = 0.03  # Cantidad fija para disminuir el spawn interval
-@export var enemies_per_spawn : int = 1  # Cantidad de enemigos por spawn
+@export var spawn_decrement : float = 0.05  # Cantidad fija para disminuir el spawn interval
+@export var enemies_per_spawn : int = 2  # Cantidad de enemigos por spawn
 @export var TIME_TO_SHOW_BUFFPANEL : int = 60
 
 var _spawn_timer : Timer
