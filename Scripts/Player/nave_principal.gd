@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var SPEED = 180.0
 @export var acceleration = 500.0
 @export var friction = 50.0
-@export var attack_speed : float = 1.0
+@export var attack_speed : float = 0.9
 @export var bullet_damage : int = 1
 
 @onready var shieldEscene : PackedScene = preload("res://escenas/Player/shield_area.tscn")
@@ -67,7 +67,7 @@ func _state_shoot1():
 	bullet_instance.isNaveAliada = false
 	# Configurar la dirección de la bala
 	var shoot_direction = Vector2.RIGHT.rotated(joystick_right.output.angle())
-	bullet_instance.find_child("Area2D").damage = 3
+	bullet_instance.find_child("Area2D").damage = bullet_damage
 	# Configurar la posición local de la bala (puede que necesites ajustar esto)
 	bullet_instance.parentPosition = self.global_position
 	# Configurar la dirección de la bala antes de agregarla a la escena
